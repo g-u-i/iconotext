@@ -1,0 +1,13 @@
+{
+  "title":"test",
+  "keyword":"iconotest",
+  "csv":"text/test.csv",
+  "imap":{
+    "user": " address@gmail.com",
+    "password": "123456",
+    "host": "imap.gmail.com",
+    "port": 993,
+    "tls": true,
+    "mailbox": "INBOX"
+  }
+}
