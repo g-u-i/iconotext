@@ -1,11 +1,13 @@
 {
-  "title":"test",
-  "keyword":"iconotest",
-  "csv":"text/test.csv",
+  "title":"example",
+  "keyword":"word",
+  "csv":"text.csv",
+  "instruction":"repondez moi par une image !",
+  "backupFreq": 30000,
   "imap":{
-    "user": " address@gmail.com",
+    "user": "user@email.com",
     "password": "123456",
-    "host": "imap.gmail.com",
+    "host": "imap.email.com",
     "port": 993,
     "tls": true,
     "mailbox": "INBOX"

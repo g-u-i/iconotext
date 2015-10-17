@@ -139,8 +139,8 @@ function sendNextMessage(address){
     var options = {
       from: config.user,
       to: address,
-      subject: '['+config.keyword+'] '+next.id+' : '+config.instruction,
-      text: next.text
+      subject: '['+config.keyword+'] '+next.id+' : '+ next.text,
+      text: config.instruction
     }
   }else{
     var options = {
