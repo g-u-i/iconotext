@@ -9,14 +9,17 @@ var csv = require('csv'),
     _ = require('lodash');
     queue = '';
     mkpath = require('mkpath');
+    nodemailer = require('nodemailer');
+    yaml = require('yamljs');
 
+// CSV
 var parser = csv.parse({columns:true},function(err, data){
   queue = data;
+  setInterval(backupCsv, 5000);
   listenInbox();
 });
-fs.createReadStream(config.csv).pipe(parser);
 
-var nodemailer = require('nodemailer');
+// mails
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -26,6 +29,12 @@ var transporter = nodemailer.createTransport({
 }, function(err, data){
   console.log(err, data);
 });
+
+
+
+// START
+fs.createReadStream(config.csv).pipe(parser);
+
 
 // imap SERVER
 function listenInbox(){
@@ -42,7 +51,7 @@ function listenInbox(){
     imap.search(['UNSEEN'], function(err, result) {
       if (result.length) {
         var f = imap.fetch(result, {
-          markSeen: false,
+          markSeen: true,
           struct: true,
           bodies: ''
         });
@@ -97,13 +106,23 @@ function onEmail(mailObject) {
     if(!metadata){
       console.log('>>',metadata);
     }else{
-      // save attachment
-      var path = 'content/'+config.keyword+'/'+strpad(metadata.id,'000')+'/';
-      mkpath.sync(path);
+      // create path
+      var path = 'content/'+config.keyword+'/'+_.padLeft(metadata.id, 4, '0')+'/'+address+'/';
 
-      mailObject.attachments.forEach(function(attachment){
-        fs.writeFile(path+attachment.fileName, attachment.content);
-      })
+      mkpath(path, function (err) {
+        if (err) throw err;
+
+        // save files
+        mailObject.attachments.forEach(function(attachment){
+          fs.writeFile(path+attachment.fileName, attachment.content);
+          console.log(metadata.id, attachment.fileName);
+        });
+
+        var contrib = _.filter(queue, 'id', ''+metadata.id);
+        fs.writeFile(path+"contrib.json", JSON.stringify(contrib));
+
+      });
+
 
       markAsAnswered(address, metadata.id);
       sendNextMessage(address);
@@ -117,36 +136,31 @@ function sendNextMessage(address){
   var next = _(queue)
     .filter('to', address)
     .filter('re', '')
-    .sortBy('id')
+    .sortBy(function(d){return parseInt(d.id)})
     .first();
 
   if(next){
     var options = {
       from: config.user,
       to: address,
-      subject: '['+config.keyword+'] '+next.id+' : '+next.text,
-      text: config.instruction
+      subject: '['+config.keyword+'] '+next.id+' : '+config.instruction,
+      text: next.text
     }
   }else{
     var options = {
       from: config.user,
       to: address,
-      subject: 'fin des messages',
+      subject:'['+config.keyword+'] fin du texte',
       text: ''
     }
   }
-  transporter.sendMail();
+  transporter.sendMail(options);
   console.log(address, options.subject);
 }
 
 // mark piece of text as answered
 function markAsAnswered(address, id){
-  var line = _(queue)
-    .filter('to', address)
-    .filter('id', ''+id)
-    .value();
-
-  line.re = Date.now();
+  _.findWhere(queue, {'to':address, 'id':''+id}).re = Date.now();
 }
 
 // parse subject to find piece of text id and session keyword
@@ -165,6 +179,13 @@ function parseSubject(s){
   var m = p.exec(s);
 
   return m && { keyword:m[2], id:parseInt(m[5])}
+}
+
+// write CSV file
+function backupCsv(){
+  csv.stringify(queue, {header: true}, function(err, output){
+    fs.writeFile(config.csv, output, function(err){if(err)console.log(err)})
+  });
 }
 
 // add leading 0 on string
