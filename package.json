@@ -1,0 +1,34 @@
+{
+  "name": "iconotext",
+  "version": "1.0.0",
+  "description": "a tool to link images with text",
+  "main": "server.js",
+  "dependencies": {
+    "csv": "^0.4.6",
+    "imap": "^0.8.15",
+    "lodash": "^3.10.1",
+    "events": "^1.1.0",
+    "mailparser": "^0.5.2",
+    "mkpath": "^0.1.0",
+    "moment": "^2.10.6",
+    "node-csv": "^0.1.2",
+    "nodemailer": "^1.8.0",
+    "util": "^0.10.3",
+    "yamljs": "^0.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g-u-i/iconotext.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/g-u-i/iconotext/issues"
+  },
+  "homepage": "https://github.com/g-u-i/iconotext#readme"
+}
