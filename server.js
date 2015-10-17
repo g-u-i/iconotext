@@ -15,7 +15,7 @@ var csv = require('csv'),
 // CSV
 var parser = csv.parse({columns:true},function(err, data){
   queue = data;
-  setInterval(backupCsv, 5000);
+  setInterval(backupCsv, config.backupFreq);
   listenInbox();
 });
 
@@ -30,11 +30,8 @@ var transporter = nodemailer.createTransport({
   console.log(err, data);
 });
 
-
-
 // START
 fs.createReadStream(config.csv).pipe(parser);
-
 
 // imap SERVER
 function listenInbox(){
@@ -104,7 +101,8 @@ function onEmail(mailObject) {
   }else{
     var metadata = parseSubject(mailObject.subject)
     if(!metadata){
-      console.log('>>',metadata);
+      console.log('no information in the email subject',metadata);
+      sendNextMessage(address);
     }else{
       // create path
       var path = 'content/'+config.keyword+'/'+_.padLeft(metadata.id, 4, '0')+'/'+address+'/';
@@ -123,7 +121,6 @@ function onEmail(mailObject) {
 
       });
 
-
       markAsAnswered(address, metadata.id);
       sendNextMessage(address);
     }
@@ -132,7 +129,6 @@ function onEmail(mailObject) {
 
 // find and send the next piece of text
 function sendNextMessage(address){
-
   var next = _(queue)
     .filter('to', address)
     .filter('re', '')
