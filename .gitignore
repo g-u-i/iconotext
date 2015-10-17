@@ -1,6 +1,8 @@
 # config / pwd
 config.json
 text/
+content/
+
 # Logs
 logs
 *.log
