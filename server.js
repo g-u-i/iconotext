@@ -3,9 +3,6 @@ var csv = require('csv'),
     config = require('./config.json');
     Imap = require('imap'),
     MailParser = require('mailparser').MailParser,
-    moment = require('moment')
-    util = require('util'),
-    events = require('events'),
     _ = require('lodash'),
     mkpath = require('mkpath'),
     nodemailer = require('nodemailer'),
@@ -19,8 +16,8 @@ var queue = '';
 var parser = csv.parse({columns:true},function(err, data){
   queue = data;
 
-  setInterval(backupCSV, config.backupFreq);
-  setInterval(backupJSON, config.backupFreq*2);
+  backupCSV()
+  backupJSON();
 
   // connect mailbox
   listenInbox();
@@ -39,6 +36,9 @@ var transporter = nodemailer.createTransport({
 
 // START
 fs.createReadStream(config.csv).pipe(parser);
+
+process.on('SIGINT', cleanEnd);
+process.on('uncaughtException', cleanEnd);
 
 // imap SERVER
 function listenInbox(){
@@ -84,7 +84,9 @@ function listenInbox(){
         });
 
         f.once('end', function() {
-          // console.log('Done fetching all messages!');
+          console.log('Done fetching all messages!');
+            setTimeout(backupCSV, config.backupFreq);
+            setTimeout(backupJSON, config.backupFreq);
           // imap.end();
         });
       }
@@ -207,7 +209,10 @@ function parseSubject(s){
 // write CSV file
 function backupCSV(){
   csv.stringify(queue, {header: true}, function(err, output){
-    fs.writeFile(config.csv, output, function(err){if(err)console.log(err)})
+    fs.writeFile(config.csv, output, function(err){
+      if(err)console.log(err)
+      console.log('\tbackupCSV');
+    })
   });
 }
 
@@ -230,8 +235,20 @@ function backupJSON(){
     }
   );
   // console.log(data);
-  fs.writeFile('app/data/'+config.keyword+'.json', data, function(err){if(err)console.log(err)})
+  fs.writeFile('app/data/'+config.keyword+'.json', data, function(err){
+    if(err)console.log(err)
+    console.log('\tupdateJSON');
+  })
 }
+
+function cleanEnd(){
+  console.log( "Gracefully shutting down");
+  // some other closing procedures go here
+  backupJSON();
+  backupCSV();
+  setTimeout(process.exit, 2000);
+}
+
 
 
 
