@@ -1,0 +1,20 @@
+<div>
+
+    {{debug}}
+
+
+    {{#each data}}
+      <ul class="row slide">
+        <h4>{{@key}} — {{this.[0].text}}</h4>
+        {{#each this}}
+          <li class="image col-sm-{{math 12 "/" ../this.length}}"
+              style="background-image:url('/{{path}}/{{fileName}}');"
+          >
+          </li>
+        {{/each}}
+      </ul>
+      <hr>
+    {{/each}}
+
+
+</div>

@@ -2,6 +2,7 @@
 config.json
 text/
 content/
+app/data/
 
 # Logs
 logs

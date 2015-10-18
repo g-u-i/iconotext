@@ -6,16 +6,23 @@ var csv = require('csv'),
     moment = require('moment')
     util = require('util'),
     events = require('events'),
-    _ = require('lodash');
-    queue = '';
-    mkpath = require('mkpath');
-    nodemailer = require('nodemailer');
-    yaml = require('yamljs');
+    _ = require('lodash'),
+    mkpath = require('mkpath'),
+    nodemailer = require('nodemailer'),
+    yaml = require('yamljs'),
+    sanitize = require("sanitize-filename"),
+    crypto = require('crypto');
+
+var queue = '';
+
 
 // CSV
 var parser = csv.parse({columns:true},function(err, data){
   queue = data;
   setInterval(backupCsv, config.backupFreq);
+  setInterval(renderJson, config.backupFreq);
+
+  // connect mailbox
   listenInbox();
 });
 
@@ -40,15 +47,16 @@ function listenInbox(){
   imap.on('ready', function() {
     console.log('imap ready');
     imap.openBox(config.imap.mailbox, false, function() {
-      console.log('imap opened');
+      console.log('imap opened \t', config.imap.user, new Date());
     });
   });
 
   imap.on('mail', function(num) {
     imap.search(['UNSEEN'], function(err, result) {
       if (result.length) {
+
         var f = imap.fetch(result, {
-          markSeen: true,
+          markSeen: false,
           struct: true,
           bodies: ''
         });
@@ -70,20 +78,29 @@ function listenInbox(){
             });
           });
         });
+
+        f.once('error', function(err) {
+          console.log('Fetch error: ' + err);
+        });
+
+        f.once('end', function() {
+          // console.log('Done fetching all messages!');
+          // imap.end();
+        });
       }
     });
   });
 
-  imap.on('end', function() {
-    console.log('end');
+  imap.on('end', function(err) {
+    console.log('end', new Date());
   });
 
   imap.on('error', function(err) {
-    console.log('error', err);
+    console.log('error', err, new Date());
   });
 
   imap.on('close', function(hadError) {
-    console.log('close', hadError);
+    console.log('close', hadError, new Date());
   });
 
   imap.connect();
@@ -91,42 +108,52 @@ function listenInbox(){
 
 // when new email comming
 function onEmail(mailObject) {
-  var address = mailObject.from[0].address;
+  var address = mailObject.from[0].address.toLowerCase();
+  var metadata = parseSubject(mailObject.subject);
 
-  console.log('new mail', address, mailObject.subject);
-
-  // has attachment
-  if(_.isUndefined(mailObject.attachments)){
+  // has attachment and metadata
+  if(_.isUndefined(mailObject.attachments) || _.isNull(metadata) ){
+    console.log('mail error \t\t', address);
     sendNextMessage(address);
   }else{
-    var metadata = parseSubject(mailObject.subject)
-    if(!metadata){
-      console.log('no information in the email subject',metadata);
-      sendNextMessage(address);
-    }else{
-      // create path
-      var path = 'content/'+config.keyword+'/'+_.padLeft(metadata.id, 4, '0')+'/'+address+'/';
+    console.log('new mail \t', metadata.id,'\t', address, new Date().toLocaleTimeString(), mailObject.subject);
+    // create path
+    var path = 'content/'
+      +config.keyword+'/'
+      +_.padLeft(metadata.id, 4, '0')
+      +'/'+hash(address)+'/';
 
-      mkpath(path, function (err) {
-        if (err) throw err;
+    updateLine(address, metadata.id, 'path', path);
+    mkpath(path, function (err) {
+
+      if (err) throw err;
+
+      mailObject.attachments.forEach(function(attachment){
+
+        console.log('attachment \t', metadata.id,'\t', address, new Date().toLocaleTimeString(), attachment.fileName);
 
         // save files
-        mailObject.attachments.forEach(function(attachment){
-          fs.writeFile(path+attachment.fileName, attachment.content);
-          console.log(metadata.id, attachment.fileName);
-        });
-
-        var contrib = _.filter(queue, 'id', ''+metadata.id);
-        fs.writeFile(path+"contrib.json", JSON.stringify(contrib));
-
+        fs.writeFile(path+sanitize(attachment.fileName), attachment.content);
+        updateLine(address, metadata.id, 'fileName', sanitize(attachment.fileName));
       });
 
-      markAsAnswered(address, metadata.id);
-      sendNextMessage(address);
-    }
+      var contrib = _.filter(queue, 'id', ''+metadata.id);
+      fs.writeFile(path+"contrib.json", JSON.stringify(contrib));
+
+    });
+
+
+    updateLine(address, metadata.id, 're', Date.now());
+    // updateLine(address, metadata.id, 'body', mailObject.text);
+
+    sendNextMessage(address);
   }
 };
 
+
+function hash(d){
+  return crypto.createHash('md5').update(d).digest("hex");
+}
 // find and send the next piece of text
 function sendNextMessage(address){
   var next = _(queue)
@@ -136,27 +163,27 @@ function sendNextMessage(address){
     .first();
 
   if(next){
-    var options = {
+    var answer = {
       from: config.user,
       to: address,
       subject: '['+config.keyword+'] '+next.id+' : '+ next.text,
       text: config.instruction
     }
   }else{
-    var options = {
+    var answer = {
       from: config.user,
       to: address,
       subject:'['+config.keyword+'] fin du texte',
       text: ''
     }
   }
-  transporter.sendMail(options);
-  console.log(address, options.subject);
+  transporter.sendMail(answer);
+  console.log('mail answer \t\t', address, new Date().toLocaleTimeString(), answer.subject);
 }
 
 // mark piece of text as answered
-function markAsAnswered(address, id){
-  _.findWhere(queue, {'to':address, 'id':''+id}).re = Date.now();
+function updateLine(address, id, col, value){
+  _.findWhere(queue, {'to':address, 'id':''+id})[col] = value;
 }
 
 // parse subject to find piece of text id and session keyword
@@ -184,9 +211,27 @@ function backupCsv(){
   });
 }
 
-// add leading 0 on string
-function strpad(str, pad){
-  str = '' + 1;
-  return pad.substring(0, pad.length - str.length) + str;
+function renderJson(){
+
+  var q = _.cloneDeep(queue);
+
+  var data = JSON.stringify(
+    {data:
+      _(q)
+      .reject('re','')
+      .reject('path','')
+      .reject('fileName','')
+      .map(function(d){
+        d.to = hash(d.to);
+        return d;
+      })
+      .groupBy('id')
+      .value()
+    }
+  );
+  // console.log(data);
+  fs.writeFile('app/data/'+config.keyword+'.json', data, function(err){if(err)console.log(err)})
 }
+
+
 

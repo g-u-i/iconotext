@@ -5,14 +5,15 @@
   "main": "server.js",
   "dependencies": {
     "csv": "^0.4.6",
+    "events": "^1.1.0",
     "imap": "^0.8.15",
     "lodash": "^3.10.1",
-    "events": "^1.1.0",
     "mailparser": "^0.5.2",
     "mkpath": "^0.1.0",
     "moment": "^2.10.6",
     "node-csv": "^0.1.2",
     "nodemailer": "^1.8.0",
+    "sanitize-filename": "^1.4.5",
     "util": "^0.10.3",
     "yamljs": "^0.2.4"
   },
