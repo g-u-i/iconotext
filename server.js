@@ -18,8 +18,9 @@ var queue = '';
 // CSV
 var parser = csv.parse({columns:true},function(err, data){
   queue = data;
-  setInterval(backupCsv, config.backupFreq);
-  setInterval(renderJson, config.backupFreq);
+
+  setInterval(backupCSV, config.backupFreq);
+  setInterval(backupJSON, config.backupFreq*2);
 
   // connect mailbox
   listenInbox();
@@ -204,13 +205,13 @@ function parseSubject(s){
 }
 
 // write CSV file
-function backupCsv(){
+function backupCSV(){
   csv.stringify(queue, {header: true}, function(err, output){
     fs.writeFile(config.csv, output, function(err){if(err)console.log(err)})
   });
 }
 
-function renderJson(){
+function backupJSON(){
 
   var q = _.cloneDeep(queue);
 
