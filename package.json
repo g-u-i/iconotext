@@ -4,8 +4,10 @@
   "description": "a tool to link images with text",
   "main": "server.js",
   "dependencies": {
+    "crypto": "0.0.3",
     "csv": "^0.4.6",
     "events": "^1.1.0",
+    "handlebars": "^4.0.3",
     "imap": "^0.8.15",
     "lodash": "^3.10.1",
     "mailparser": "^0.5.2",
