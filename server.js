@@ -56,7 +56,7 @@ function listenInbox(){
       if (result.length) {
 
         var f = imap.fetch(result, {
-          markSeen: false,
+          markSeen: true,
           struct: true,
           bodies: ''
         });
