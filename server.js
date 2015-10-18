@@ -15,7 +15,6 @@ var csv = require('csv'),
 
 var queue = '';
 
-
 // CSV
 var parser = csv.parse({columns:true},function(err, data){
   queue = data;
