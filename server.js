@@ -12,33 +12,30 @@ var csv = require('csv'),
 
 var queue = '';
 
-// CSV
+// START
+
+// load CSV
 var parser = csv.parse({columns:true},function(err, data){
   queue = data;
-
-  backupCSV()
-  backupJSON();
-
-  // connect mailbox
-  listenInbox();
+  updateJSON(); // update public json
+  listenInbox(); // connect mailbox
 });
 
-// mails
+// mailer
 var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: config.imap.user,
-        pass: config.imap.password
-    }
-}, function(err, data){
-  console.log(err, data);
+  service: 'gmail',
+  auth: { user: config.imap.user, pass: config.imap.password}},
+  function(err, data){ console.log(err, data);
 });
 
-// START
 fs.createReadStream(config.csv).pipe(parser);
+process.on('SIGINT', backupAndExit);
+process.on('uncaughtException', backupAndExit);
 
-process.on('SIGINT', cleanEnd);
-process.on('uncaughtException', cleanEnd);
+
+//
+// Functions
+//
 
 // imap SERVER
 function listenInbox(){
@@ -79,34 +76,22 @@ function listenInbox(){
           });
         });
 
-        f.once('error', function(err) {
-          console.log('Fetch error: ' + err);
-        });
-
         f.once('end', function() {
           console.log('Done fetching all messages!');
-            setTimeout(backupCSV, config.backupFreq);
-            setTimeout(backupJSON, config.backupFreq);
+          setTimeout(backupCSV, config.backupFreq);
+          setTimeout(updateJSON, config.backupFreq);
           // imap.end();
         });
       }
     });
   });
 
-  imap.on('end', function(err) {
-    console.log('end', new Date());
-  });
-
-  imap.on('error', function(err) {
-    console.log('error', err, new Date());
-  });
-
-  imap.on('close', function(hadError) {
-    console.log('close', hadError, new Date());
-  });
+  imap.on('end', function(err) { console.log('end', new Date());});
+  imap.on('error', function(err) { console.log('error', err, new Date());});
+  imap.on('close', function(err) {console.log('close', err, new Date());});
 
   imap.connect();
-}
+};
 
 // when new email comming
 function onEmail(mailObject) {
@@ -152,10 +137,6 @@ function onEmail(mailObject) {
   }
 };
 
-
-function hash(d){
-  return crypto.createHash('md5').update(d).digest("hex");
-}
 // find and send the next piece of text
 function sendNextMessage(address){
   var next = _(queue)
@@ -175,7 +156,7 @@ function sendNextMessage(address){
     var answer = {
       from: config.user,
       to: address,
-      subject:'['+config.keyword+'] fin du texte',
+      subject:'['+config.keyword+'] Aucun messages pour '+address,
       text: ''
     }
   }
@@ -188,24 +169,6 @@ function updateLine(address, id, col, value){
   _.findWhere(queue, {'to':address, 'id':''+id})[col] = value;
 }
 
-// parse subject to find piece of text id and session keyword
-function parseSubject(s){
-
-  var re1='.*?'; // Non-greedy match on filler
-  var re2='(\\[)';  // Any Single Character 1
-  var re3='((?:[a-z][a-z]+))';  // Word 1
-  var re4='(\\])';  // Any Single Character 2
-  var re5='(\\s+)'; // White Space 1
-  var re6='(\\d+)'; // Integer Number 1
-  var re7='(\\s+)'; // White Space 2
-  var re8='(:)';  // Any Single Character 3
-
-  var p = new RegExp(re1+re2+re3+re4+re5+re6+re7+re8,['i']);
-  var m = p.exec(s);
-
-  return m && { keyword:m[2], id:parseInt(m[5])}
-}
-
 // write CSV file
 function backupCSV(){
   csv.stringify(queue, {header: true}, function(err, output){
@@ -216,13 +179,13 @@ function backupCSV(){
   });
 }
 
-function backupJSON(){
+// update public json file
+function updateJSON(){
 
   var q = _.cloneDeep(queue);
 
   var data = JSON.stringify(
-    {data:
-      _(q)
+    {data:_(q)
       .reject('re','')
       .reject('path','')
       .reject('fileName','')
@@ -241,12 +204,34 @@ function backupJSON(){
   })
 }
 
-function cleanEnd(){
-  console.log( "Gracefully shutting down");
-  // some other closing procedures go here
-  backupJSON();
+// wait for backup before exit
+function backupAndExit(){
+  updateJSON();
   backupCSV();
+  console.log( "\n\nGracefully shutting down …\n\n");
   setTimeout(process.exit, 2000);
+}
+
+// string encryption shorthand
+function hash(d){
+  return crypto.createHash('md5').update(d).digest("hex");
+}
+// parse subject to find piece of text id and session keyword
+function parseSubject(s){
+
+  var re1='.*?'; // Non-greedy match on filler
+  var re2='(\\[)';  // Any Single Character 1
+  var re3='((?:[a-z][a-z]+))';  // Word 1
+  var re4='(\\])';  // Any Single Character 2
+  var re5='(\\s+)'; // White Space 1
+  var re6='(\\d+)'; // Integer Number 1
+  var re7='(\\s+)'; // White Space 2
+  var re8='(:)';  // Any Single Character 3
+
+  var p = new RegExp(re1+re2+re3+re4+re5+re6+re7+re8,['i']);
+  var m = p.exec(s);
+
+  return m && { keyword:m[2], id:parseInt(m[5])}
 }
 
 
