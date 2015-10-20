@@ -13,6 +13,7 @@ var csv = require('csv'),
 var queue = '';
 
 // START
+mkpath.sync('content');
 
 // load CSV
 var parser = csv.parse({columns:true},function(err, data){
