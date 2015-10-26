@@ -7,8 +7,9 @@ var csv = require('csv'),
     mkpath = require('mkpath'),
     nodemailer = require('nodemailer'),
     yaml = require('yamljs'),
-    sanitize = require("sanitize-filename"),
-    crypto = require('crypto');
+    slug = require('slug'),
+    crypto = require('crypto'),
+    path = require('path');
 
 var queue = '';
 
@@ -121,8 +122,9 @@ function onEmail(mailObject) {
         console.log('attachment \t', metadata.id,'\t', address, new Date().toLocaleTimeString(), attachment.fileName);
 
         // save files
-        fs.writeFile(path+sanitize(attachment.fileName), attachment.content);
-        updateLine(address, metadata.id, 'fileName', sanitize(attachment.fileName));
+        fs.writeFile(path+cleanFilename(attachment.fileName), attachment.content);
+        updateLine(address, metadata.id, 'fileName', cleanFilename(attachment.fileName));
+
       });
 
       var contrib = _.filter(queue, 'id', ''+metadata.id);
@@ -217,6 +219,17 @@ function backupAndExit(){
 function hash(d){
   return crypto.createHash('md5').update(d).digest("hex");
 }
+
+// escape filename
+function cleanFilename(f){
+
+  var ext = path.extname(f);
+  var name = path.basename(f, ext);
+
+  return slug(name) + ext;
+}
+
+
 // parse subject to find piece of text id and session keyword
 function parseSubject(s){
 
