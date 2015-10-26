@@ -201,7 +201,7 @@ function updateJSON(){
     }
   );
   // console.log(data);
-  fs.writeFile('app/data/'+config.keyword+'.json', data, function(err){
+  fs.writeFile('app/data/data.json', data, function(err){
     if(err)console.log(err)
     console.log('\tupdateJSON');
   })

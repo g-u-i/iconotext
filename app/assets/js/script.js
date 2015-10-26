@@ -8,7 +8,7 @@ jqueryNoConflict(document).ready(function(){
 
 // grab data
 function retriveData() {
-    var dataSource = 'data/rejetee.json?='+Date.now();
+    var dataSource = 'data/data.json?='+Date.now();
     jqueryNoConflict.getJSON(dataSource, renderDataVisualsTemplate);
 };
 
