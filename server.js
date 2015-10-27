@@ -17,7 +17,7 @@ var queue = '';
 mkpath.sync('content');
 
 // load CSV
-var parser = csv.parse({columns:true},function(err, data){
+var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function(err, data){
   queue = data;
   updateJSON(); // update public json
   listenInbox(); // connect mailbox
