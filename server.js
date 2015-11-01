@@ -211,8 +211,8 @@ function updateJSON(){
 function backupAndExit(){
   updateJSON();
   backupCSV();
-  console.log( "\n\nGracefully shutting down …\n\n");
-  setTimeout(process.exit(1), 2000);
+  console.log( "\n\nGracefully shutting down …\n", new Date());
+  setTimeout(process.exit(1), 3000);
 }
 
 // string encryption shorthand
