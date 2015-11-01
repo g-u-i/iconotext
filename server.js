@@ -212,7 +212,7 @@ function backupAndExit(){
   updateJSON();
   backupCSV();
   console.log( "\n\nGracefully shutting down …\n\n");
-  setTimeout(process.exit, 2000);
+  setTimeout(process.exit(1), 2000);
 }
 
 // string encryption shorthand
