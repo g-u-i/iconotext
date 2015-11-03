@@ -12,6 +12,8 @@ var csv = require('csv'),
     path = require('path');
 
 var queue = '';
+var helpMessage = fs.readFileSync(config.helpMessage, 'utf8');
+var errorMessage = fs.readFileSync(config.errorMessage, 'utf8');
 
 // START
 mkpath.sync('content');
@@ -153,14 +155,14 @@ function sendNextMessage(address){
       from: config.user,
       to: address,
       subject: '['+config.keyword+'] '+next.id+' : '+ next.text,
-      text: config.instruction
+      text: helpMessage
     }
   }else{
     var answer = {
       from: config.user,
       to: address,
-      subject:'['+config.keyword+'] Aucun messages pour '+address,
-      text: ''
+      subject:'['+config.keyword+'] Erreur pour '+address,
+      text: errorMessage
     }
   }
   transporter.sendMail(answer);

@@ -12,6 +12,7 @@
     "mkpath": "^0.1.0",
     "node-csv": "^0.1.2",
     "nodemailer": "^1.8.0",
+    "nodemailer-smtp-transport": "^1.0.4",
     "sanitize-filename": "^1.4.5",
     "slug": "^0.9.1",
     "yamljs": "^0.2.4"
