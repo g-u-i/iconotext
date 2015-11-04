@@ -112,7 +112,7 @@ function onEmail(mailObject) {
   var metadata = parseSubject(mailObject.subject);
 
   // has attachment and metadata
-  if(_.isUndefined(mailObject.attachments) || _.isNull(metadata) ){
+  if(_.isUndefined(mailObject.attachments) || _.isNull(metadata) || _.findWhere(queue, {'to':address}).length < 1 ){
     console.log('mail error \t\t', address);
     sendNextMessage(address);
   }else{
@@ -122,8 +122,6 @@ function onEmail(mailObject) {
       +config.keyword+'/'
       +_.padLeft(metadata.id, 4, '0')
       +'/'+hash(address)+'/';
-
-    console.log('path',path);
 
     mkpath(path, function (err) {
 
@@ -175,6 +173,8 @@ function sendNextMessage(address){
 
 // mark piece of text as answered
 function updateLine(address, id, col, value){
+
+  console.log(address, id, col, value);
   _.findWhere(queue, {'to':address, 'id':''+id})[col] = value;
 }
 
