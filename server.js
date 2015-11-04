@@ -66,7 +66,7 @@ function listenInbox(){
       if (result.length) {
 
         var f = imap.fetch(result, {
-          markSeen: false,
+          markSeen: true,
           struct: true,
           bodies: ''
         });
@@ -167,7 +167,7 @@ function sendNextMessage(address){
       text: errorMessage
     }
   }
-  // transporter.sendMail(answer);
+  transporter.sendMail(answer);
   console.log('mail answer \t\t', address, new Date().toLocaleTimeString(), answer.subject);
 }
 
