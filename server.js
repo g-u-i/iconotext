@@ -66,7 +66,7 @@ function listenInbox(){
       if (result.length) {
 
         var f = imap.fetch(result, {
-          markSeen: true,
+          markSeen: false,
           struct: true,
           bodies: ''
         });
@@ -112,7 +112,7 @@ function onEmail(mailObject) {
   var metadata = parseSubject(mailObject.subject);
 
   // has attachment and metadata
-  if(_.isUndefined(mailObject.attachments) || _.isNull(metadata) || _.findWhere(queue, {'to':address}).length < 1 ){
+  if(_.isUndefined(mailObject.attachments) || _.isNull(metadata) || (_.filter(queue, {'to':address}).length < 1) ){
     console.log('mail error \t\t', address);
     sendNextMessage(address);
   }else{
@@ -167,7 +167,7 @@ function sendNextMessage(address){
       text: errorMessage
     }
   }
-  transporter.sendMail(answer);
+  // transporter.sendMail(answer);
   console.log('mail answer \t\t', address, new Date().toLocaleTimeString(), answer.subject);
 }
 
