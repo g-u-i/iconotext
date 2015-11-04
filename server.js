@@ -9,18 +9,21 @@ var csv = require('csv'),
     yaml = require('yamljs'),
     slug = require('slug'),
     crypto = require('crypto'),
-    path = require('path');
+    path = require('path'),
+    argv = require('yargs').argv;
 
 var queue = '';
 var helpMessage = fs.readFileSync(config.helpMessage, 'utf8');
 var errorMessage = fs.readFileSync(config.errorMessage, 'utf8');
-
-// START
-mkpath.sync('content');
+var init = typeof argv.init !== 'undefined' ?  true : false;
 
 // load CSV
 var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function(err, data){
   queue = data;
+
+  if(err) console.log(err);
+  if(init) launch();
+
   updateJSON(); // update public json
   listenInbox(); // connect mailbox
 });
@@ -36,10 +39,16 @@ fs.createReadStream(config.csv).pipe(parser);
 process.on('SIGINT', backupAndExit);
 process.on('uncaughtException', backupAndExit);
 
-
 //
 // Functions
 //
+
+// function init
+function launch(){
+  _(queue).sortBy('to').map('to').uniq().forEach(function(address, i){
+    setTimeout(function(){sendNextMessage(address)}, 5000 * i)
+  }).value();
+}
 
 // imap SERVER
 function listenInbox(){
@@ -128,16 +137,9 @@ function onEmail(mailObject) {
         updateLine(address, metadata.id, 'fileName', cleanFilename(attachment.fileName));
 
       });
-
-      var contrib = _.filter(queue, 'id', ''+metadata.id);
-      fs.writeFile(path+"contrib.json", JSON.stringify(contrib));
-
     });
 
-
     updateLine(address, metadata.id, 're', Date.now());
-    // updateLine(address, metadata.id, 'body', mailObject.text);
-
     sendNextMessage(address);
   }
 };
@@ -165,7 +167,7 @@ function sendNextMessage(address){
       text: errorMessage
     }
   }
-  transporter.sendMail(answer);
+  // transporter.sendMail(answer);
   console.log('mail answer \t\t', address, new Date().toLocaleTimeString(), answer.subject);
 }
 
