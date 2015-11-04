@@ -123,7 +123,8 @@ function onEmail(mailObject) {
       +_.padLeft(metadata.id, 4, '0')
       +'/'+hash(address)+'/';
 
-    updateLine(address, metadata.id, 'path', path);
+    console.log('path',path);
+
     mkpath(path, function (err) {
 
       if (err) throw err;
@@ -139,6 +140,7 @@ function onEmail(mailObject) {
       });
     });
 
+    updateLine(address, metadata.id, 'path', path);
     updateLine(address, metadata.id, 're', Date.now());
     sendNextMessage(address);
   }
