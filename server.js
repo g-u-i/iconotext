@@ -207,7 +207,7 @@ function updateJSON(){
     }
   );
   // console.log(data);
-  fs.writeFile('app/data/data.json', data, function(err){
+  fs.writeFile(__dirname+'/'+'app/data/data.json', data, function(err){
     if(err)console.log(err)
     console.log('\tupdateJSON');
   })
