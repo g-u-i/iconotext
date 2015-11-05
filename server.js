@@ -16,6 +16,7 @@ var queue = '';
 var helpMessage = fs.readFileSync(config.helpMessage, 'utf8');
 var errorMessage = fs.readFileSync(config.errorMessage, 'utf8');
 var init = typeof argv.init !== 'undefined' ?  true : false;
+var forever = typeof argv.forever !== 'undefined' ?  true : false;
 
 // load CSV
 var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function(err, data){
@@ -91,9 +92,9 @@ function listenInbox(){
 
         f.once('end', function() {
           console.log('Done fetching all messages!');
+          setTimeout(function(){imap.end()}, config.backupFreq*2);
           setTimeout(backupCSV, config.backupFreq);
           setTimeout(updateJSON, config.backupFreq);
-          // imap.end();
         });
       }
     });
@@ -112,7 +113,7 @@ function onEmail(mailObject) {
   var metadata = parseSubject(mailObject.subject);
 
   // has attachment and metadata
-  if(_.isUndefined(mailObject.attachments) || _.isNull(metadata) || (_.filter(queue, {'to':address}).length < 1) ){
+  if(_.isUndefined(mailObject.attachments) || _.isNull(metadata) || (_.filter(queue, {'to':address, 'id':''+metadata.id}).length < 1) ){
     console.log('mail error \t\t', address);
     sendNextMessage(address);
   }else{
