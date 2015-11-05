@@ -92,10 +92,12 @@ function listenInbox(){
 
         f.once('end', function() {
           console.log('Done fetching all messages!');
-          setTimeout(function(){imap.end()}, config.backupFreq*2);
+          imap.end();
           setTimeout(backupCSV, config.backupFreq);
           setTimeout(updateJSON, config.backupFreq);
         });
+      }else{
+        imap.end();
       }
     });
   });
