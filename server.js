@@ -20,10 +20,9 @@ var forever = typeof argv.forever !== 'undefined' ?  true : false;
 
 // load CSV
 var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function(err, data){
-  // queue = data;
+  queue = data;
   if(err) console.log(err);
   if(init) launch();
-
   updateJSON(); // update public json
   listenInbox(); // connect mailbox
 });
