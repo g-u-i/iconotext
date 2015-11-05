@@ -13,15 +13,14 @@ var csv = require('csv'),
     argv = require('yargs').argv;
 
 var queue = '';
-var helpMessage = fs.readFileSync(config.helpMessage, 'utf8');
-var errorMessage = fs.readFileSync(config.errorMessage, 'utf8');
+var helpMessage = fs.readFileSync(__dirname+'/'+config.helpMessage, 'utf8');
+var errorMessage = fs.readFileSync(__dirname+'/'+config.errorMessage, 'utf8');
 var init = typeof argv.init !== 'undefined' ?  true : false;
 var forever = typeof argv.forever !== 'undefined' ?  true : false;
 
 // load CSV
 var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function(err, data){
-  queue = data;
-
+  // queue = data;
   if(err) console.log(err);
   if(init) launch();
 
@@ -36,7 +35,7 @@ var transporter = nodemailer.createTransport({
   function(err, data){ console.log(err, data);
 });
 
-fs.createReadStream(config.csv).pipe(parser);
+fs.createReadStream(__dirname+'/'+config.csv).pipe(parser);
 process.on('SIGINT', backupAndExit);
 process.on('uncaughtException', backupAndExit);
 
@@ -126,7 +125,7 @@ function onEmail(mailObject) {
       +_.padLeft(metadata.id, 4, '0')
       +'/'+hash(address)+'/';
 
-    mkpath(path, function (err) {
+    mkpath(__dirname+'/'+path, function (err) {
 
       if (err) throw err;
 
@@ -135,7 +134,7 @@ function onEmail(mailObject) {
         console.log('attachment \t', metadata.id,'\t', address, new Date().toLocaleTimeString(), attachment.fileName);
 
         // save files
-        fs.writeFile(path+cleanFilename(attachment.fileName), attachment.content);
+        fs.writeFile(__dirname+'/'+path+cleanFilename(attachment.fileName), attachment.content);
         updateLine(address, metadata.id, 'fileName', cleanFilename(attachment.fileName));
 
       });
@@ -176,15 +175,13 @@ function sendNextMessage(address){
 
 // mark piece of text as answered
 function updateLine(address, id, col, value){
-
-  console.log(address, id, col, value);
   _.findWhere(queue, {'to':address, 'id':''+id})[col] = value;
 }
 
 // write CSV file
 function backupCSV(){
   csv.stringify(queue, {header: true}, function(err, output){
-    fs.writeFile(config.csv, output, function(err){
+    fs.writeFile(__dirname+'/'+config.csv, output, function(err){
       if(err)console.log(err)
       console.log('\tbackupCSV');
     })
