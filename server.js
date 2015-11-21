@@ -10,21 +10,29 @@ var csv = require('csv'),
     slug = require('slug'),
     crypto = require('crypto'),
     path = require('path'),
-    argv = require('yargs').argv;
+    argv = require('yargs').argv,
+    gm = require('gm');
 
 var queue = '';
 var helpMessage = fs.readFileSync(__dirname+'/'+config.helpMessage, 'utf8');
 var errorMessage = fs.readFileSync(__dirname+'/'+config.errorMessage, 'utf8');
 var init = typeof argv.init !== 'undefined' ?  true : false;
 var forever = typeof argv.forever !== 'undefined' ?  true : false;
+var reload = typeof argv.reload !== 'undefined' ?  true : false;
 
 // load CSV
 var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function(err, data){
   queue = data;
   if(err) console.log(err);
+
   if(init) launch();
-  updateJSON(); // update public json
-  listenInbox(); // connect mailbox
+
+  if(reload){
+    reloadThumbs(queue);
+    updateJSON(); // update public json
+  }else{
+    listenInbox(); // connect mailbox
+  }
 });
 
 // mailer
@@ -65,7 +73,7 @@ function listenInbox(){
       if (result.length) {
 
         var f = imap.fetch(result, {
-          markSeen: true,
+          markSeen: config.markSeen,
           struct: true,
           bodies: ''
         });
@@ -132,8 +140,13 @@ function onEmail(mailObject) {
 
         console.log('attachment \t', metadata.id,'\t', address, new Date().toLocaleTimeString(), attachment.fileName);
 
+        var filePath = __dirname+'/'+path+cleanFilename(attachment.fileName);
+
         // save files
-        fs.writeFile(__dirname+'/'+path+cleanFilename(attachment.fileName), attachment.content);
+        fs.writeFile(filePath, attachment.content, function(err){
+          if(err) return console.log(err);
+          thumb(filePath)
+        });
         updateLine(address, metadata.id, 'fileName', cleanFilename(attachment.fileName));
 
       });
@@ -168,7 +181,7 @@ function sendNextMessage(address){
       text: errorMessage
     }
   }
-  transporter.sendMail(answer);
+  if(config.reply) transporter.sendMail(answer);
   console.log('mail answer \t\t', address, new Date().toLocaleTimeString(), answer.subject);
 }
 
@@ -185,6 +198,37 @@ function backupCSV(){
       console.log('\tbackupCSV');
     })
   });
+}
+
+function thumb(raw){
+
+  var hd = raw;
+  var hdExt = path.extname(hd);
+  var hdName = path.basename(hd, hdExt);
+  var hdDir =  path.dirname(hd).replace(__dirname, "");
+
+  mkpath(__dirname+'/app/'+hdDir, function (err) {-
+    gm(hd)
+    .noProfile()
+    .resize(config.thumbs[0], config.thumbs[0])
+    .autoOrient()
+    .write(__dirname+'/app/'+hdDir+'/'+hdName+hdExt, function (err) {
+      if (!err) console.log("thumb:",hdName);
+    });
+  })
+}
+
+function reloadThumbs(queue){
+  _(queue)
+    .reject('re','')
+    .reject('path','')
+    .reject('fileName','')
+    .forEach(function(d,i){
+      setTimeout(function(){
+        thumb(__dirname+'/'+d.path+d.fileName)
+      }, i * 350)
+    })
+    .value()
 }
 
 // update public json file
@@ -228,8 +272,8 @@ function hash(d){
 // escape filename
 function cleanFilename(f){
 
-  var ext = path.extname(f);
-  var name = path.basename(f, ext);
+  var ext = path.extname(f).toLowerCase();
+  var name = path.basename(f, ext).toLowerCase();
 
   return slug(name) + ext;
 }
