@@ -209,9 +209,9 @@ function thumb(raw){
 
   mkpath(__dirname+'/app/'+hdDir, function (err) {-
     gm(hd)
-    .noProfile()
-    .resize(config.thumbs[0], config.thumbs[0])
     .autoOrient()
+    .resize(config.thumbs[0], config.thumbs[0])
+    .noProfile()
     .write(__dirname+'/app/'+hdDir+'/'+hdName+hdExt, function (err) {
       if (!err) console.log("thumb:",hdName);
     });
