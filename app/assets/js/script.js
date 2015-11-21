@@ -19,16 +19,25 @@ $(document)
 
 $(document).keydown(function(e) {
   switch(e.which) {
-      case 37: prev() // left
+
+      case 37:
+        e.preventDefault();
+        prev() // left
       break;
 
-      case 38: prev() // up
+      case 38:
+        e.preventDefault();
+        prev() // up
       break;
 
-      case 39: next() // right
+      case 39:
+        e.preventDefault();
+        next() // right
       break;
 
-      case 40: next() // down
+      case 40:
+        next() // down
+        e.preventDefault();
       break;
 
       default: return; // exit this handler for other keys
@@ -67,7 +76,7 @@ function retriveData() {
 // render compiled handlebars template
 function renderDataVisualsTemplate(data){
     handlebarsDebugHelper();
-    renderHandlebarsTemplate('templates/basic.hbs?='+Date.now(), '#data-details', data);
+    renderHandlebarsTemplate('templates/basic.hbs', '#data-details', data);
 };
 
 // render handlebars templates via ajax
