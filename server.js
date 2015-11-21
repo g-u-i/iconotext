@@ -238,9 +238,9 @@ function updateJSON(){
 
   var data = JSON.stringify(
     {data:_(q)
-      .reject('re','')
-      .reject('path','')
-      .reject('fileName','')
+      .reject('text','')
+      // .reject('path','')
+      // .reject('fileName','')
       .map(function(d){
         d.to = hash(d.to);
         return d;

@@ -1,14 +1,15 @@
-<div>
+<div class="row">
     {{debug}}
     {{#each data}}
-      <ul class="row slide">
-        <h5>{{@key}}<br>—<br><br>{{this.[0].text}}</h5>
+      <ul class="row slide" id="sl{{@key}}">
+
         {{#each this}}
-          <li class="image col-sm-{{math 12 "/" ../this.length}}"
+          <li class="image col-sm-4"
               style="background-image:url('/{{path}}/{{fileName}}');"
           >
           </li>
         {{/each}}
+        <h1 class="col-sm-12 sub">{{this.[0].text}}</h1>
       </ul>
     {{/each}}
 </div>
