@@ -77,7 +77,7 @@ function listenInbox(){
       if (result.length) {
 
         var f = imap.fetch(result, {
-          markSeen: config.markSeen,
+          markSeen: config.imap.markSeen,
           struct: true,
           bodies: ''
         });
@@ -185,7 +185,7 @@ function sendNextMessage(address){
       text: errorMessage
     }
   }
-  if(config.reply) transporter.sendMail(answer);
+  if(config.imap.sendReplies) transporter.sendMail(answer);
   console.log('mail answer \t\t', address, new Date().toLocaleTimeString(), answer.subject);
 }
 
