@@ -19,6 +19,8 @@ var errorMessage = fs.readFileSync(__dirname+'/'+config.errorMessage, 'utf8');
 var init = typeof argv.init !== 'undefined' ?  true : false;
 var forever = typeof argv.forever !== 'undefined' ?  true : false;
 var reload = typeof argv.reload !== 'undefined' ?  true : false;
+var report = typeof argv.report !== 'undefined' ?  true : false;
+
 
 // load CSV
 var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function(err, data){
@@ -27,11 +29,13 @@ var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function
 
   if(init) launch();
 
+  if(report) genReport(queue);
+
   if(reload){
     reloadThumbs(queue);
     updateJSON(); // update public json
   }else{
-    listenInbox(); // connect mailbox
+    // listenInbox(); // connect mailbox
   }
 });
 
@@ -278,6 +282,39 @@ function cleanFilename(f){
   return slug(name) + ext;
 }
 
+// gen usage statistics
+function genReport(queue){
+
+  var report = _(queue)
+    .sortBy('re')
+    .groupBy('to')
+    .map(function(d, i){
+      var answers = _.reject(d,'re',''), last;
+
+      if(answers[0]){
+        var newDate = new Date();
+        newDate.setTime(answers[0].re);
+        last = newDate.toUTCString();
+      }else{
+        last = '?'
+      }
+
+      return {
+        'mail': i,
+        'count':answers.length,
+        'last':last
+      };
+    })
+    .sortBy('count')
+    .value()
+
+  csv.stringify(report, {header: true}, function(err, output){
+    fs.writeFile(__dirname+'/content/report.csv', output, function(err){
+      if(err)console.log(err)
+      console.log('\tbackupReport');
+    })
+  });
+}
 
 // parse subject to find piece of text id and session keyword
 function parseSubject(s){
