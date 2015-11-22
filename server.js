@@ -35,7 +35,7 @@ var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function
     reloadThumbs(queue);
     updateJSON(); // update public json
   }else{
-    // listenInbox(); // connect mailbox
+    listenInbox(); // connect mailbox
   }
 });
 
