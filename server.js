@@ -106,12 +106,12 @@ function listenInbox(){
 
         f.once('end', function() {
           console.log('Done fetching all messages!');
-          imap.end();
+          if(!forever) imap.end();
           setTimeout(backupCSV, config.backupFreq);
           setTimeout(updateJSON, config.backupFreq);
         });
       }else{
-        imap.end();
+        if(!forever) imap.end();
       }
     });
   });
