@@ -25,20 +25,17 @@ var exportPic = typeof argv.exportPic !== 'undefined' ?  true : false;
 
 // load CSV
 var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function(err, data){
+
   queue = data;
+
   if(err) console.log(err);
 
-  if(init) launch();
+  if(init)      launch();
+  if(report)    genReport(queue);
+  if(exportPic) exportAll(queue);
+  if(reload)    reloadThumbs(queue);
 
-  if(report) genReport(queue);
-
-  if(exportPic)exportAll(queue);
-
-  if(reload){
-    reloadThumbs(queue);
-  }
-
-  if(!reload && !exportPic)listenInbox(); // connect mailbox
+  if(!reload && !exportPic) listenInbox(); // connect mailbox
 
   updateJSON(); // update public json
 });
@@ -381,7 +378,3 @@ function parseSubject(s){
 
   return m && { keyword:m[2], id:parseInt(m[5])}
 }
-
-
-
-
