@@ -36,11 +36,11 @@ var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function
 
   if(reload){
     reloadThumbs(queue);
-    updateJSON(); // update public json
   }
 
   if(!reload && !exportPic)listenInbox(); // connect mailbox
 
+  updateJSON(); // update public json
 });
 
 // mailer
