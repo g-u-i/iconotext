@@ -228,7 +228,7 @@ function thumb(raw){
 }
 
 // resize add number and save as jpeg
-function pictureExport(raw){
+function pictureExport(raw,i,k){
   var hd = raw;
   var hdExt = path.extname(hd);
   var hdName = path.basename(hd, hdExt);
@@ -253,7 +253,7 @@ function pictureExport(raw){
     .drawText(125, 215, txtid)
     .write(__dirname+'/content/export/'+txtid+'_'+userid+hdName+'.jpg', function (err) {
       if(err) console.log(err)
-      if (!err) console.log("exp:",hdName,txtid);
+      if (!err) console.log("exp: ",i+'/'+k+' ',hdName,txtid);
     });
   })
 }
@@ -261,9 +261,10 @@ function pictureExport(raw){
 // check all uploaded files
 function exportAll(queue){
   glob("content/"+config.keyword+"/**/*.*", function (er, files) {
+    var k = files.length;
     _(files).forEach(function(f,i){
       setTimeout(function(){
-        pictureExport(f);
+        pictureExport(f,i,k);
       }, i * 2500)
     }).value();
   })
