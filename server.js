@@ -11,7 +11,8 @@ var csv = require('csv'),
     crypto = require('crypto'),
     path = require('path'),
     argv = require('yargs').argv,
-    gm = require('gm');
+    gm = require('gm'),
+    glob = require("glob")
 
 var queue = '';
 var helpMessage = fs.readFileSync(__dirname+'/'+config.helpMessage, 'utf8');
@@ -20,7 +21,7 @@ var init = typeof argv.init !== 'undefined' ?  true : false;
 var forever = typeof argv.forever !== 'undefined' ?  true : false;
 var reload = typeof argv.reload !== 'undefined' ?  true : false;
 var report = typeof argv.report !== 'undefined' ?  true : false;
-
+var exportPic = typeof argv.exportPic !== 'undefined' ?  true : false;
 
 // load CSV
 var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function(err, data){
@@ -31,11 +32,13 @@ var parser = csv.parse({columns:true, trim:true, skip_empty_lines:true},function
 
   if(report) genReport(queue);
 
+  if(exportPic)exportAll(queue);
+
   if(reload){
     reloadThumbs(queue);
     updateJSON(); // update public json
   }else{
-    listenInbox(); // connect mailbox
+    //listenInbox(); // connect mailbox
   }
 });
 
@@ -204,6 +207,7 @@ function backupCSV(){
   });
 }
 
+// generate web version
 function thumb(raw){
 
   var hd = raw;
@@ -219,6 +223,48 @@ function thumb(raw){
     .write(__dirname+'/app/'+hdDir+'/'+hdName+hdExt, function (err) {
       if (!err) console.log("thumb:",hdName);
     });
+  })
+}
+
+// resize add number and save as jpeg
+function pictureExport(raw){
+  var hd = raw;
+  var hdExt = path.extname(hd);
+  var hdName = path.basename(hd, hdExt);
+
+  var hdDir =  path.dirname(hd).replace(__dirname, "");
+
+  var userid = path.basename(hdDir)
+  var txtid = path.basename(path.dirname(hdDir)).substring(1);
+
+
+
+  mkpath(__dirname+'/content/export/', function (err) {
+    gm(hd)
+    .autoOrient()
+    .resize(3500,3500)
+    .fill("White")
+    .stroke("black", 7)
+    .drawCircle(200, 180, 260, 260)
+    .stroke("black", 2)
+    .fontSize(90)
+    .fill("black")
+    .drawText(125, 215, txtid)
+    .write(__dirname+'/content/export/'+txtid+'_'+userid+hdName+'.jpg', function (err) {
+      if(err) console.log(err)
+      if (!err) console.log("exp:",hdName,txtid);
+    });
+  })
+}
+
+// check all uploaded files
+function exportAll(queue){
+  glob("content/"+config.keyword+"/**/*.*", function (er, files) {
+    _(files).forEach(function(f,i){
+      setTimeout(function(){
+        pictureExport(f);
+      }, i * 2500)
+    }).value();
   })
 }
 
