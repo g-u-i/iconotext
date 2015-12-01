@@ -1,5 +1,5 @@
 # iconotext
-link text and pictures
+An email chatterbot to link text to pictures
 
 ## instalation
 1. clone `confi.example.json` to `config.json` and edit your settings
