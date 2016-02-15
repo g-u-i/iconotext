@@ -4,6 +4,12 @@ text/
 content/
 app/data/
 
+.DS_Store
+/site/accounts
+/assets/avatars
+/thumbs/*
+
+
 # Logs
 logs
 *.log
