@@ -1,12 +1,20 @@
 <?php if(!defined('KIRBY')) exit ?>
 
 title: Home
-pages: false
+pages: true
+files: true
+  fields:
+	  text:
+    	label: Légendes des images dans le diaporama
+      	type: textarea
 fields:
   title:
-    label: Title
+    label: Titres de la section
+    type:  text
+  subtitle:
+    label: Sous titre de la section
     type:  text
   text:
-    label: Text
+    label: On verra à quoi ça sert
     type:  textarea
     size:  large
