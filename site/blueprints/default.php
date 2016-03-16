@@ -5,9 +5,9 @@ pages: true
 files: true
   sortable: true
   fields:
-  caption:
-    label: Légendes des images dans le diaporama
-    type: textarea
+    caption:
+      label: Légendes des images dans le diaporama
+      type: textarea
 fields:
   title:
    label: Titre de la section
