@@ -51,7 +51,7 @@
 				</div>
 		        <?php foreach($page->images()->sortBy('sort', 'asc') as $image): ?>
 		            <div class="slide">
-		            	<h1 class="sub"><?php echo $image->text(); ?></h1>
+		            	<h1 class="sub"><?php echo $image->caption(); ?></h1>
 		              	<img src="<?php echo $image->url() ?>" alt="<?php echo $page->title()->html() ?>">
 		            </div>
 		        <?php endforeach ?>
