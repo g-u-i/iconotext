@@ -1,8 +1,3 @@
 # iconotext
-An email chatterbot to link text to pictures
 
-## instalation
-1. clone `confi.example.json` to `config.json` and edit your settings
-2. create `content` folder.
-3. `npm install`
-4. `node server.js` 
+![img](https://docs.google.com/drawings/d/1DnGQKQQD9bKBrDW_nD3t1e6rezmi3iVaevDZ2Tb1ICI/pub?w=1487&amp;h=1080)
