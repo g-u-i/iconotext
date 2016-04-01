@@ -1,5 +1,5 @@
 # iconotexte
-> outil pédagogique explorant le rapport entre texte et image.
+*un outil pédagogique explorant le rapport entre texte et image*
 
 
 ![workflow](https://docs.google.com/drawings/d/1DnGQKQQD9bKBrDW_nD3t1e6rezmi3iVaevDZ2Tb1ICI/pub?w=1487&amp;h=1080)
