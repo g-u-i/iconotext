@@ -3,8 +3,6 @@
 
 
 ![workflow](https://docs.google.com/drawings/d/1DnGQKQQD9bKBrDW_nD3t1e6rezmi3iVaevDZ2Tb1ICI/pub?w=1487&amp;h=1080)
-*workflow* (WIP)
-
 
 ## fonctionnalités
 
@@ -24,3 +22,7 @@
 3. **publication** d’une version stabilisée
   - exportation en PDF (en vue d'une impression à la demande )
   - exportation en d'un site web statique
+
+****
+Réalisé par Benoît Verjat et Nicolas Couturier, production Cneai,
+CC BY-NC-SA 4.0, &&, Cneai, 2016, France
