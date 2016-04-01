@@ -8,15 +8,19 @@
 
 ## fonctionnalités
 
-0. génération des outils pédagogique pour un atelier
-  - répartition d’un texte en fragment 
-  - export PDF
+0. génération d’un **kit pédagogique** pour démarrer un atelier et stimuler la production d’images
+  - **fragmentation** du texte 
+  - **exportation** du texte fragmenté pour distribution aux groupes
+    - pages/cartes à découper 
+    - CSV (donnée pure ouvrable dans un tableur)
 
-1. édition d’une séquence d’image produite lors d’un atelier
-  - lier l’image avec un fragment de texte
-  - ordonner les images
+1. **édition** des séquences d’images dans chaque groupe
+  - lier l’image avec un **fragment de texte**
 
-2. publication de plusieurs collections d’images en parallèle
-  - export PDF ( pour impression à la demande )
-  - publication en mini site web 
+2. **partage** des collections d’images du groupe
+  - **agencer** les séquences d’images ensemble
+  - comparer visuellement l’interprétation d’un même **fragment de texte** par **plusieurs groupes**.
 
+3. **publication** d’une version stabilisée
+  - exportation en PDF (en vue d'une impression à la demande )
+  - exportation en d'un site web statique
