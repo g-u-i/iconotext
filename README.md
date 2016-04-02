@@ -1,5 +1,5 @@
 # iconotexte
-*Dispositif pédagogique d'exploration du liens texte / image*
+*Dispositif pédagogique d’exploration du lien texte / image*
 
 
 ![workflow](https://docs.google.com/drawings/d/1DnGQKQQD9bKBrDW_nD3t1e6rezmi3iVaevDZ2Tb1ICI/pub?w=1487&amp;h=1080)
@@ -20,8 +20,8 @@
   - comparer visuellement l’interprétation d’un même **fragment de texte** par **plusieurs groupes**.
 
 3. **publication** d’une version stabilisée
-  - exportation en PDF (en vue d'une impression à la demande )
-  - exportation en d'un site web statique
+  - exportation en PDF (en vue d’une impression à la demande )
+  - exportation en d’un site web statique
 
 ****
 Réalisé par Benoît Verjat et Nicolas Couturier, production Cneai,

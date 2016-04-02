@@ -3,22 +3,7 @@
   "version": "1.0.0",
   "description": "a tool to link images with text",
   "main": "server.js",
-  "dependencies": {
-    "crypto": "0.0.3",
-    "csv": "^0.4.6",
-    "glob": "^6.0.1",
-    "gm": "^1.21.1",
-    "imap": "^0.8.15",
-    "lodash": "^3.10.1",
-    "mailparser": "^0.5.2",
-    "mkpath": "^0.1.0",
-    "nodemailer": "^1.8.0",
-    "nodemailer-smtp-transport": "^1.0.4",
-    "sanitize-filename": "^1.4.5",
-    "slug": "^0.9.1",
-    "yamljs": "^0.2.4",
-    "yargs": "^3.29.0"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
