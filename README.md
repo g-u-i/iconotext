@@ -20,6 +20,10 @@
   - comparer visuellement l’interprétation d’un même **fragment de texte** par **plusieurs groupes**.
 
 3. **publication** d’une version stabilisée
+
+  - afficher ou non les légendes (en cas de présence du texte dans l'image) 
+  - sélectionner le nombre de version à comparer 
+
   - exportation en PDF (en vue d’une impression à la demande )
   - exportation en d’un site web statique
 
