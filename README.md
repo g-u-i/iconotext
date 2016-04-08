@@ -24,8 +24,8 @@
   - afficher ou non les légendes (en cas de présence du texte dans l'image) 
   - sélectionner le nombre de version à comparer 
 
-  - exportation en PDF (en vue d’une impression à la demande )
-  - exportation en d’un site web statique
+  - exporter en PDF (en vue d’une impression à la demande )
+  - exporter en html/css/js statique
 
 ****
 Réalisé par Benoît Verjat et Nicolas Couturier, production Cneai,
