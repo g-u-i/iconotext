@@ -1,9 +1,10 @@
-var gulp = require('gulp'),
-    connect = require('gulp-connect-php'),
+var gulp        = require('gulp'),
     browserSync = require('browser-sync'),
-    less = require('gulp-less'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify');
+    concat      = require('gulp-concat'),
+    connect     = require('gulp-connect-php'),
+    less        = require('gulp-less'),
+    plumber     = require('gulp-plumber'),
+    uglify      = require('gulp-uglify');
 
 gulp.task('serve', function() {
   connect.server({}, function (){
@@ -18,6 +19,12 @@ gulp.task('serve', function() {
 
 gulp.task('less', function() {
   return gulp.src('./assets/less/*.less')
+    .pipe(plumber({
+      errorHandler: function (err) {
+        console.log(err);
+        this.emit('end');
+      }
+    }))
     .pipe(less())
     .pipe(gulp.dest('./assets/css'))
     .pipe(browserSync.stream())
