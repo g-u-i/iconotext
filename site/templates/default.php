@@ -1,36 +1,4 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Iconotexte</title>
-
-	<link rel="stylesheet" type="text/css" href="assets/css/jquery.fullPage.css" />
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.fullPage.js"></script>
-	<script type="text/javascript" src="assets/js/less.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#fullpage').fullpage({
-				anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
-				menu: '#menu',
-				scrollingSpeed: 1500
-			});
-		});
-	</script>
-</head>
-<body>
-	<ul id="menu">
-	<li data-menuanchor="firstPage"><a href="#firstPage">1</a></li>
-	<li data-menuanchor="secondPage"><a href="#secondPage">2</a></li>
-	<li data-menuanchor="3rdPage"><a href="#3rdPage">3</a></li>
-	<li data-menuanchor="4thpage"><a href="#4thpage">4</a></li>
-	</ul>
+<?php snippet('header') ?>
     <div id="fullpage">
     	<div class="section" id="section0">
     		<h1>Iconotexte</h1>
@@ -52,17 +20,18 @@
 		        <?php foreach($page->images()->sortBy('sort', 'asc') as $image): ?>
 		            <div class="slide">
 		            	<h1 class="sub"><?php echo $image->caption(); ?></h1>
-		              	<img src="<?php echo $image->url() ?>" alt="<?php echo $page->title()->html() ?>">
+		              	<img src="<?php echo $image->url() ?>" alt="<?php echo $image->title()->html() ?>">
 		            </div>
 		        <?php endforeach ?>
 	    	</div>
     	<?php endforeach ?>
 
+<?php snippet('projects') ?>
 
 
 
 
-
+    	<!--OLD STUFFS -->
         <div class="section">
 	        <div class="slide ">
 	        	<svg height="100" width="100">
