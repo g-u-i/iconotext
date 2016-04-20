@@ -3,7 +3,8 @@
     	<div class="section" id="section0">
     		<h1>Iconotexte</h1>
     	</div>
-    	<?php foreach(page('projects')->children()->visible() as $page): ?>
+
+    	<?php foreach($pages->visible() as $page): ?>
 		    <div class="section">
 		    	<div class="slide ">
 			    	<svg height="100" width="100">
