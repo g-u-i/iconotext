@@ -1,4 +1,11 @@
 <?php snippet('header') ?>
+  <ul id="menu">
+    <li data-menuanchor="firstPage"><a href="#firstPage">1</a></li>
+    <li data-menuanchor="secondPage"><a href="#secondPage">2</a></li>
+    <li data-menuanchor="3rdPage"><a href="#3rdPage">3</a></li>
+    <li data-menuanchor="4thpage"><a href="#4thpage">4</a></li>
+  </ul>
+
     <div id="fullpage">
     	<div class="section" id="section0">
     		<h1>Iconotexte</h1>
@@ -26,8 +33,4 @@
 		        <?php endforeach ?>
 	    	</div>
     	<?php endforeach ?>
-
-    <script type="text/javascript" src="assets/js/all.min.js"></script>	
-    <script type="text/javascript" src="assets/js/icono.js"></script>	
-</body>
-</html>
+<?php snippet('footer') ?>

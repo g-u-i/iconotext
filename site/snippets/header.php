@@ -10,10 +10,4 @@
   <title>Iconotexte</title>
   <link rel="stylesheet" type="text/css" href="assets/css/screen.css">
 </head>
-<body>
-  <ul id="menu">
-    <li data-menuanchor="firstPage"><a href="#firstPage">1</a></li>
-    <li data-menuanchor="secondPage"><a href="#secondPage">2</a></li>
-    <li data-menuanchor="3rdPage"><a href="#3rdPage">3</a></li>
-    <li data-menuanchor="4thpage"><a href="#4thpage">4</a></li>
-  </ul>
+<body class="tpl-<?php echo $page->template() ?>">
