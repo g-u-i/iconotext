@@ -1,8 +1,21 @@
 var posts = [];
+var blogUrl = '';
+
+
+
+
+$('#blogLoader').submit(function( event ) {
+  event.preventDefault();
+
+  blogUrl = getRootUrl($('#blogLoader #blogUrl').val());
+
+  getPosts(0);
+});
 
 function getPosts(offset) {
+  console.log(blogUrl, offset)
   $.ajax({
-    url:"http://api.tumblr.com/v2/blog/thechangingroom.tumblr.com/posts/",
+    url:'http://api.tumblr.com/v2/blog/'+blogUrl+'/posts/',
     data: {
       api_key:'Srhk9qkcJO69pAoB4ltM5uIqpwUBO7kgDqDEaCD9Jo8EafWyHE',
       notes_info: true,
@@ -10,6 +23,7 @@ function getPosts(offset) {
     },
     dataType: 'jsonp',
     success: function(data){
+      console.log(data)
 
       posts = posts.concat(data.response.posts);
 
@@ -22,7 +36,24 @@ function getPosts(offset) {
   });
 }
 
-getPosts(0);
+function render(posts){
+  console.log('posts', posts, blogUrl);
+
+  $('#results').html(ico.posts( {posts:posts} ) );
+
+}
+
+// utils
+function getRootUrl(url) {
+  return url
+      .toString()
+      .replace(/^(.*\/\/[^\/?#]*).*$/,"$1")
+      .replace('http://','')
+      ;
+}
+
+
+
 
 Handlebars.registerHelper('debug', function(optionalValue) {
   console.log('Current Context');

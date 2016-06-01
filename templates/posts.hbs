@@ -1,19 +1,5 @@
 {{#each posts}}
-    <div class="container abstract">
-      <h1>{{{caption}}}</h1>
-      <h1><span>{{title}}</span></h1>
-        <div class="tags">
-          {{#each tags}}
-            <a href="#{{this}}" class="{{#if_eq this ../../query }}on{{/if_eq}}" >#{{this}}</a>
-          {{/each}}
-        </div>
-    </div>
-
-    <div class="container article">
+    <div class="container story">
       {{{body}}}
-      {{#each photos}}
-        <img src="{{original_size.url}}" class="img-responsive" >
-      {{/each}}
-      {{{player.1.embed_code}}}
     </div>
 {{/each}}
