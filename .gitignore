@@ -4,6 +4,8 @@ text/
 content/
 app/data/
 
+bower_components/
+
 # Logs
 logs
 *.log
