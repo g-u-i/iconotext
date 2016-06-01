@@ -6772,6 +6772,9 @@ body hr {
   background-color: white;
   height: 10px;
 }
+body li {
+  list-style-type: decimal!important;
+}
 h1 {
   font-family: 'marche';
   text-align: center;
