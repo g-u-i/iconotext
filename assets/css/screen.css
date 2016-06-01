@@ -6738,6 +6738,9 @@ button.close {
   font-weight: normal;
   font-style: normal;
 }
+.bordered {
+  border: solid 5px gold;
+}
 body {
   background-color: #e1f5f7;
 }
@@ -6774,6 +6777,9 @@ body hr {
 }
 body li {
   list-style-type: decimal!important;
+}
+body #tools {
+  padding: 10px;
 }
 h1 {
   font-family: 'marche';

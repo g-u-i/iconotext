@@ -23,6 +23,10 @@ gulp.task('js', function() {
       './bower_components/jquery/dist/jquery.js',
       './bower_components/lodash/lodash.js',
       './bower_components/handlebars/handlebars.js',
+      './bower_components/jspdf/dist/jspdf.min.js',
+      './bower_components/html2canvas/build/html2canvas.min.js',
+      './bower_components/base64/base64.min.js',
+      './bower_components/canvas2image/canvas2image/canvas2image.js'
       ],
       {base: 'bower_components/'}
     )
