@@ -18,7 +18,6 @@ function getPosts(offset) {
     },
     dataType: 'jsonp',
     success: function(data){
-      console.log(data)
 
       posts = posts.concat(data.response.posts);
 
@@ -48,7 +47,7 @@ $('#savePdf').click(function () {
     doc.fromHTML($('#results').first().html(), 15, 15, {
         'width': 170,
         'elementHandlers': specialElementHandlers
-    },function(err, res){console.log(err, res)});
+    });
     doc.save('sample-file.pdf');
 });
 
