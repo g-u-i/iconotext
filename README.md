@@ -3,6 +3,9 @@
 
 
 ![workflow](https://docs.google.com/drawings/d/1DnGQKQQD9bKBrDW_nD3t1e6rezmi3iVaevDZ2Tb1ICI/pub?w=1487&amp;h=1080)
+![editor](https://docs.google.com/drawings/d/1m0j2WogX8TcO5tFsxM4WA5Giu4KY-Km8_XMeXl8Lv_E/pub?w=1440&h=1080)
+![preview](https://docs.google.com/drawings/d/1i9mxHdDs-fzYR27bPHUzNfkN_ByIbR9a4JYI89EenxI/pub?w=1440&h=1080)
+![layout](https://docs.google.com/drawings/d/1r_PIYdG4upb-EbJeBoTRgjTzeSvWhMGbAiCFakmTFFI/pub?w=1440&h=1080)
 
 ## fonctionnalités
 
@@ -62,8 +65,12 @@ Les changements sont répercuté dans le **dossier projet** qui contient :
   - comparer visuellement l’interprétation d’un même **fragment de texte** par **plusieurs groupes**.
 
 3. **publication** d’une version stabilisée
-  - exportation en PDF (en vue d’une impression à la demande )
-  - exportation en d’un site web statique
+
+  - afficher ou non les légendes (en cas de présence du texte dans l'image) 
+  - sélectionner le nombre de version à comparer 
+
+  - exporter en PDF (en vue d’une impression à la demande )
+  - exporter en html/css/js statique
 
 ****
 Réalisé par Benoît Verjat et Nicolas Couturier, production Cneai,
