@@ -1,17 +1,15 @@
 # iconotexte
-*Dispositif pédagogique d’exploration du lien texte / image*
+*éditeur texte/image pédagogique*
 
 
 ## fonctionnalités généarles
 ![workflow](https://docs.google.com/drawings/d/1DnGQKQQD9bKBrDW_nD3t1e6rezmi3iVaevDZ2Tb1ICI/pub?w=1487&amp;h=1080)
 
-1. importer du texte
-2. importer des images sur le texte
-3. obtenir une prévisualisation du résultat et sélectionner des mises en formes
-4. entrer des informations sur le projet (titre, crédits …)
+- produire une séquence en composant texte et images simultanément  
+- obtenir une prévisualisation diverses mises en formes
+- entrer des informations sur le projet (titre, crédits …)
 
-## editeur
-
+## editeur texte/image
 ![editor](https://docs.google.com/drawings/d/1m0j2WogX8TcO5tFsxM4WA5Giu4KY-Km8_XMeXl8Lv_E/pub?w=1440&h=1080)
 
 - ajouter de texte
@@ -23,10 +21,6 @@
   - webcam
 - importer un projet existant (cf. **dossier projet**)
 - importer par **drag and drop** ou par **file picker**
-
-*les images (.jpg, .png, .jpeg) sont transformé en jpg et redimensionnés pour ne pas excéder 2500px de côté.
-Les gifs sont laissés intacts.*
-
 
 ## publication / preview
 ![layout](https://docs.google.com/drawings/d/1r_PIYdG4upb-EbJeBoTRgjTzeSvWhMGbAiCFakmTFFI/pub?w=1440&h=1080)
@@ -48,9 +42,9 @@ Les gifs sont laissés intacts.*
 ### sauvegarde / exportation
 
 Sauvegarder en temps réel mes changements dans une **dossier** contenant :
-- la séquence texte/image en markdown
-- les images (en jpg dans un dossier séparé)
-- un bloc d'introduction  avec les métadonnées du projet
+- la **séquence texte/image** en markdown
+- les fichier **images** convertis en jpeg (gif bruts), max 2500px, dans un dossier séparé
+- un bloc d'introduction avec les métadonnées du projet en yml
 
 exemple :
 ```
@@ -68,6 +62,10 @@ free_text: mon texte libre
 ligne de texte seul
 ![](images/img52.jpg)
 ```
+
+### settings
+- [true|false] redimensionner les images
+- langue de l'interface
 
 ****
 Réalisé par Benoît Verjat et Nicolas Couturier, production Cneai,
