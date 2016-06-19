@@ -22,44 +22,52 @@
   - url
   - webcam
 - importer un projet existant (cf. **dossier projet**)
+- importer par **drag and drop** ou par **file picker**
 
-Les importation se font par **drag and drop** ou par **file picker**.
+*les images (.jpg, .png, .jpeg) sont transformé en jpg et redimensionnés pour ne pas excéder 2500px de côté.
+Les gifs sont laissés intacts.*
+
 
 ## publication / preview
 ![layout](https://docs.google.com/drawings/d/1r_PIYdG4upb-EbJeBoTRgjTzeSvWhMGbAiCFakmTFFI/pub?w=1440&h=1080)
 ![preview](https://docs.google.com/drawings/d/1i9mxHdDs-fzYR27bPHUzNfkN_ByIbR9a4JYI89EenxI/pub?w=1440&h=1080)
 
-#### formats d'exportation
-- diaporama (séquence jpg avec texte intégré à l'image)
+- créer un diaporama
+  - intégrer le texte à l'image
+  - exporter une séquence jpg
 
-- livret (une version imprimée et reliée)
+- créer un livret (une version imprimée et reliée)
   - choisir entre 2 options de mise en page
   - ajouter d'une pagination
   - choisir le format support (A3, A4, A5 …)
   - choisir la reliure ou plateforme de print on demand ciblée
+  - exporter en PDF
+
+- obtenir un package .zip du projet
 
 ### sauvegarde / exportation
 
-Les changements sont répercuté dans le **dossier projet** qui contient :
-
-- la séquence texte/image en markdown avec un bloc d'introduction qui contient les métadonnées :
-  ex.
-  ```
-
-  title: mon titre
-  date: avril 2019
-  text_source: le bon la brute …
-  image_source: BNF
-  credits: jean, paul, yvan, jojo
-  free_text: mon texte libre
-
-  ----
-
-  ![texte sur l'image en mode sous titre](images/img34.jpg)
-  ligne de texte seul
-  ![](images/img52.jpg)
-  ```
+Sauvegarder en temps réel mes changements dans une **dossier** contenant :
+- la séquence texte/image en markdown
 - les images (en jpg dans un dossier séparé)
+- un bloc d'introduction  avec les métadonnées du projet
+
+exemple :
+```
+
+title: mon titre
+date: avril 2019
+text_source: le bon la brute …
+image_source: BNF
+credits: jean, paul, yvan, jojo
+free_text: mon texte libre
+
+----
+
+![texte sur l'image en mode sous titre](images/img34.jpg)
+ligne de texte seul
+![](images/img52.jpg)
+```
 
 ****
 Réalisé par Benoît Verjat et Nicolas Couturier, production Cneai,
