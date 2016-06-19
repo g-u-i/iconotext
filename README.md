@@ -2,30 +2,22 @@
 *Dispositif pédagogique d’exploration du lien texte / image*
 
 
+## fonctionnalités généarles
 ![workflow](https://docs.google.com/drawings/d/1DnGQKQQD9bKBrDW_nD3t1e6rezmi3iVaevDZ2Tb1ICI/pub?w=1487&amp;h=1080)
-![editor](https://docs.google.com/drawings/d/1m0j2WogX8TcO5tFsxM4WA5Giu4KY-Km8_XMeXl8Lv_E/pub?w=1440&h=1080)
-![preview](https://docs.google.com/drawings/d/1i9mxHdDs-fzYR27bPHUzNfkN_ByIbR9a4JYI89EenxI/pub?w=1440&h=1080)
-![layout](https://docs.google.com/drawings/d/1r_PIYdG4upb-EbJeBoTRgjTzeSvWhMGbAiCFakmTFFI/pub?w=1440&h=1080)
-
-## fonctionnalités
 
 1. importer du texte
-2. glisser des images
-3. obtenir une prévisualisation du resultat et sélectionner des mises en formes
-  1. diaporama "plein écran"
-  2. livret
-    1. 2 option de mise en page
-    2. format papier
-    3. reliure / plateforme de print on demand ciblée
-
+2. importer des images sur le texte
+3. obtenir une prévisualisation du résultat et sélectionner des mises en formes
 4. entrer des informations sur le projet (titre, crédits …)
 
-### importations
+## editeur
+
+![editor](https://docs.google.com/drawings/d/1m0j2WogX8TcO5tFsxM4WA5Giu4KY-Km8_XMeXl8Lv_E/pub?w=1440&h=1080)
 
 - ajouter de texte
   - par **copier coller**
   - importer des **fichiers** .txt, .md (texte brut)
-- ajouter des images depuis l'éditeur (cf. schéma éditeur)
+- ajouter des images depuis l'éditeur (cf. diagramme)
   - fichier local
   - url
   - webcam
@@ -33,7 +25,20 @@
 
 Les importation se font par **drag and drop** ou par **file picker**.
 
-### Stockage local et exportation
+## publication / preview
+![layout](https://docs.google.com/drawings/d/1r_PIYdG4upb-EbJeBoTRgjTzeSvWhMGbAiCFakmTFFI/pub?w=1440&h=1080)
+![preview](https://docs.google.com/drawings/d/1i9mxHdDs-fzYR27bPHUzNfkN_ByIbR9a4JYI89EenxI/pub?w=1440&h=1080)
+
+#### formats d'exportation
+- diaporama (séquence jpg avec texte intégré à l'image)
+
+- livret (une version imprimée et reliée)
+  - choisir entre 2 options de mise en page
+  - ajouter d'une pagination
+  - choisir le format support (A3, A4, A5 …)
+  - choisir la reliure ou plateforme de print on demand ciblée
+
+### sauvegarde / exportation
 
 Les changements sont répercuté dans le **dossier projet** qui contient :
 
@@ -55,7 +60,6 @@ Les changements sont répercuté dans le **dossier projet** qui contient :
   ![](images/img52.jpg)
   ```
 - les images (en jpg dans un dossier séparé)
-
 
 ****
 Réalisé par Benoît Verjat et Nicolas Couturier, production Cneai,
