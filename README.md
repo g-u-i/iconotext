@@ -9,7 +9,6 @@
 
 ## fonctionnalités
 
-
 1. importer du texte
 2. glisser des images
 3. obtenir une prévisualisation du resultat et sélectionner des mises en formes
@@ -23,17 +22,16 @@
 
 ### importations
 
-- ajout de texte par **copier coller**
-- importation de **fichiers** .txt, .md (texte brut)
-- **dossier projet**
-- ajout d'image dans la zone d'éditeur (cf. schéma éditeur)
+- ajouter de texte
+  - par **copier coller**
+  - importer des **fichiers** .txt, .md (texte brut)
+- ajouter des images depuis l'éditeur (cf. schéma éditeur)
   - fichier local
   - url
   - webcam
-
+- importer un projet existant (cf. **dossier projet**)
 
 Les importation se font par **drag and drop** ou par **file picker**.
-
 
 ### Stockage local et exportation
 
@@ -58,19 +56,6 @@ Les changements sont répercuté dans le **dossier projet** qui contient :
   ```
 - les images (en jpg dans un dossier séparé)
 
-
-
-2. **partage** des collections d’images du groupe
-  - **agencer** les séquences d’images ensemble
-  - comparer visuellement l’interprétation d’un même **fragment de texte** par **plusieurs groupes**.
-
-3. **publication** d’une version stabilisée
-
-  - afficher ou non les légendes (en cas de présence du texte dans l'image) 
-  - sélectionner le nombre de version à comparer 
-
-  - exporter en PDF (en vue d’une impression à la demande )
-  - exporter en html/css/js statique
 
 ****
 Réalisé par Benoît Verjat et Nicolas Couturier, production Cneai,
