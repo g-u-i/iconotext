@@ -1,8 +1,6 @@
 # iconotexte
 *éditeur texte/image pédagogique*
 
-
-## fonctionnalités généarles
 ![workflow](https://docs.google.com/drawings/d/1DnGQKQQD9bKBrDW_nD3t1e6rezmi3iVaevDZ2Tb1ICI/pub?w=1487&amp;h=1080)
 
 - produire une séquence en composant texte et images simultanément  
@@ -48,7 +46,6 @@ Sauvegarder en temps réel mes changements dans une **dossier** contenant :
 
 exemple :
 ```
-
 title: mon titre
 date: avril 2019
 text_source: le bon la brute …
@@ -61,6 +58,9 @@ free_text: mon texte libre
 ![texte sur l'image en mode sous titre](images/img34.jpg)
 ligne de texte seul
 ![](images/img52.jpg)
+
+(…)
+
 ```
 
 ### settings
