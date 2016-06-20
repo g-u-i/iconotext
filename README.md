@@ -3,46 +3,48 @@
 
 ![workflow](https://docs.google.com/drawings/d/1DnGQKQQD9bKBrDW_nD3t1e6rezmi3iVaevDZ2Tb1ICI/pub?w=1487&amp;h=1080)
 
-- produire une séquence en composant texte et images simultanément  
-- obtenir une prévisualisation diverses mises en formes
-- entrer des informations sur le projet (titre, crédits …)
+- créer une **séquence** en composant texte et images **simultanément** avec un rendu visuel adapté  
+- ajouter des **métadonnées** au projet (titre, crédits …)
+- exporter un version **publiable** (`pdf`,`jpegs`) dans une mises en formes adapté et obtenir une **prévisualisation**
+- sauvegarder **en local** au version brute de la **séquence**
+- obtenir de l'**aide**
 
 ## editeur texte/image
 ![editor](https://docs.google.com/drawings/d/1m0j2WogX8TcO5tFsxM4WA5Giu4KY-Km8_XMeXl8Lv_E/pub?w=1440&h=1080)
 
 - ajouter de texte
   - par **copier coller**
-  - importer des **fichiers** .txt, .md (texte brut)
-- ajouter des images depuis l'éditeur (cf. diagramme)
+  - importer des **fichiers** `.txt`, `.md` (texte brut)
+- ajouter des images depuis l'éditeur depuis …
   - fichier local
-  - url
   - webcam
-- importer un projet existant (cf. **dossier projet**)
+  - url
+- importer un **dossier projet**
 - importer par **drag and drop** ou par **file picker**
 
 ## publication / preview
 ![layout](https://docs.google.com/drawings/d/1r_PIYdG4upb-EbJeBoTRgjTzeSvWhMGbAiCFakmTFFI/pub?w=1440&h=1080)
 ![preview](https://docs.google.com/drawings/d/1i9mxHdDs-fzYR27bPHUzNfkN_ByIbR9a4JYI89EenxI/pub?w=1440&h=1080)
 
-- créer un diaporama
+- exporter un **diaporama**
   - intégrer le texte à l'image
   - exporter une séquence jpg
 
-- créer un livret (une version imprimée et reliée)
+- exporter un **livret** (une version imprimée et reliable)
   - choisir entre 2 options de mise en page
-  - ajouter d'une pagination
-  - choisir le format support (A3, A4, A5 …)
-  - choisir la reliure ou plateforme de print on demand ciblée
-  - exporter en PDF
+  - ajouter d'une **pagination**
+  - choisir le type de **support** (A3, A4, A5 …)
+  - choisir la **reliure** ou plateforme de **print on demand** ciblée
+  - exporter en `PDF`
 
-- obtenir un package .zip du projet
+- obtenir un package `.zip` du **dossier projet**
 
 ### sauvegarde / exportation
 
-Sauvegarder en temps réel mes changements dans une **dossier** contenant :
+Sauvegarder les changements dans une **dossier projet** contenant :
 - la **séquence texte/image** en markdown
-- les fichier **images** convertis en jpeg (gif bruts), max 2500px, dans un dossier séparé
-- un bloc d'introduction avec les métadonnées du projet en yml
+- les fichier **images** convertis en `jpg` (les `gif` restent bruts), max `2500px`
+- un bloc d'introduction avec les **métadonnées** du projet en `yml`
 
 exemple :
 ```
@@ -63,9 +65,9 @@ ligne de texte seul
 
 ```
 
-### settings
-- [true|false] redimensionner les images
-- langue de l'interface
+### settings / divers
+- redimensionner les images `true|false`
+- sélectionner langue de l'interface `fr|en`
 
 ****
 Réalisé par Benoît Verjat et Nicolas Couturier, production Cneai,
