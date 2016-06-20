@@ -38,6 +38,8 @@
   - exporter en `PDF`
 - obtenir un package `.zip` du **dossier projet**
 
+![formes](https://docs.google.com/drawings/d/1QSAeSuQCLVLv-YDgqg6hA_0DVQAorybSdrHL1wpK1o8/pub?w=1440&h=1080)
+
 ### sauvegarde / exportation
 
 Sauvegarder les changements dans une **dossier projet** contenant :
@@ -67,6 +69,7 @@ ligne de texte seul
 ### settings / divers
 - redimensionner les images `true|false`
 - sélectionner langue de l'interface `fr|en`
+- longeur max paragraphe `int`
 
 ****
 Réalisé par Benoît Verjat et Nicolas Couturier, production Cneai,
