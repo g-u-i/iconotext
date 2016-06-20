@@ -15,11 +15,12 @@
 - ajouter de texte
   - par **copier coller**
   - importer des **fichiers** `.txt`, `.md` (texte brut)
-- ajouter des images depuis l'éditeur depuis …
-  - fichier local
+- ajouter depuis l'éditeur une image depuis
+  - fichier
   - webcam
   - url
 - importer un **dossier projet**
+- appliquer des enrichissements typographiques (**gras**, *italique*, lien hypertexte)
 - importer par **drag and drop** ou par **file picker**
 
 ## publication / preview
@@ -29,22 +30,20 @@
 - exporter un **diaporama**
   - texte est incrusté dans l'image
   - exporter une séquence `jpg`
-
 - exporter un **livret** (une version imprimée et reliable)
   - choisir entre 2 options de mise en page
   - ajouter d'une **pagination**
   - choisir le type de **support** (A3, A4, A5 …)
   - choisir la **reliure** ou plateforme de **print on demand** ciblée
   - exporter en `PDF`
-
 - obtenir un package `.zip` du **dossier projet**
 
 ### sauvegarde / exportation
 
 Sauvegarder les changements dans une **dossier projet** contenant :
-- la **séquence texte/image** en markdown
-- les fichier **images** convertis en `jpg` (les `gif` restent bruts), max `2500px`
-- un bloc d'introduction avec les **métadonnées** du projet en `yml`
+- **séquence texte/image** en markdown
+- **images** convertis en `jpg` (max `2500px`), les `gif` restent bruts et sont convertis au moment de l'exportation
+- bloc **métadonnées** en `yml` au début du fichier
 
 exemple :
 ```
@@ -52,17 +51,17 @@ title: mon titre
 date: avril 2019
 text_source: le bon la brute …
 image_source: BNF
-credits: jean, paul, yvan, jojo
+credits: terminale S, lycée jean prouvé (jean, paul, yvan, jojo)
 free_text: mon texte libre
 
 ----
-
+sequence:
 ![texte sur l'image en mode sous titre](images/img34.jpg)
 ligne de texte seul
 ![](images/img52.jpg)
 
 (…)
-
+----
 ```
 
 ### settings / divers
