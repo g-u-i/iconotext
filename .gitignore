@@ -3,6 +3,7 @@ config.json
 text/
 content/
 app/data/
+bower_components
 
 # Logs
 logs
