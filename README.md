@@ -4,10 +4,10 @@
 ![workflow](https://docs.google.com/drawings/d/1DnGQKQQD9bKBrDW_nD3t1e6rezmi3iVaevDZ2Tb1ICI/pub?w=1487&amp;h=1080)
 
 - créer une **séquence** en composant texte et images **simultanément** avec un rendu visuel adapté  
-- ajouter des **métadonnées** au projet (titre, crédits …)
+- ajouter des **métadonnées** a la séquence (titre, crédits …)
 - exporter un version **publiable** (`pdf`,`jpegs`) dans une mises en formes adapté et obtenir une **prévisualisation**
-- sauvegarder **en local** au version brute de la **séquence**
-- obtenir de l'**aide**
+- sauvegarder **en local** le projet formaté (séquence + métadonnées)
+- obtenir de l'**aide** directement dans l'interface
 
 ## editeur texte/image
 ![editor](https://docs.google.com/drawings/d/1m0j2WogX8TcO5tFsxM4WA5Giu4KY-Km8_XMeXl8Lv_E/pub?w=1440&h=1080)
@@ -27,8 +27,8 @@
 ![preview](https://docs.google.com/drawings/d/1i9mxHdDs-fzYR27bPHUzNfkN_ByIbR9a4JYI89EenxI/pub?w=1440&h=1080)
 
 - exporter un **diaporama**
-  - intégrer le texte à l'image
-  - exporter une séquence jpg
+  - texte est incrusté dans l'image
+  - exporter une séquence `jpg`
 
 - exporter un **livret** (une version imprimée et reliable)
   - choisir entre 2 options de mise en page
