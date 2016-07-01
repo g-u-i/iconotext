@@ -1,0 +1,27 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "mocha": true,
+    "node": true
+  },
+  "rules": {
+    "no-param-reassign": 0,
+    "prefer-template": 0,
+    "template-curly-spacing": [
+      2,
+      "always"
+    ],
+
+    "react/prefer-es6-class": 0,
+    "react/jsx-curly-spacing": 0
+  },
+  "plugins": [
+    "import",
+    "react"
+  ],
+  "settings": {
+    "import/resolver": "webpack"
+  }
+}
