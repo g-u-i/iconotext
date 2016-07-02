@@ -102,6 +102,7 @@
     "electron-debug": "^1.0.1",
     "font-awesome": "^4.6.3",
     "lodash": "^4.13.1",
+    "node-polyglot": "^2.0.0",
     "postcss": "^5.0.21",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
