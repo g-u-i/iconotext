@@ -17,6 +17,7 @@ const config = {
   output: {
     ...baseConfig.output,
     publicPath: 'http://localhost:3000/dist/',
+    library: 'app',
   },
 
   module: {
