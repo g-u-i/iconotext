@@ -57,16 +57,17 @@ export default React.createClass({
       <div className="editor">
         <ul>{
           sections.map((section, i) => (
-            <Section
-              key={ i }
-              index={ i }
-              section={ section }
+            <li key={ i }>
+              <Section
+                index={ i }
+                section={ section }
 
-              onNew={ this.handleInsertSection }
-              onDelete={ this.handleDeleteSection }
-              onChangeText={ this.handleChangeSectionText }
-              onChangeImage={ this.handleChangeSectionImage }
-            />
+                onNew={ this.handleInsertSection }
+                onDelete={ this.handleDeleteSection }
+                onChangeText={ this.handleChangeSectionText }
+                onChangeImage={ this.handleChangeSectionImage }
+              />
+            </li>
           ))
         }</ul>
 
