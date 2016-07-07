@@ -4,7 +4,7 @@
 ![workflow](https://docs.google.com/drawings/d/1DnGQKQQD9bKBrDW_nD3t1e6rezmi3iVaevDZ2Tb1ICI/pub?w=1487&amp;h=1080)
 
 - créer une **séquence** en composant texte et images **simultanément** avec un rendu visuel adapté  
-- ajouter des **métadonnées** a la séquence (titre, crédits …)
+- ajouter des **métadonnées** a la séquence (titre, crédits, crédits de l'application …)
 - exporter un version **publiable** (`pdf`,`jpegs`) dans une mises en formes adapté et obtenir une **prévisualisation**
 - sauvegarder **en local** le projet formaté (séquence + métadonnées)
 - obtenir de l'**aide** directement dans l'interface
