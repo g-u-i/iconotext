@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="64px" height="40px" viewBox="0 0 64 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>ico-slideshow</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="2" y="2" width="60" height="36"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="64" height="40">
+            <rect x="0" y="0" width="64" height="40" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+        <polygon id="path-3" points="48 24 48 16 56 20"></polygon>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="12" height="12">
+            <rect x="46" y="14" width="12" height="12" fill="white"></rect>
+            <use xlink:href="#path-3" fill="black"></use>
+        </mask>
+        <polygon id="path-5" points="8 24 8 16 16 20"></polygon>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="12" height="12">
+            <rect x="6" y="14" width="12" height="12" fill="white"></rect>
+            <use xlink:href="#path-5" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ico-slideshow">
+            <g id="Rectangle-76">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use stroke="#000000" mask="url(#mask-2)" stroke-width="4" xlink:href="#path-1"></use>
+            </g>
+            <g id="Triangle-2">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <use stroke="#000000" mask="url(#mask-4)" stroke-width="4" stroke-linejoin="round" xlink:href="#path-3"></use>
+            </g>
+            <g id="Triangle-2-Copy" transform="translate(12.000000, 20.000000) rotate(-180.000000) translate(-12.000000, -20.000000) ">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                <use stroke="#000000" mask="url(#mask-6)" stroke-width="4" stroke-linejoin="round" xlink:href="#path-5"></use>
+            </g>
+        </g>
+    </g>
+</svg>

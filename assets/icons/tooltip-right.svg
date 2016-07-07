@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="128px" height="28px" viewBox="0 0 128 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>tooltip-right</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M110,6.88888889 L110,4.99109042 C110,3.34177063 108.656291,2 106.998742,2 L5.00125831,2 C3.34596999,2 2,3.33915679 2,4.99109042 L2,23.0089096 C2,24.6582294 3.34370912,26 5.00125831,26 L106.998742,26 C108.65403,26 110,24.6608432 110,23.0089096 L110,21.1111111 L126,14 L110,6.88888889 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="128" height="28">
+            <rect x="0" y="0" width="128" height="28" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="tooltip-right">
+            <g id="Combined-Shape-Copy">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use stroke="#000000" mask="url(#mask-2)" stroke-width="4" stroke-linejoin="round" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>
