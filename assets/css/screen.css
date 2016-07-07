@@ -7006,9 +7006,42 @@ h3,
 h4 {
   font-family: 'marche';
 }
+/* zone-square: */
+.iconofill {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 6px;
+}
+.text-bloc {
+  padding: 24px;
+}
+.iconofill-rounded {
+  /* zone-text-rounded: */
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 6px;
+}
+.text-default {
+  /* text-default: */
+  border: 0px solid #000000;
+  font-family: NittiGrotesk-Medium;
+  font-size: 20px;
+  color: #000000;
+  letter-spacing: 0.3px;
+  line-height: 24px;
+}
+.text-main-title {
+  /* text-main-title copy: */
+  border: 0px solid #000000;
+  font-family: Marche_M;
+  font-size: 24px;
+  color: #000000;
+  letter-spacing: -0.39px;
+  line-height: 32px;
+}
 hr {
-  height: 10px;
-  background-color: #e1f5f7;
+  height: 2px;
+  background-color: black;
 }
 .sub {
   color: white;
@@ -7016,33 +7049,58 @@ hr {
   letter-spacing: 0.11em;
 }
 .logo {
-  font-family: 'marche_avant';
   text-align: center;
-  font-size: 5vh;
-  color: white;
-  text-shadow: #000000 4px 0px 0px, #000000 3.87565px 0.989616px 0px, #000000 3.51033px 1.9177px 0px, #000000 2.92676px 2.72656px 0px, #000000 2.16121px 3.36588px 0px, #000000 1.26129px 3.79594px 0px, #000000 0.282949px 3.98998px 0px, #000000 -0.712984px 3.93594px 0px, #000000 -1.66459px 3.63719px 0px, #000000 -2.51269px 3.11229px 0px, #000000 -3.20457px 2.39389px 0px, #000000 -3.69721px 1.52664px 0px, #000000 -3.95997px 0.56448px 0px, #000000 -3.97652px -0.432781px 0px, #000000 -3.74583px -1.40313px 0px, #000000 -3.28224px -2.28625px 0px, #000000 -2.61457px -3.02721px 0px, #000000 -1.78435px -3.57996px 0px, #000000 -0.843183px -3.91012px 0px, #000000 0.150409px -3.99717px 0px, #000000 1.13465px -3.8357px 0px, #000000 2.04834px -3.43574px 0px, #000000 2.83468px -2.82216px 0px, #000000 3.44477px -2.03312px 0px, #000000 3.84068px -1.11766px 0px, #000000 3.9978px -0.132717px 0px;
-  letter-spacing: 0.11em;
+  height: 300px;
+}
+.logo img {
+  width: 276px;
 }
 .tpl-home .jumbotron {
-  padding-top: 10vh;
-  background-color: #e1f5f7;
-  text-align: center;
+  padding-top: 50vh;
+  background-color: #E1F5F7;
 }
 .tpl-home .rejetee {
-  height: 60vh;
+  height: 30vh;
   margin: 1em 0 1em;
+  margin-left: 48px;
 }
-.tpl-home h1,
-.tpl-home h2,
-.tpl-home h3,
-.tpl-home h4 {
-  text-align: center;
-  line-height: 1.4em;
+.tpl-home .maincontent h2,
+.tpl-home .jumbotron h2,
+.tpl-home .maincontent h3,
+.tpl-home .jumbotron h3,
+.tpl-home .maincontent h4,
+.tpl-home .jumbotron h4 {
+  /* text-main-title copy: */
+  border: 0px solid #000000;
+  font-family: Marche_M;
+  font-size: 24px;
+  color: #000000;
+  letter-spacing: -0.39px;
+  line-height: 32px;
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  padding: 24px;
+  margin-left: -24px;
 }
-.tpl-home img {
+.tpl-home .maincontent img,
+.tpl-home .jumbotron img {
   display: block;
   max-width: 100%;
   height: auto;
+  margin-bottom: 24px;
+}
+.tpl-home .maincontent .sqr img,
+.tpl-home .jumbotron .sqr img {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  margin-left: 24px;
+  margin-bottom: 24px;
+}
+.tpl-home .maincontent p,
+.tpl-home .jumbotron p {
+  padding: 24px;
 }
 .tpl-default {
   /*Full page arrows */
@@ -7117,8 +7175,8 @@ hr {
 .columns {
   margin-left: -15px;
   margin-right: -15px;
-  min-height: 30vh;
-  margin-bottom: 15vh;
+  min-height: 10vh;
+  margin-bottom: 48px;
 }
 .columns-1 .column {
   position: relative;

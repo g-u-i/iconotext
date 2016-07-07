@@ -11,42 +11,110 @@ body {
 h1, h2, h3, h4 { font-family: 'marche';}
 
 @font-size-base: 16px;
-@fondA :  #e1f5f7;
+@fondA :  #E1F5F7;
 @fondB :  #f7ece1;
 
 
+/* zone-square: */
+.iconofill {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  // padding: 24px;
+  border-radius: 6px;
+}
+
+.text-bloc {
+    padding: 24px;
+}
+
+.iconofill-rounded {
+  /* zone-text-rounded: */
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 6px;
+}
+
+.text-default {
+  /* text-default: */
+  border: 0px solid #000000;
+  font-family: NittiGrotesk-Medium;
+  font-size: 20px;
+  color: #000000;
+  letter-spacing: 0.3px;
+  line-height: 24px;
+}
+
+.text-main-title {
+  /* text-main-title copy: */
+  border: 0px solid #000000;
+  font-family: Marche_M;
+  font-size: 24px;
+  color: #000000;
+  letter-spacing: -0.39px;
+  line-height: 32px;
+}
+
+
+
 hr {
-  height: 10px;
-  background-color: @fondA;
+  height: 2px;
+  background-color: black;
 }
 
 .sub {
   color: white;
   text-shadow: rgb(0, 0, 0) 4px 0px 0px, rgb(0, 0, 0) 3.87565px 0.989616px 0px, rgb(0, 0, 0) 3.51033px 1.9177px 0px, rgb(0, 0, 0) 2.92676px 2.72656px 0px, rgb(0, 0, 0) 2.16121px 3.36588px 0px, rgb(0, 0, 0) 1.26129px 3.79594px 0px, rgb(0, 0, 0) 0.282949px 3.98998px 0px, rgb(0, 0, 0) -0.712984px 3.93594px 0px, rgb(0, 0, 0) -1.66459px 3.63719px 0px, rgb(0, 0, 0) -2.51269px 3.11229px 0px, rgb(0, 0, 0) -3.20457px 2.39389px 0px, rgb(0, 0, 0) -3.69721px 1.52664px 0px, rgb(0, 0, 0) -3.95997px 0.56448px 0px, rgb(0, 0, 0) -3.97652px -0.432781px 0px, rgb(0, 0, 0) -3.74583px -1.40313px 0px, rgb(0, 0, 0) -3.28224px -2.28625px 0px, rgb(0, 0, 0) -2.61457px -3.02721px 0px, rgb(0, 0, 0) -1.78435px -3.57996px 0px, rgb(0, 0, 0) -0.843183px -3.91012px 0px, rgb(0, 0, 0) 0.150409px -3.99717px 0px, rgb(0, 0, 0) 1.13465px -3.8357px 0px, rgb(0, 0, 0) 2.04834px -3.43574px 0px, rgb(0, 0, 0) 2.83468px -2.82216px 0px, rgb(0, 0, 0) 3.44477px -2.03312px 0px, rgb(0, 0, 0) 3.84068px -1.11766px 0px, rgb(0, 0, 0) 3.9978px -0.132717px 0px;
   letter-spacing: 0.11em;
-
 }
 
 .logo {
-  font-family: 'marche_avant';
+
   text-align: center;
-  font-size: 5vh;
-  .sub;
+  img {
+    width: 92px * 3;
+  }
+
+  height: 300px;
+
 }
 .tpl-home {
   .jumbotron {
-      padding-top: 10vh;
-
+    padding-top: 50vh;
     background-color: @fondA;
-    text-align: center;
+    // text-align: center;
   }
   .rejetee {
-    height: 60vh;
+    height: 30vh;
     margin: 1em 0 1em;
+    margin-left: 48px;
   }
-  h1, h2, h3, h4 { text-align: center; line-height: 1.4em}
 
-  img { .img-responsive();}
+  .maincontent, .jumbotron {
+
+    h2, h3, h4 {
+      .text-main-title();
+      .iconofill();
+      .text-bloc();
+      margin-left: -24px;
+    }
+
+    img {
+      .img-responsive();
+      margin-bottom: 24px;
+    }
+
+    .sqr img {
+      .iconofill();
+      margin-left: 24px;
+      margin-bottom: 24px;
+    }
+
+    p {
+      .text-bloc();
+    }
+
+  }
+
 
 }
 .tpl-default {
@@ -135,8 +203,8 @@ hr {
 .columns {
 
   .row();
-  min-height: 30vh;
-  margin-bottom: 15vh;
+  min-height: 10vh;
+  margin-bottom: 48px;
 }
 .column {
 
