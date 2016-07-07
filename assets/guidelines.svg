@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="768px" height="1024px" viewBox="0 0 768 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>guidelines</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="104" y="104" width="80" height="80"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="84" height="84">
+            <rect x="102" y="102" width="84" height="84" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+        <rect id="path-3" x="104" y="200" width="80" height="80" rx="6"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="84" height="84">
+            <rect x="102" y="198" width="84" height="84" fill="white"></rect>
+            <use xlink:href="#path-3" fill="black"></use>
+        </mask>
+        <rect id="path-5" x="200" y="104" width="80" height="80"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="84" height="84">
+            <rect x="198" y="102" width="84" height="84" fill="white"></rect>
+            <use xlink:href="#path-5" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Mockups" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="guidelines">
+            <rect id="background" fill="#E1F5F7" x="200" y="200" width="80" height="80"></rect>
+            <g id="zone-square">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use stroke="#000000" mask="url(#mask-2)" stroke-width="4" xlink:href="#path-1"></use>
+            </g>
+            <g id="zone-text-rounded">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <use stroke="#000000" mask="url(#mask-4)" stroke-width="4" xlink:href="#path-3"></use>
+            </g>
+            <g id="zone-editing">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                <use stroke="#000000" mask="url(#mask-6)" stroke-width="4" stroke-dasharray="8,4" xlink:href="#path-5"></use>
+            </g>
+            <text id="text-default" font-family="NittiGrotesk-Medium, Nitti Grotesk" font-size="20" font-weight="400" line-spacing="24" letter-spacing="0.300000012" fill="#000000">
+                <tspan x="104" y="302">default</tspan>
+            </text>
+            <text id="text-place-holder" font-family="NittiGrotesk-Medium, Nitti Grotesk" font-size="20" font-weight="400" line-spacing="24" letter-spacing="0.300000012" fill="#9B9B9B">
+                <tspan x="104" y="318">place holder</tspan>
+            </text>
+            <text id="text-caption" font-family="NittiGrotesk-Medium, Nitti Grotesk" font-size="14" font-weight="400" line-spacing="22" letter-spacing="0.210000008" fill="#000000">
+                <tspan x="104" y="332">caption / tooltip</tspan>
+            </text>
+            <text id="text-caption-copy-3" font-family="NittiGrotesk-Medium, Nitti Grotesk" font-size="14" font-weight="400" line-spacing="22" letter-spacing="0.210000008" fill="#000000">
+                <tspan x="624" y="219">16 px</tspan>
+            </text>
+            <text id="text-caption-copy-5" transform="translate(536.000000, 76.146484) rotate(-90.000000) translate(-536.000000, -76.146484) " font-family="NittiGrotesk-Medium, Nitti Grotesk" font-size="14" font-weight="400" line-spacing="22" letter-spacing="0.210000008" fill="#000000">
+                <tspan x="507.853516" y="76.1464844">16 px</tspan>
+            </text>
+            <text id="text-caption-copy-6" transform="translate(520.000000, 76.146484) rotate(-90.000000) translate(-520.000000, -76.146484) " font-family="NittiGrotesk-Medium, Nitti Grotesk" font-size="14" font-weight="400" line-spacing="22" letter-spacing="0.210000008" fill="#000000">
+                <tspan x="491.853516" y="76.1464844">16 px</tspan>
+            </text>
+            <text id="text-main-title" font-family="Marche_M" font-size="16" font-weight="400" line-spacing="24" letter-spacing="-0.25999999" fill="#000000">
+                <tspan x="104" y="358">main-title</tspan>
+            </text>
+            <text id="text-caption-copy-2" font-family="Marche_M" font-size="16" font-weight="400" line-spacing="24" letter-spacing="-0.25999999" fill="#9B9B9B">
+                <tspan x="104" y="374">main-title placeholder</tspan>
+            </text>
+            <g id="horizontal-guides" transform="translate(536.000000, 208.000000)" stroke="#D0011B" stroke-linecap="square">
+                <path d="M0.49382716,0.5 L79.5123442,0.5" id="Line"></path>
+                <path d="M0.49382716,16.5 L79.5123442,16.5" id="Line-Copy"></path>
+            </g>
+            <g id="img" transform="translate(432.000000, 112.000000)">
+                <rect id="zone-square-copy-4" fill="#C8C8C8" x="0" y="0" width="80" height="80"></rect>
+                <text font-family="NittiGrotesk-Medium, Nitti Grotesk" font-size="14" font-weight="400" line-spacing="22" letter-spacing="0.210000008" fill="#000000">
+                    <tspan x="22.4876953" y="45">image</tspan>
+                </text>
+            </g>
+            <g id="img" transform="translate(456.000000, 208.000000)">
+                <rect id="zone-square-copy-6" fill="#C8C8C8" x="0" y="0" width="80" height="80"></rect>
+                <text font-family="NittiGrotesk-Medium, Nitti Grotesk" font-size="14" font-weight="400" line-spacing="22" letter-spacing="0.210000008" fill="#000000">
+                    <tspan x="22.4876953" y="45">image</tspan>
+                </text>
+            </g>
+            <g id="txt" transform="translate(544.000000, 112.000000)">
+                <rect id="zone-square-copy-5" fill="#9B9B9B" x="0" y="0" width="80" height="80"></rect>
+                <text font-family="NittiGrotesk-Medium, Nitti Grotesk" font-size="14" font-weight="400" line-spacing="22" letter-spacing="0.210000008" fill="#FFFFFF">
+                    <tspan x="28.5536328" y="45">text</tspan>
+                </text>
+            </g>
+            <g id="txt" transform="translate(520.000000, 224.000000)">
+                <rect id="zone-square-copy-7" fill="#9B9B9B" x="0" y="0" width="80" height="40"></rect>
+                <text font-family="NittiGrotesk-Medium, Nitti Grotesk" font-size="14" font-weight="400" line-spacing="22" letter-spacing="0.210000008" fill="#FFFFFF">
+                    <tspan x="36.5536328" y="21">text</tspan>
+                </text>
+            </g>
+            <g id="vertical-guides" transform="translate(511.000000, 106.000000)" stroke="#D0011B" stroke-linecap="square">
+                <path d="M17.5,0.5 L17.5,181.897354" id="Line"></path>
+                <path d="M1.5,0.5 L1.5,181.897354" id="Line-Copy-3"></path>
+                <path d="M33.5,0.5 L33.5,181.897354" id="Line-Copy-4"></path>
+            </g>
+        </g>
+    </g>
+</svg>
