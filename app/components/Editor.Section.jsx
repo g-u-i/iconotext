@@ -84,6 +84,7 @@ export default React.createClass({
         <div className={ styles.editorSection_wrapper }>
           <div className="block">
             <Editor
+              ref="editor"
               onChange={ this.onChange }
               editorState={ this.state.editorState }
             />

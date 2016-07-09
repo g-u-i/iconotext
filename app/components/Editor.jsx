@@ -18,12 +18,23 @@ export default React.createClass({
    * *********
    */
   handleAppendSection() {
-    this.props.actions.insertSection({
-      index: this.state.sections.length - 1,
-    });
+    const index = this.state.sections.length;
+    this.props.actions.insertSection({ index });
+
+    // Give the newly inserted section the focus:
+    window.setTimeout(
+      () => this.refs[`section-${ index }`].refs.editor.focus(),
+      0
+    );
   },
   handleInsertSection({ index, text, img }) {
     this.props.actions.insertSection({ index, text, img });
+
+    // Give the newly inserted section the focus:
+    window.setTimeout(
+      () => this.refs[`section-${ index + 1 }`].refs.editor.focus(),
+      0
+    );
   },
   handleDeleteSection({ index }) {
     this.props.actions.deleteSection({ index });
@@ -49,6 +60,8 @@ export default React.createClass({
           sections.map((section, i) => (
             <li key={ i }>
               <Section
+                ref={ `section-${ i }` }
+
                 index={ i }
                 section={ section }
 
