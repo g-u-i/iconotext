@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Marche_M';
+    src: url('marche_m-webfont.eot');
+    src: url('marche_m-webfont.eot?#iefix') format('embedded-opentype'),
+         url('marche_m-webfont.woff2') format('woff2'),
+         url('marche_m-webfont.woff') format('woff'),
+         url('marche_m-webfont.ttf') format('truetype'),
+         url('marche_m-webfont.svg#marche_mmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Marche_M_avant';
+    src: url('marche_m_avant-webfont.eot');
+    src: url('marche_m_avant-webfont.eot?#iefix') format('embedded-opentype'),
+         url('marche_m_avant-webfont.woff2') format('woff2'),
+         url('marche_m_avant-webfont.woff') format('woff'),
+         url('marche_m_avant-webfont.ttf') format('truetype'),
+         url('marche_m_avant-webfont.svg#marche_m_avantmedium_avant') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
