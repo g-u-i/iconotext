@@ -3,6 +3,8 @@ import { branch as branchMixin } from 'baobab-react/mixins';
 
 import Section from './Editor.Section.jsx';
 
+import styles from './Editor.css';
+
 export default React.createClass({
   displayName: 'iconotexte/Editor',
   mixins: [branchMixin],
@@ -33,15 +35,21 @@ export default React.createClass({
     this.props.actions.updateSections(sections);
   },
   handleChangeSectionText({ index, text }) {
-    const { sections } = this.state;
+    const sections = this.state.sections.slice(0);
 
-    sections[index].text = text;
+    sections[index] = {
+      text,
+      img: sections[index].img,
+    };
     this.props.actions.updateSections(sections);
   },
   handleChangeSectionImage({ index, img }) {
-    const { sections } = this.state;
+    const sections = this.state.sections.slice(0);
 
-    sections[index].img = img;
+    sections[index] = {
+      img,
+      text: sections[index].text,
+    };
     this.props.actions.updateSections(sections);
   },
 
@@ -54,7 +62,7 @@ export default React.createClass({
     const { sections } = this.state;
 
     return (
-      <div className="editor">
+      <div className={ styles.editor }>
         <ul>{
           sections.map((section, i) => (
             <li key={ i }>
@@ -78,4 +86,4 @@ export default React.createClass({
       </div>
     );
   },
-})
+});
