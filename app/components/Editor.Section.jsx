@@ -3,6 +3,7 @@ import { Editor, EditorState, ContentState } from 'draft-js';
 
 import styles from './Editor.Section.css';
 import ImageBlock from './ImageBlock.jsx';
+import { t } from '../utils/translator.js';
 
 const PARAGRAPH_SEP = '\n\n';
 
@@ -89,6 +90,7 @@ export default React.createClass({
           <div className={ `${ styles.editorSection_text } block` }>
             <Editor
               ref="editor"
+              placeholder={ t('Editor.Section.placeholder') }
               onChange={ this.onChange }
               editorState={ this.state.editorState }
             />
