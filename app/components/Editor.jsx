@@ -18,39 +18,21 @@ export default React.createClass({
    * *********
    */
   handleAppendSection() {
-    this.handleInsertSection({
-      index: this.state.sections.length,
+    this.props.actions.insertSection({
+      index: this.state.sections.length - 1,
     });
   },
-  handleInsertSection({ index }) {
-    const sections = this.state.sections.slice(0);
-
-    sections.splice(index, 0, { text: '', img: null });
-    this.props.actions.updateSections(sections);
+  handleInsertSection({ index, text, img }) {
+    this.props.actions.insertSection({ index, text, img });
   },
   handleDeleteSection({ index }) {
-    const sections = this.state.sections.slice(0);
-
-    sections.splice(index, 1);
-    this.props.actions.updateSections(sections);
+    this.props.actions.deleteSection({ index });
   },
   handleChangeSectionText({ index, text }) {
-    const sections = this.state.sections.slice(0);
-
-    sections[index] = {
-      text,
-      img: sections[index].img,
-    };
-    this.props.actions.updateSections(sections);
+    this.props.actions.updateSection({ index, updates: { text } });
   },
   handleChangeSectionImage({ index, img }) {
-    const sections = this.state.sections.slice(0);
-
-    sections[index] = {
-      img,
-      text: sections[index].text,
-    };
-    this.props.actions.updateSections(sections);
+    this.props.actions.updateSection({ index, updates: { img } });
   },
 
 
