@@ -2,7 +2,7 @@ import Baobab from 'baobab';
 
 export default new Baobab({
   // Interface language:
-  locale: 'frFR',
+  locale: 'fr-FR',
 
   // Sections format:
   // { text: '?MarkdownString', img: '?Image' }

@@ -5,13 +5,43 @@ import state from '../state.js';
 
 import frFR from '../assets/locales/fr-FR.json';
 
+const locales = {
+  'fr-FR': frFR,
+};
+
 const polyglot = new Polyglot({
   locale: state.get('locale'),
 });
 
+function setLang(lang, locale) {
+  _.forEach(
+    locale,
+    (collection, ns) => polyglot.extend({
+      [lang]: { [ns]: collection },
+    })
+  );
+}
+
+_.forEach(
+  locales,
+  (translations, language) => setLang(language, translations)
+);
+
 state
   .select('locale')
-  .on('update', () => polyglot.locale(state.get('locale')));
+  .on(
+    'update',
+    () => {
+      const locale = state.get('locale');
+
+      if (locales[locale]) {
+        polyglot.locale(locale);
+        state.emit('render');
+      } else {
+        state.set('locale', Object.keys(locales)[0]);
+      }
+    }
+  );
 
 /**
  * Will store some translations until they are dynamically used from the #t
@@ -44,14 +74,4 @@ export function t(path, ...args) {
   );
 }
 
-// Load locale:
-export function setLang(lang, locale) {
-  _.forEach(
-    locale,
-    (collection, ns) => polyglot.extend({
-      [lang]: { [ns]: collection },
-    })
-  );
-}
-
-setLang('fr-FR', frFR);
+export const languages = Object.keys(locales);
