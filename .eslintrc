@@ -7,15 +7,16 @@
     "node": true
   },
   "rules": {
-    "no-param-reassign": 0,
-    "prefer-template": 0,
-    "template-curly-spacing": [
-      2,
-      "always"
-    ],
+    "max-len": [2, 80, 2],
+    "no-confusing-arrow": [0],
+    "no-param-reassign": [2, { props: false }],
+    "prefer-template": [0],
+    "template-curly-spacing": [2, "always"],
 
-    "react/prefer-es6-class": 0,
-    "react/jsx-curly-spacing": 0
+    "react/jsx-curly-spacing": 0,
+    "react/prefer-es6-class": [0],
+    "react/prop-types": [0],
+    "react/sort-comp": [0]
   },
   "plugins": [
     "import",
