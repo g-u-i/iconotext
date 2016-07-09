@@ -4,6 +4,8 @@ import { Editor, EditorState, ContentState } from 'draft-js';
 import styles from './Editor.Section.css';
 import ImageBlock from './ImageBlock.jsx';
 
+const PARAGRAPH_SEP = '\n\n';
+
 export default React.createClass({
   displayName: 'iconotexte/Editor.Section',
 
@@ -38,15 +40,31 @@ export default React.createClass({
    * *********
    */
   onChange(editorState) {
-    const newText = editorState
+    let newText = editorState
       .getCurrentContent()
       .getPlainText();
 
     if (newText !== this.props.section.text) {
+      // Split the section if new paragraph:
+      if (~newText.indexOf(PARAGRAPH_SEP)) {
+        const splitted = newText.split(PARAGRAPH_SEP);
+        newText = splitted[0];
+
+        // Insert new section:
+        this.props.onNew({
+          index: this.props.index,
+          text: splitted.slice(1).join(PARAGRAPH_SEP),
+        });
+      }
+
+      // Update current section else:
       this.props.onChangeText({
         index: this.props.index,
         text: newText,
       });
+
+      // Manually reset the current editor state to preserve the full editor
+      // state:
       this.setState({ editorState });
     }
   },
