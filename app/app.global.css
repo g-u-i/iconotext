@@ -1,8 +1,16 @@
 body {
   position: relative;
-  color: white;
   font-family: Arial, Helvetica, Helvetica Neue;
-  overflow-y: hidden;
+  overflow-x: hidden;
+
+  background: #e1f5f7;
+}
+
+.block {
+  border-radius: 15px;
+  border: 1px solid black;
+
+  background: white;
 }
 
 /*

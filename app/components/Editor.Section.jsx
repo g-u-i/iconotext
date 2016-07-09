@@ -79,10 +79,14 @@ export default React.createClass({
     return (
       <div className={ styles.editorSection }>
         <div className={ styles.editorSection_wrapper }>
-          <ImageBlock img={ section.img } />
+          {
+            section.img ?
+              <ImageBlock img={ section.img } /> :
+              undefined
+          }
         </div>
         <div className={ styles.editorSection_wrapper }>
-          <div className="block">
+          <div className={ `${ styles.editorSection_text } block` }>
             <Editor
               ref="editor"
               onChange={ this.onChange }
