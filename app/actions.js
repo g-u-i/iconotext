@@ -7,8 +7,6 @@ export default {
 
     if ('img' in updates) section.set('img', updates.img);
     if ('text' in updates) section.set('text', updates.text);
-
-    state.commit();
   },
 
   deleteSection({ index }) {
@@ -16,7 +14,6 @@ export default {
     sections.splice(index, 1);
 
     state.set('sections', sections);
-    state.commit();
   },
 
   insertSection({ index, text = '', img = null }) {
@@ -24,6 +21,5 @@ export default {
     sections.splice(index + 1, 0, { text, img });
 
     state.set('sections', sections);
-    state.commit();
   },
 };
