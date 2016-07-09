@@ -6,8 +6,8 @@ import actions from './actions.js';
 
 import App from './views/App.jsx';
 
-import './app.global.css';
-import '../node_modules/draft-js/dist/Draft.css';
+import './global/app.css';
+import './global/draft-v0.7.0.css';
 
 // Initial rendering:
 render(

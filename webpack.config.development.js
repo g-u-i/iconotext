@@ -26,7 +26,7 @@ const config = {
       ...baseConfig.module.loaders,
 
       {
-        test: /\.global\.css$/,
+        test: /\/global\/[^\/]+\.css$/,
         loaders: [
           'style-loader',
           'css-loader?sourceMap',
@@ -34,7 +34,7 @@ const config = {
       },
 
       {
-        test: /^((?!\.global).)*\.css$/,
+        test: /^((?!\/global\/).)*\.css$/,
         loaders: [
           'style-loader',
           'css-loader?'
