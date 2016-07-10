@@ -16,8 +16,6 @@ body {
   Custom Iconotext reusable classes:
 */
 .ic-custom-button {
-  width: 32px;
-
   display: inline-block;
   border: none;
   padding: 0;
@@ -28,6 +26,7 @@ body {
   background-size: contain;
   background-color: transparent;
 
+  outline: none;
   transition: transform .2s;
 }
 .ic-custom-button:hover:not([disabled]) {
@@ -35,7 +34,6 @@ body {
   cursor: pointer;
 }
 .ic-custom-button img {
-  width: 100%;
   pointer-events: none;
 }
 

@@ -94,10 +94,20 @@ export default React.createClass({
           ))
         }</ul>
 
-        <button
-          className="add-section"
-          onClick={ this.handleAppendSection }
-        />
+        <div className={ styles.editor_editButtons }>
+          <button
+            className="ic-custom-button"
+            onClick={ this.handleAppendSection }
+          >
+            <img src="../assets/icons/ico-edit-img-2.svg" />
+          </button>
+          <button
+            className="ic-custom-button"
+            onClick={ this.handleAppendSection }
+          >
+            <img src="../assets/icons/ico-edit-txt-2.svg" />
+          </button>
+        </div>
       </div>
     );
   },

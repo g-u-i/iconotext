@@ -2,3 +2,11 @@
   margin: auto;
   max-width: 800px;
 }
+
+.editor_editButtons {
+  text-align: center;
+}
+
+.editor_editButtons button {
+  vertical-align: middle;
+}
