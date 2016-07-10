@@ -71,6 +71,11 @@ ligne de texte seul
 - sélectionner langue de l'interface `fr|en`
 - longeur max paragraphe `int`
 
+### lancer l'application (environnement de développement)
+- cloner le dépôt: `git clone git@github.com:g-u-i/iconotext`
+- installer les dépendances: `npm i`
+- lancer l'application en [HMR](https://webpack.github.io/docs/hot-module-replacement.html): `npm run dev`
+
 ****
 Réalisé par Benoît Verjat et Nicolas Couturier, production Cneai,
 CC BY-NC-SA 4.0, &&, Cneai, 2016, France
