@@ -131,7 +131,7 @@ export default React.createClass({
           }
         </div>
         <div className={ styles.editorSection_wrapper }>
-          <div className={ `${ styles.editorSection_text } block` }>
+          <div className={ `${ styles.editorSection_text } ic-block` }>
             <Editor
               ref="editor"
               placeholder={ t('Editor.Section.placeholder') }
