@@ -69,6 +69,50 @@ export default React.createClass({
     // state:
     this.setState({ editorState });
   },
+  onKeyCommand(e) {
+    // TODO:
+    // This feature is disabled at the moment (check Editor props).
+    // The issues to solve are:
+    //   1. If the cursor is at the beginning of a line (I guess an internal
+    //      block?), then startOffset is 0.
+    //   2. If there is a line break in the paragraph, then endOffset is not
+    //      equal to the text length.
+
+    const { editorState } = this.state;
+    const selectionState = editorState.getSelection();
+
+    const startOffset = selectionState.getStartOffset();
+    const endOffset = selectionState.getEndOffset();
+    const selectionLength = endOffset - startOffset;
+    const textLength = editorState
+      .getCurrentContent()
+      .getPlainText()
+      .length;
+
+    // When pressing "backspace" at the beginning of the section, it will merge
+    // it with the previous one:
+    if (
+      e === 'backspace' &&
+      selectionLength === 0 &&
+      startOffset === 0
+    ) {
+      this.props.onMergeBefore({ index: this.props.index });
+      return true;
+    }
+
+    // When pressing "delete" at the end of the section, it will merge it with
+    // the next one:
+    if (
+      e === 'delete' &&
+      selectionLength === 0 &&
+      endOffset === textLength
+    ) {
+      this.props.onMergeAfter({ index: this.props.index });
+      return true;
+    }
+
+    return false;
+  },
 
   /**
    * Rendering:
@@ -92,6 +136,7 @@ export default React.createClass({
               ref="editor"
               placeholder={ t('Editor.Section.placeholder') }
               onChange={ this.onChange }
+              handleKeyCommand={ null /* this.onKeyCommand */ }
               editorState={ this.state.editorState }
             />
           </div>

@@ -22,4 +22,48 @@ export default {
 
     state.set('sections', sections);
   },
+
+  mergeSectionAfter({ index }) {
+    const sections = state.get('sections').slice(0);
+
+    if (index === sections.length - 1) {
+      throw new Error(`Section ${ index + 1 } does not exist.`);
+    }
+
+    // Create merged section:
+    sections[index] = {
+      img: sections[index].img || sections[index + 1].img,
+      text: [
+        sections[index].text,
+        sections[index + 1].text,
+      ].filter(s => !!s).join('\n'),
+    };
+
+    // Delete section:
+    sections.splice(index + 1, 1);
+
+    state.set('sections', sections);
+  },
+
+  mergeSectionBefore({ index }) {
+    const sections = state.get('sections').slice(0);
+
+    if (index === 0) {
+      throw new Error(`Section ${ index - 1 } does not exist.`);
+    }
+
+    // Merge texts:
+    sections[index - 1] = {
+      img: sections[index - 1].img || sections[index].img,
+      text: [
+        sections[index - 1].text,
+        sections[index].text,
+      ].filter(s => !!s).join('\n'),
+    };
+
+    // Delete section:
+    sections.splice(index, 1);
+
+    state.set('sections', sections);
+  },
 };

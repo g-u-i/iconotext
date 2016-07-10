@@ -45,6 +45,15 @@ export default React.createClass({
   handleChangeSectionImage({ index, img }) {
     this.props.actions.updateSection({ index, updates: { img } });
   },
+  handleMergeAfter({ index }) {
+    this.props.actions.mergeSectionAfter({ index });
+  },
+  handleMergeBefore({ index }) {
+    this.props.actions.mergeSectionBefore({ index });
+
+    // Give the first section the focus:
+    this.refs[`section-${ index - 1 }`].refs.editor.focus();
+  },
 
 
   /**
@@ -69,6 +78,17 @@ export default React.createClass({
                 onDelete={ this.handleDeleteSection }
                 onChangeText={ this.handleChangeSectionText }
                 onChangeImage={ this.handleChangeSectionImage }
+
+                onMergeAfter={
+                  (i < this.state.sections.length - 1) ?
+                    this.handleMergeAfter :
+                    null
+                }
+                onMergeBefore={
+                  (i > 0) ?
+                    this.handleMergeBefore :
+                    null
+                }
               />
             </li>
           ))
