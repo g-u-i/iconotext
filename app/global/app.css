@@ -1,13 +1,19 @@
 body {
   position: relative;
-  font-family: Arial, Helvetica, Helvetica Neue;
   overflow-x: hidden;
 
   background: #e1f5f7;
+
+  border: 0px solid #000000;
+  font-family: iconofont;
+  font-size: 20px;
+  color: #000000;
+  letter-spacing: 0.3px;
+  line-height: 24px;
 }
 
 .block {
-  border-radius: 15px;
+  border-radius: 6px;
   border: 2px solid black;
 
   background: white;

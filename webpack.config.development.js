@@ -26,6 +26,11 @@ const config = {
       ...baseConfig.module.loaders,
 
       {
+        test: /\.(eot|woff2?|ttf|svg)(#.*)?(\?.*)?$/,
+        loader: 'file',
+      },
+
+      {
         test: /\/global\/[^\/]+\.css$/,
         loaders: [
           'style-loader',

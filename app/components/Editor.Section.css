@@ -1,6 +1,6 @@
 .editorSection {
   width: 100%;
-  margin: 1em 0;
+  margin: 16px 0;
 }
 
 .editorSection_wrapper {
@@ -11,7 +11,7 @@
 
 .editorSection_text {
   display: inline-block;
-  min-width: 12em;
+  min-width: 200px;
   max-width: 100%;
-  padding: .5em 1em;
+  padding: 16px;
 }
