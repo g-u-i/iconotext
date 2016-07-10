@@ -11,8 +11,15 @@
   width: 50%;
 }
 
+.editorSection_img {
+  margin-right: 16px;
+  margin-left: -16px;
+}
+
 .editorSection_text {
+  position: relative;
   margin-top: 16px;
+  margin-left: 16px;
 
   display: inline-block;
   padding: 16px;
@@ -25,11 +32,29 @@
 
 .editorSection_icons {
   position: absolute;
+  z-index: 100;
 
   top: 32px;
+  margin-left: 16px;
   left: 50%;
   transform: translateX(-50%);
 }
 .editorSection_icons::empty {
   display: none;
+}
+
+.editorSection_img,
+.editorSection_text,
+.editorSection_icons {
+  transition: margin 0.4s;
+}
+.editorSection[data-full] .editorSection_img {
+  margin-right: -8px;
+  margin-left: 8px;
+}
+.editorSection[data-full] .editorSection_text {
+  margin-left: -8px;
+}
+.editorSection[data-full] .editorSection_icons {
+  margin-left: -8px;
 }

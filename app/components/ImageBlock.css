@@ -8,13 +8,20 @@
   vertical-align: top;
   max-width: 100%;
 }
-button.imageBlock_delete {
+.imageBlock_delete {
+  display: none;
   position: absolute;
   left: 0;
   top: -16px;
   transform: translateX(-50%) translateY(-50%);
   transform: rotate(-45deg);
 }
-button.imageBlock_delete:hover {
+.imageBlock_delete:hover {
   transform: rotate(-57deg) !important;
+}
+.imageBlock:hover {
+  z-index: 200;
+}
+.imageBlock:hover .imageBlock_delete {
+  display: block;
 }

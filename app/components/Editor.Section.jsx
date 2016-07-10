@@ -162,24 +162,29 @@ export default React.createClass({
     const { section, editingImg } = this.props;
 
     return (
-      <div className={ styles.editorSection }>
+      <div
+        className={ styles.editorSection }
+        data-full={ !!(section.img && section.text) || undefined }
+      >
         <div className={ styles.editorSection_wrapper }>
-          {
-            (section.img && !editingImg) ?
-              <ImageBlock
-                img={ section.img }
-                onDelete={ this.onChangeImg }
-              /> :
-              undefined
-          }
-          {
-            editingImg ?
-              <ImageBlockEdit
-                img={ section.img }
-                setImg={ this.onChangeImg }
-              /> :
-              undefined
-          }
+          <div className={ styles.editorSection_img }>
+            {
+              (section.img && !editingImg) ?
+                <ImageBlock
+                  img={ section.img }
+                  onDelete={ this.onChangeImg }
+                /> :
+                undefined
+            }
+            {
+              editingImg ?
+                <ImageBlockEdit
+                  img={ section.img }
+                  setImg={ this.onChangeImg }
+                /> :
+                undefined
+            }
+          </div>
         </div>
 
         <div className={ styles.editorSection_icons }>
