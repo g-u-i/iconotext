@@ -12,6 +12,8 @@
 }
 
 .editorSection_text {
+  margin-top: 16px;
+
   display: inline-block;
   padding: 16px;
   padding-left: 32px;
@@ -24,7 +26,7 @@
 .editorSection_icons {
   position: absolute;
 
-  top: 16px;
+  top: 32px;
   left: 50%;
   transform: translateX(-50%);
 }

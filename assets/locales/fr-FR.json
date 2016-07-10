@@ -3,5 +3,10 @@
     "Section": {
       "placeholder": "Collez du texte ici!"
     }
+  },
+
+  "ImageBlockEdit": {
+    "webcamText": "capturer depuis la webcam\u00A0?",
+    "imageText": "glisser une image ou cliquer pour sélectionner un fichier"
   }
 }

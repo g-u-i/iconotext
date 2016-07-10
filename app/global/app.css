@@ -37,11 +37,17 @@ body {
   pointer-events: none;
 }
 
-.ic-block {
-  border-radius: 6px;
-  border: 2px solid black;
-
+.ic-block,
+.ic-block-round,
+.ic-block-dashed {
   background: white;
+  border: 2px solid black;
+}
+.ic-block-round {
+  border-radius: 6px;
+}
+.ic-block-dashed {
+  border: 2px dashed black;
 }
 
 /*

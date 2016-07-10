@@ -9,6 +9,7 @@ export default React.createClass({
   displayName: 'iconotexte/Editor',
   mixins: [branchMixin],
   cursors: {
+    ui: 'ui',
     sections: 'sections',
   },
 
@@ -55,13 +56,17 @@ export default React.createClass({
     this.refs[`section-${ index - 1 }`].refs.editor.focus();
   },
 
+  handleEditImage({ index }) {
+    this.props.actions.editSectionImage({ index });
+  },
+
 
   /**
    * Rendering:
    * **********
    */
   render() {
-    const { sections } = this.state;
+    const { ui, sections } = this.state;
 
     return (
       <div className={ styles.editor }>
@@ -73,6 +78,9 @@ export default React.createClass({
 
                 index={ i }
                 section={ section }
+
+                editImg={ this.handleEditImage }
+                editingImg={ ui.sectionEditingImage === i }
 
                 onNew={ this.handleInsertSection }
                 onDelete={ this.handleDeleteSection }

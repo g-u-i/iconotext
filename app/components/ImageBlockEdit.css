@@ -1,0 +1,27 @@
+.imageBlockEdit {
+  margin: 0;
+  margin-right: 32px;
+  height: auto;
+}
+
+.imageBlockEdit_webcam,
+.imageBlockEdit_image {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  height: 200px;
+  padding: 16px;
+  text-align: center;
+}
+.imageBlockEdit_image {
+  border-left: 2px solid black;
+  display: inline-block;
+}
+
+.imageBlockEdit_dropzone {
+  /* Force disable inline styles */
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+  border-radius: 0 !important;
+}

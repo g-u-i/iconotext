@@ -1,8 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Editor, EditorState, ContentState } from 'draft-js';
 
 import styles from './Editor.Section.css';
 import ImageBlock from './ImageBlock.jsx';
+import ImageBlockEdit from './ImageBlockEdit.jsx';
 import { t } from '../utils/translator.js';
 
 const PARAGRAPH_SEP = '\n\n';
@@ -35,12 +37,43 @@ export default React.createClass({
       });
     }
   },
+  componentDidMount() {
+    document.body.addEventListener('click', this.onClickBody);
+  },
+  componentWillUnmount() {
+    document.body.removeEventListener('click', this.onClickBody);
+  },
 
   /**
    * Handlers:
    * *********
    */
-  onChange(editorState) {
+  onClickBody(e) {
+    if (!this.props.editingImg) {
+      return;
+    }
+
+    const dom = ReactDOM.findDOMNode(this);
+    let node = e.target;
+    let isOut = true;
+
+    while (node) {
+      if (node === dom) {
+        isOut = false;
+        break;
+      }
+
+      node = node.parentNode;
+    }
+
+    if (isOut) {
+      this.props.editImg({ index: null });
+    }
+  },
+  onClickEditImg() {
+    this.props.editImg({ index: this.props.index });
+  },
+  onChangeText(editorState) {
     let newText = editorState
       .getCurrentContent()
       .getPlainText();
@@ -119,35 +152,42 @@ export default React.createClass({
    * **********
    */
   render() {
-    const { section } = this.props;
+    const { section, editingImg } = this.props;
 
     return (
       <div className={ styles.editorSection }>
         <div className={ styles.editorSection_wrapper }>
           {
-            section.img ?
+            (section.img && !editingImg) ?
               <ImageBlock img={ section.img } /> :
               undefined
           }
-        </div>
-        <div className={ styles.editorSection_icons }>
           {
-            section.img ?
-              null :
-              <button
-                onClick={ null }
-                className="ic-custom-button"
-              >
-                <img src="../assets/icons/ico-edit-img-1.svg" />
-              </button>
+            editingImg ?
+              <ImageBlockEdit img={ section.img } /> :
+              undefined
           }
         </div>
+
+        <div className={ styles.editorSection_icons }>
+          {
+            !editingImg ?
+              <button
+                className="ic-custom-button"
+                onClick={ this.onClickEditImg }
+              >
+                <img src="../assets/icons/ico-edit-img-1.svg" />
+              </button> :
+              null
+          }
+        </div>
+
         <div className={ styles.editorSection_wrapper }>
-          <div className={ `${ styles.editorSection_text } ic-block` }>
+          <div className={ `${ styles.editorSection_text } ic-block-round` }>
             <Editor
               ref="editor"
               placeholder={ t('Editor.Section.placeholder') }
-              onChange={ this.onChange }
+              onChange={ this.onChangeText }
               handleKeyCommand={ null /* this.onKeyCommand */ }
               editorState={ this.state.editorState }
             />

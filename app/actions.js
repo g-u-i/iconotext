@@ -66,4 +66,8 @@ export default {
 
     state.set('sections', sections);
   },
+
+  editSectionImage({ index }) {
+    state.set(['ui', 'sectionEditingImage'], index);
+  },
 };
