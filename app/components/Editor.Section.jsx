@@ -130,6 +130,18 @@ export default React.createClass({
               undefined
           }
         </div>
+        <div className={ styles.editorSection_icons }>
+          {
+            section.img ?
+              null :
+              <button
+                onClick={ null }
+                className="ic-custom-button"
+              >
+                <img src="../assets/icons/ico-edit-img-1.svg" />
+              </button>
+          }
+        </div>
         <div className={ styles.editorSection_wrapper }>
           <div className={ `${ styles.editorSection_text } ic-block` }>
             <Editor
