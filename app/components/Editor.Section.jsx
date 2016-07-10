@@ -63,11 +63,11 @@ export default React.createClass({
         index: this.props.index,
         text: newText,
       });
-
-      // Manually reset the current editor state to preserve the full editor
-      // state:
-      this.setState({ editorState });
     }
+
+    // Manually reset the current editor state to preserve the full editor
+    // state:
+    this.setState({ editorState });
   },
 
   /**
