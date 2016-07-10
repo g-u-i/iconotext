@@ -3,7 +3,7 @@ import Polyglot from 'node-polyglot';
 
 import state from '../state.js';
 
-import frFR from '../assets/locales/fr-FR.json';
+import frFR from '../../assets/locales/fr-FR.json';
 
 const locales = {
   'fr-FR': frFR,
