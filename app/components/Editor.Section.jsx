@@ -73,6 +73,13 @@ export default React.createClass({
   onClickEditImg() {
     this.props.editImg({ index: this.props.index });
   },
+  onChangeImg(img) {
+    this.props.onChangeImg({
+      img,
+      index: this.props.index,
+    });
+    this.props.editImg({ index: null });
+  },
   onChangeText(editorState) {
     let newText = editorState
       .getCurrentContent()
@@ -159,12 +166,18 @@ export default React.createClass({
         <div className={ styles.editorSection_wrapper }>
           {
             (section.img && !editingImg) ?
-              <ImageBlock img={ section.img } /> :
+              <ImageBlock
+                img={ section.img }
+                onDelete={ this.onChangeImg }
+              /> :
               undefined
           }
           {
             editingImg ?
-              <ImageBlockEdit img={ section.img } /> :
+              <ImageBlockEdit
+                img={ section.img }
+                setImg={ this.onChangeImg }
+              /> :
               undefined
           }
         </div>

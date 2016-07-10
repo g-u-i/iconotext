@@ -18,7 +18,7 @@ export default React.createClass({
    * Handlers:
    * *********
    */
-  handleAppendSection() {
+  handleAppendTextSection() {
     const index = this.state.sections.length;
     this.props.actions.insertSection({ index });
 
@@ -27,6 +27,11 @@ export default React.createClass({
       () => this.refs[`section-${ index }`].refs.editor.focus(),
       0
     );
+  },
+  handleAppendImageSection() {
+    const index = this.state.sections.length;
+    this.props.actions.insertSection({ index });
+    this.props.actions.editSectionImage({ index });
   },
   handleInsertSection({ index, text, img }) {
     this.props.actions.insertSection({ index, text, img });
@@ -43,7 +48,7 @@ export default React.createClass({
   handleChangeSectionText({ index, text }) {
     this.props.actions.updateSection({ index, updates: { text } });
   },
-  handleChangeSectionImage({ index, img }) {
+  handleChangeSectionImg({ index, img }) {
     this.props.actions.updateSection({ index, updates: { img } });
   },
   handleMergeAfter({ index }) {
@@ -84,8 +89,8 @@ export default React.createClass({
 
                 onNew={ this.handleInsertSection }
                 onDelete={ this.handleDeleteSection }
+                onChangeImg={ this.handleChangeSectionImg }
                 onChangeText={ this.handleChangeSectionText }
-                onChangeImage={ this.handleChangeSectionImage }
 
                 onMergeAfter={
                   (i < this.state.sections.length - 1) ?
@@ -105,13 +110,13 @@ export default React.createClass({
         <div className={ styles.editor_editButtons }>
           <button
             className="ic-custom-button"
-            onClick={ this.handleAppendSection }
+            onClick={ this.handleAppendImageSection }
           >
             <img src="../assets/icons/ico-edit-img-2.svg" />
           </button>
           <button
             className="ic-custom-button"
-            onClick={ this.handleAppendSection }
+            onClick={ this.handleAppendTextSection }
           >
             <img src="../assets/icons/ico-edit-txt-2.svg" />
           </button>

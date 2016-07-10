@@ -5,13 +5,8 @@ import styles from './ImageBlock.css';
 export default React.createClass({
   displayName: 'iconotexte/ImageBlock',
 
-  /**
-   * Handlers:
-   * *********
-   */
-  onChange(/* newState */) {
-    // TODO:
-    // Tell parent about the new text content
+  onClickDelete() {
+    this.props.onDelete();
   },
 
   /**
@@ -19,11 +14,20 @@ export default React.createClass({
    * **********
    */
   render() {
-    // const { img } = this.props;
+    const { img } = this.props;
 
     return (
-      <div className={ `block ${ styles.imageBlock }` }>
-        { /* TODO */ }
+      <div className={ `ic-block-round ${ styles.imageBlock }` }>
+        <img
+          className={ styles.imageBlock_img }
+          src={ img.path }
+        />
+        <button
+          onClick={ this.onClickDelete }
+          className={ `ic-custom-button ${ styles.imageBlock_delete }` }
+        >
+          <img src="../assets/icons/ico-remove-1.svg" />
+        </button>
       </div>
     );
   },

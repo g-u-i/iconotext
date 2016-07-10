@@ -11,8 +11,16 @@ export default React.createClass({
    * Handlers:
    * *********
    */
-  onDrop(/* files */) {
-    // TODO
+  onDrop(files) {
+    const file = files[0];
+
+    if (!file) return;
+
+    this.props.setImg({
+      name: files[0].name,
+      path: files[0].path,
+      type: files[0].type,
+    });
   },
 
   /**
@@ -41,6 +49,7 @@ export default React.createClass({
 
         <div className={ styles.imageBlockEdit_image }>
           <Dropzone
+            accept="image/*"
             className={ styles.imageBlockEdit_dropzone }
             multiple={ false }
             onDrop={ this.onDrop }

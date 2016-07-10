@@ -21,6 +21,7 @@ export default {
     sections.splice(index + 1, 0, { text, img });
 
     state.set('sections', sections);
+    state.set(['ui', 'sectionEditingImage'], null);
   },
 
   mergeSectionAfter({ index }) {

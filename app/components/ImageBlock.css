@@ -1,3 +1,20 @@
 .imageBlock {
-  min-height: 1em;
+  display: inline-block;
+  width: auto;
+  float: right;
+  position: relative;
+}
+.imageBlock_img {
+  vertical-align: top;
+  max-width: 100%;
+}
+button.imageBlock_delete {
+  position: absolute;
+  left: 0;
+  top: -16px;
+  transform: translateX(-50%) translateY(-50%);
+  transform: rotate(-45deg);
+}
+button.imageBlock_delete:hover {
+  transform: rotate(-57deg) !important;
 }
