@@ -1,4 +1,4 @@
-# config / pwd
+# Config / pwd
 config.json
 text/
 content/
@@ -33,6 +33,7 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
+<<<<<<< HEAD
 
 # Windows image file caches
 Thumbs.db
@@ -77,3 +78,16 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+=======
+# OSX
+.DS_Store
+
+# App packaged
+dist
+release
+main.js
+main.js.map
+
+# Mockups and app graphic drafts
+resources
+>>>>>>> master
