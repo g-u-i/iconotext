@@ -107,6 +107,7 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-dropzone": "^3.5.3",
+    "react-webcam": "0.0.12",
     "source-map-support": "^0.4.0"
   },
   "devEngines": {
