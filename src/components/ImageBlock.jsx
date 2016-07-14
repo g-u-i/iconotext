@@ -16,7 +16,7 @@ export default React.createClass({
 
     return (
       <div data-component="image-block">
-        <img src={ img.path } />
+        <img src={ img.base64 } />
 
         <button onClick={ this.onClickDelete } >
           <img src="../assets/icons/ico-remove-1.svg" />

@@ -1,3 +1,4 @@
+import fs from 'fs';
 import React from 'react';
 import Dropzone from 'react-dropzone';
 
@@ -13,13 +14,22 @@ export default React.createClass({
   onDrop(files) {
     const file = files[0];
 
-    if (!file) return;
+    if (!file) throw new Error('No file has been uploaded');
 
-    this.props.setImg({
-      name: files[0].name,
-      path: files[0].path,
-      type: files[0].type,
-    });
+    fs.readFile(
+      file.path,
+      (err, data) => {
+        if (err) throw new Error(err);
+
+        const base64 = new Buffer(data, 'binary').toString('base64');
+
+        this.props.setImg({
+          name: file.name,
+          type: file.type,
+          base64: `data:${ file.type };base64,${ base64 }`,
+        });
+      }
+    );
   },
 
   /**
