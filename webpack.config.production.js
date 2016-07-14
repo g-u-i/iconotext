@@ -7,7 +7,7 @@ const config = {
 
   devtool: 'source-map',
 
-  entry: './app/index',
+  entry: './src/app',
 
   output: {
     ...baseConfig.output,
@@ -22,24 +22,17 @@ const config = {
       ...baseConfig.module.loaders,
 
       {
-        test: /\.global\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader'
-        ),
+        test: /\.(eot|woff2?|ttf|svg)(#.*)?(\?.*)?$/,
+        loader: 'file',
       },
 
       {
-        test: /^((?!\.global).)*\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader?'
-          + [
-            'modules',
-            'importLoaders=1',
-            'localIdentName=[name]__[local]___[hash:base64:5]',
-          ],
-        ),
+        test: /\.(less|css)$/,
+        loaders: [
+          'style',
+          'css',
+          'less-loader',
+        ],
       },
     ],
   },

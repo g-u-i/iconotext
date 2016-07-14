@@ -6,10 +6,7 @@ import actions from './actions.js';
 
 import App from './views/App.jsx';
 
-import './global/fonts.marche.css';
-import './global/fonts.iconofont.css';
-import './global/app.css';
-import './global/draft-v0.7.0.css';
+import '../styles/app.less';
 
 // Initial rendering:
 render(

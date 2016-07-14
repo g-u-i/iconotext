@@ -1,0 +1,21 @@
+.font-face (@dir, @family, @name) {
+  @font-face {
+    font-family: @family;
+    src: url('@{dir}/@{name}.eot');
+    src: url('@{dir}/@{name}.eot?#iefix') format('embedded-opentype'),
+         url('@{dir}/@{name}.woff2') format('woff2'),
+         url('@{dir}/@{name}.woff') format('woff'),
+         url('@{dir}/@{name}.ttf') format('truetype'),
+         url('@{dir}/@{name}.svg#@{family}') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+.font-face('../assets/fonts/iconofont', 'iconofont', 'iconofont_Semi_bold');
+.font-face('../assets/fonts/iconofont', 'iconofont', 'iconofont_Semi_bold_italic');
+.font-face('../assets/fonts/iconofont', 'iconofont', 'iconofont_Regular_italic');
+.font-face('../assets/fonts/iconofont', 'iconofont', 'iconofont_Regular');
+
+.font-face('../assets/fonts/marche', 'Marche_M', 'marche_m-webfont');
+.font-face('../assets/fonts/marche', 'Marche_M_avant', 'marche_m_avant-webfont');

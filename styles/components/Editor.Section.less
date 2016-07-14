@@ -1,0 +1,70 @@
+*[data-component="editor-section"] {
+  width: 100%;
+  margin: 16px 0;
+
+  position: relative;
+
+  .wrapper {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+  }
+
+  .img {
+    margin-right: 16px;
+    margin-left: -16px;
+  }
+
+  .text {
+    .ic-block-round;
+
+    position: relative;
+    margin-top: 16px;
+    margin-left: 16px;
+
+    display: inline-block;
+    padding: 16px;
+    padding-left: 32px;
+
+    min-width: 220px;
+    max-width: 100%;
+    min-height: 100px;
+  }
+
+  .icons {
+    position: absolute;
+    z-index: 100;
+
+    top: 32px;
+    margin-left: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &::empty {
+      display: none;
+    }
+
+    button {
+      .ic-custom-button;
+    }
+  }
+
+  .img,
+  .text,
+  .icons {
+    transition: margin 0.4s;
+  }
+
+  &[data-full] {
+    .img {
+      margin-right: -8px;
+      margin-left: 8px;
+    }
+    .text {
+      margin-left: -8px;
+    }
+    .icons {
+      margin-left: -8px;
+    }
+  }
+}

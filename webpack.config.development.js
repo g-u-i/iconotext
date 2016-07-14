@@ -11,7 +11,7 @@ const config = {
 
   entry: [
     'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr',
-    './app/index',
+    './src/app',
   ],
 
   output: {
@@ -31,24 +31,11 @@ const config = {
       },
 
       {
-        test: /\/global\/[^\/]+\.css$/,
+        test: /\.(less|css)$/,
         loaders: [
-          'style-loader',
-          'css-loader?sourceMap',
-        ],
-      },
-
-      {
-        test: /^((?!\/global\/).)*\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?'
-          + [
-            'modules',
-            'sourceMap',
-            'importLoaders=1',
-            'localIdentName=[name]__[local]___[hash:base64:5]',
-          ].join('&'),
+          'style',
+          'css',
+          'less-loader',
         ],
       },
     ],

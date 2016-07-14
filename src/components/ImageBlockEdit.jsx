@@ -1,7 +1,6 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 
-import styles from './ImageBlockEdit.css';
 import { t } from '../utils/translator.js';
 
 export default React.createClass({
@@ -29,39 +28,27 @@ export default React.createClass({
    */
   render() {
     return (
-      <div
-        className={
-          `ic-block-round ic-block-dashed ${ styles.imageBlockEdit }`
-        }
-      >
-        <div className={ styles.imageBlockEdit_webcam }>
-          <button
-            className={
-              `ic-custom-button ${ styles.imageBlockEdit_webcam_icon }`
-            }
-          >
+      <div data-component="image-block-edit">
+        <div className="webcam">
+          <button>
             <img src="../assets/icons/ico-edit-img-4.svg" />
           </button>
-          <div className={ styles.imageBlockEdit_webcam_text }>{
+          <div>{
             t('ImageBlockEdit.webcamText')
           }</div>
         </div>
 
-        <div className={ styles.imageBlockEdit_image }>
+        <div className="file">
           <Dropzone
             accept="image/*"
-            className={ styles.imageBlockEdit_dropzone }
+            className="dropzone"
             multiple={ false }
             onDrop={ this.onDrop }
           >
-            <button
-              className={
-                `ic-custom-button ${ styles.imageBlockEdit_webcam_icon }`
-              }
-            >
+            <button>
               <img src="../assets/icons/ico-save-1.svg" />
             </button>
-            <div className={ styles.imageBlockEdit_webcam_text }>{
+            <div>{
               t('ImageBlockEdit.imageText')
             }</div>
           </Dropzone>

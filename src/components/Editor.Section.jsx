@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Editor, EditorState, ContentState } from 'draft-js';
 
-import styles from './Editor.Section.css';
 import ImageBlock from './ImageBlock.jsx';
 import ImageBlockEdit from './ImageBlockEdit.jsx';
 import { t } from '../utils/translator.js';
@@ -163,11 +162,11 @@ export default React.createClass({
 
     return (
       <div
-        className={ styles.editorSection }
+        data-component="editor-section"
         data-full={ !!(section.img && section.text) || undefined }
       >
-        <div className={ styles.editorSection_wrapper }>
-          <div className={ styles.editorSection_img }>
+        <div className="wrapper">
+          <div className="img">
             {
               (section.img && !editingImg) ?
                 <ImageBlock
@@ -187,21 +186,18 @@ export default React.createClass({
           </div>
         </div>
 
-        <div className={ styles.editorSection_icons }>
+        <div className="icons">
           {
             !editingImg ?
-              <button
-                className="ic-custom-button"
-                onClick={ this.onClickEditImg }
-              >
+              <button onClick={ this.onClickEditImg }>
                 <img src="../assets/icons/ico-edit-img-1.svg" />
               </button> :
               null
           }
         </div>
 
-        <div className={ styles.editorSection_wrapper }>
-          <div className={ `${ styles.editorSection_text } ic-block-round` }>
+        <div className="wrapper">
+          <div className="text">
             <Editor
               ref="editor"
               placeholder={ t('Editor.Section.placeholder') }

@@ -1,0 +1,36 @@
+*[data-component="image-block"] {
+  .ic-block-round;
+
+  display: inline-block;
+  width: auto;
+  float: right;
+  position: relative;
+
+  & > img {
+    vertical-align: top;
+    max-width: 100%;
+  }
+
+  button {
+    .ic-custom-button;
+
+    display: none;
+    position: absolute;
+    left: 0;
+    top: -16px;
+    transform: translateX(-50%) translateY(-50%);
+    transform: rotate(-45deg);
+
+    &:hover {
+      transform: rotate(-57deg) !important;
+    }
+  }
+
+  &:hover {
+    z-index: 200;
+
+    button {
+      display: block;
+    }
+  }
+}

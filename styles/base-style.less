@@ -28,13 +28,14 @@ body {
 
   outline: none;
   transition: transform .2s;
-}
-.ic-custom-button:hover:not([disabled]) {
-  transform: rotate(-12deg);
-  cursor: pointer;
-}
-.ic-custom-button img {
-  pointer-events: none;
+
+  &:hover:not([disabled]) {
+    transform: rotate(-12deg);
+    cursor: pointer;
+  }
+  img {
+    pointer-events: none;
+  }
 }
 
 .ic-block,
