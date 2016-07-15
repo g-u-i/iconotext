@@ -98,6 +98,8 @@
     "baobab-react": "^2.1.1",
     "css-modules-require-hook": "^4.0.0",
     "draft-js": "^0.7.0",
+    "draft-js-export-html": "^0.4.0",
+    "draft-js-import-html": "^0.2.0",
     "electron-debug": "^1.0.1",
     "file-loader": "^0.9.0",
     "font-awesome": "^4.6.3",

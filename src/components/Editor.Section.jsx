@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { stateToHTML } from 'draft-js-export-html';
+import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, RichUtils, EditorState, ContentState } from 'draft-js';
 
 import ImageBlock from './ImageBlock.jsx';
@@ -9,7 +11,8 @@ import InlineToolbar from './Editor.InlineToolbar.jsx';
 import { t } from '../utils/translator.js';
 import selectionUtils from '../utils/selection.js';
 
-const PARAGRAPH_SEP = '\n\n';
+const PARAGRAPH_JOIN = '\n<p><br></p>\n';
+const PARAGRAPH_REGEXP = /\n<p><br><\/p>\n/;
 
 export default React.createClass({
   displayName: 'iconotexte/Editor.Section',
@@ -29,15 +32,11 @@ export default React.createClass({
   },
   componentWillReceiveProps({ section: { text } }) {
     const { editorState } = this.state;
-    const currentText = editorState
-      .getCurrentContent()
-      .getPlainText();
+    const currentText = this.getHTMLText(editorState.getCurrentContent());
 
     if (text !== currentText) {
       this.setState({
-        editorState: EditorState.createWithContent(
-          ContentState.createFromText(text)
-        ),
+        editorState: EditorState.createWithContent(this.setHTMLText(text)),
       });
     }
   },
@@ -46,6 +45,19 @@ export default React.createClass({
   },
   componentWillUnmount() {
     document.body.removeEventListener('click', this.onClickBody);
+  },
+
+  /**
+   * Helpers:
+   * ********
+   */
+  setHTMLText(html) {
+    const contentState = stateFromHTML(html);
+    return contentState;
+  },
+  getHTMLText(contentState) {
+    const html = stateToHTML(contentState);
+    return html;
   },
 
   /**
@@ -114,7 +126,7 @@ export default React.createClass({
   },
   onChangeText(editorState) {
     const hasFocus = editorState.getSelection().getHasFocus();
-    let newText = editorState.getCurrentContent().getPlainText();
+    let newText = this.getHTMLText(editorState.getCurrentContent());
 
     // Check selection:
     if (
@@ -144,14 +156,20 @@ export default React.createClass({
     // Check if text has been updated:
     if (newText !== this.props.section.text) {
       // Split the section if new paragraph:
-      if (~newText.indexOf(PARAGRAPH_SEP)) {
-        const splitted = newText.split(PARAGRAPH_SEP);
+      if (
+        newText.match(PARAGRAPH_REGEXP) &&
+        // The following test is about that:
+        // https://github.com/sstur/draft-js-export-html/issues/25
+        newText !== '<p><br></p>'
+      ) {
+        const splitted = newText.split(PARAGRAPH_REGEXP);
+        const next = splitted.slice(1).join(PARAGRAPH_JOIN);
         newText = splitted[0];
 
         // Insert new section:
         this.props.onNew({
           index: this.props.index,
-          text: splitted.slice(1).join(PARAGRAPH_SEP),
+          text: next,
         });
       }
 
