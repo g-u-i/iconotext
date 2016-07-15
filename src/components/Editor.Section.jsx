@@ -195,21 +195,26 @@ export default React.createClass({
 
     const { editorState } = this.state;
     const selectionState = editorState.getSelection();
+    const contentState = editorState.getCurrentContent();
 
-    const startOffset = selectionState.getStartOffset();
-    const endOffset = selectionState.getEndOffset();
-    const selectionLength = endOffset - startOffset;
-    const textLength = editorState
-      .getCurrentContent()
-      .getPlainText()
-      .length;
+    const isCollapsed = selectionState.isCollapsed();
+    const isFirstBlock =
+      contentState.getFirstBlock().getKey() === selectionState.getStartKey();
+    const isLastBlock =
+      contentState.getLastBlock().getKey() === selectionState.getEndKey();
+    const isBlockStart =
+      selectionState.getStartOffset() === 0;
+    const isBlockEnd =
+      selectionState.getEndOffset() === contentState.getLastBlock().getLength();
 
     // When pressing "backspace" at the beginning of the section, it will merge
     // it with the previous one:
     if (
       e === 'backspace' &&
-      selectionLength === 0 &&
-      startOffset === 0
+      isCollapsed &&
+      isFirstBlock &&
+      isBlockStart &&
+      this.props.onMergeBefore
     ) {
       this.props.onMergeBefore({ index: this.props.index });
       return true;
@@ -219,8 +224,10 @@ export default React.createClass({
     // the next one:
     if (
       e === 'delete' &&
-      selectionLength === 0 &&
-      endOffset === textLength
+      isCollapsed &&
+      isLastBlock &&
+      isBlockEnd &&
+      this.props.onMergeAfter
     ) {
       this.props.onMergeAfter({ index: this.props.index });
       return true;
@@ -292,7 +299,7 @@ export default React.createClass({
               placeholder={ t('Editor.Section.placeholder') }
               onBlur={ this.onTextBlur }
               onChange={ this.onChangeText }
-              handleKeyCommand={ null /* this.onKeyCommand */ }
+              handleKeyCommand={ this.onKeyCommand }
               editorState={ this.state.editorState }
             />
           </div>
