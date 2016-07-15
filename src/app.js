@@ -8,6 +8,17 @@ import App from './views/App.jsx';
 
 import '../styles/app.less';
 
+// Save state to local storage:
+state.on(
+  'update',
+  () => localStorage.setItem('state', JSON.stringify(state.get()))
+);
+
+// Use previously saved state if any:
+if (localStorage.getItem('state')) {
+  state.set(JSON.parse(localStorage.getItem('state')));
+}
+
 // Initial rendering:
 render(
   <App tree={ state } />,
