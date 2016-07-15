@@ -1,0 +1,35 @@
+*[data-component="inline-toolbar"] {
+  position: absolute;
+
+  background: white;
+  border: 1px dashed black;
+  z-index: 10;
+  white-space: nowrap;
+
+  li {
+    display: inline-block;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+
+    &::after {
+      width: 100%;
+      height: 100%;
+    }
+
+    &[data-active] {
+      color: red;
+    }
+
+    &[data-style="BOLD"]::after {
+      content: 'B';
+      font-weight: bold;
+    }
+
+    &[data-style="ITALIC"]::after {
+      content: 'It';
+      font-style: italic;
+    }
+  }
+}
