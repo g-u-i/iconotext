@@ -9,7 +9,16 @@
     "about": "à propos",
     "editor": "éditer",
     "publish": "publier",
-    "save": "enregistrer"
+    "save": "enregistrer",
+    "open": "charger"
+  },
+
+  "nav": {
+    "fileExtName": "Sauvegarde Iconotexte (*.iconotext)",
+    "parseFail": "Fichier non valide",
+    "loadFail": "Problème pendant le chargement du fichier",
+    "saveFail": "Problème pendant l'enregistrement du fichier",
+    "saveSuccess": "Le fichier a bien été enregistré."
   },
 
   "Editor": {

@@ -18,6 +18,7 @@ const MENU = [
   { id: 'editor', type: 'view', position: 'left' },
   { id: 'publish', type: 'view', position: 'right' },
   { id: 'save', type: 'action', position: 'right' },
+  { id: 'open', type: 'action', position: 'right' },
 ];
 
 export default React.createClass({
@@ -54,8 +55,8 @@ export default React.createClass({
 
     if (type === 'view') {
       this.props.actions.nav.setView(id);
-    } else if (type === 'actions') {
-      // TODO
+    } else if (type === 'action') {
+      this.props.actions.nav[id]();
     }
   },
 
