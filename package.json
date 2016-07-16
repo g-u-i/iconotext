@@ -3,7 +3,7 @@
   "productName": "Iconotext",
   "version": "1.0.0",
   "description": "a tool to link images with text",
-  "main": "server.js",
+  "main": "main.js",
   "scripts": {
     "lint": "eslint src --ext .js,.jsx",
     "hot-server": "node -r babel-register server.js",
