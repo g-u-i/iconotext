@@ -1,7 +1,7 @@
 import React from 'react';
 import { branch as branchMixin } from 'baobab-react/mixins';
 
-import Section from './Editor.Section.jsx';
+import Section from '../components/Section.jsx';
 
 export default React.createClass({
   displayName: 'iconotexte/Editor',
@@ -72,7 +72,7 @@ export default React.createClass({
     const { ui, sections } = this.state;
 
     return (
-      <div data-component="editor">
+      <div data-view="editor">
         <ul>{
           sections.map((section, i) => (
             <li key={ i }>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { branch as branchMixin } from 'baobab-react/mixins';
 
-import Editor from '../components/Editor.jsx';
+import Editor from './Editor.jsx';
 
 import { t } from '../utils/translator.js';
 

@@ -6,7 +6,7 @@ import { Editor, RichUtils, EditorState, ContentState } from 'draft-js';
 
 import ImageBlock from './ImageBlock.jsx';
 import ImageBlockEdit from './ImageBlockEdit.jsx';
-import InlineToolbar from './Editor.InlineToolbar.jsx';
+import InlineToolbar from './InlineToolbar.jsx';
 
 import { t } from '../utils/translator.js';
 import selectionUtils from '../utils/selection.js';
@@ -15,7 +15,7 @@ const PARAGRAPH_JOIN = '\n<p><br></p>\n';
 const PARAGRAPH_REGEXP = /\n<p><br><\/p>\n/;
 
 export default React.createClass({
-  displayName: 'iconotexte/Editor.Section',
+  displayName: 'iconotexte/Section',
 
   /**
    * Lifecycle:
@@ -185,14 +185,6 @@ export default React.createClass({
     this.setState({ editorState });
   },
   onKeyCommand(e) {
-    // TODO:
-    // This feature is disabled at the moment (check Editor props).
-    // The issues to solve are:
-    //   1. If the cursor is at the beginning of a line (I guess an internal
-    //      block?), then startOffset is 0.
-    //   2. If there is a line break in the paragraph, then endOffset is not
-    //      equal to the text length.
-
     const { editorState } = this.state;
     const selectionState = editorState.getSelection();
     const contentState = editorState.getCurrentContent();
@@ -245,7 +237,7 @@ export default React.createClass({
 
     return (
       <div
-        data-component="editor-section"
+        data-component="section"
         data-full={ !!(section.img && section.text) || undefined }
       >
         <div className="wrapper">
