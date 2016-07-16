@@ -1,5 +1,7 @@
 import state from '../state.js';
 
+const randInt4 = () => Math.ceil(Math.random() * 4);
+
 export default {
   update({ index, updates }) {
     const section = state.select('document', 'sections', index);
@@ -16,9 +18,15 @@ export default {
     state.set(['document', 'sections'], sections);
   },
 
-  insert({ index, text = '', img = null }) {
+  insert({
+    index,
+    img = null,
+    text = '',
+    imgIcon = randInt4(),
+    textIcon = randInt4(),
+  }) {
     const sections = state.get('document', 'sections').slice(0);
-    sections.splice(index + 1, 0, { text, img });
+    sections.splice(index + 1, 0, { text, img, textIcon, imgIcon });
 
     state.set(['document', 'sections'], sections);
     state.set(['ui', 'sectionEditingImage'], null);
@@ -38,6 +46,8 @@ export default {
         sections[index].text,
         sections[index + 1].text,
       ].filter(s => !!s).join('\n'),
+      imgIcon: sections[index].imgIcon,
+      textIcon: sections[index].textIcon,
     };
 
     // Delete section:
@@ -60,6 +70,8 @@ export default {
         sections[index - 1].text,
         sections[index].text,
       ].filter(s => !!s).join('\n'),
+      imgIcon: sections[index - 1].imgIcon,
+      textIcon: sections[index - 1].textIcon,
     };
 
     // Delete section:

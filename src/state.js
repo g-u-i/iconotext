@@ -18,7 +18,7 @@ export default new Baobab({
   // Document state:
   document: {
     // Sections format:
-    // { text: '?MarkdownString', img: '?Image' }
+    // { text: '?HTMLString', img: '?Image', textIcon: '?int', imgIcon: '?int' }
     sections: [],
   },
 });

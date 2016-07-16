@@ -22,11 +22,15 @@ export default React.createClass({
    * **********
    */
   getInitialState() {
+    const { text } = this.props.section;
+
     return {
       showToolbar: false,
       toolbarPosition: null,
       editorState: EditorState.createWithContent(
-        ContentState.createFromText('')
+        text ?
+          this.setHTMLText(text) :
+          ContentState.createFromText('')
       ),
     };
   },
@@ -112,15 +116,19 @@ export default React.createClass({
     // This setTimeout is here to ensure that the frame following the loss of
     // the focus, the editor will effectively lose its selection:
     setTimeout(
-      () => this.setState({
-        // Hide toolbar:
-        showToolbar: false,
+      () => {
+        if (!this.isMounted()) return; // eslint-disable-line
 
-        // Clear current selection:
-        editorState: EditorState.moveSelectionToEnd(
-          this.state.editorState,
-        ),
-      }),
+        this.setState({
+          // Hide toolbar:
+          showToolbar: false,
+
+          // Clear current selection:
+          editorState: EditorState.moveSelectionToEnd(
+            this.state.editorState,
+          ),
+        });
+      },
       0
     );
   },
@@ -234,18 +242,19 @@ export default React.createClass({
    */
   render() {
     const { section, editingImg } = this.props;
+    const { img, text, imgIcon } = section;
 
     return (
       <div
         data-component="section"
-        data-full={ !!(section.img && section.text) || undefined }
+        data-full={ !!(img && text) || undefined }
       >
         <div className="wrapper">
           <div className="img">
             {
-              (section.img && !editingImg) ?
+              (img && !editingImg) ?
                 <ImageBlock
-                  img={ section.img }
+                  img={ img }
                   onDelete={ this.onChangeImg }
                 /> :
                 undefined
@@ -253,7 +262,7 @@ export default React.createClass({
             {
               editingImg ?
                 <ImageBlockEdit
-                  img={ section.img }
+                  img={ img }
                   setImg={ this.onChangeImg }
                 /> :
                 undefined
@@ -265,7 +274,7 @@ export default React.createClass({
           {
             !editingImg ?
               <button onClick={ this.onClickEditImg }>
-                <img src="../assets/icons/ico-edit-img-1.svg" />
+                <img src={ `../assets/icons/ico-edit-img-${ imgIcon }.svg` } />
               </button> :
               null
           }
