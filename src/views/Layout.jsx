@@ -3,16 +3,20 @@ import { branch as branchMixin } from 'baobab-react/mixins';
 
 import About from './About.jsx';
 import Editor from './Editor.jsx';
+import Publish from './Publish.jsx';
 
 import { t } from '../utils/translator.js';
 
 const VIEWS = {
   about: About,
   editor: Editor,
+  publish: Publish,
 };
+
 const MENU = [
   { id: 'about', type: 'view', position: 'left' },
-  { id: 'publish', type: 'action', position: 'right' },
+  { id: 'editor', type: 'view', position: 'left' },
+  { id: 'publish', type: 'view', position: 'right' },
   { id: 'save', type: 'action', position: 'right' },
 ];
 
@@ -45,11 +49,13 @@ export default React.createClass({
    */
   onClickMenu(e) {
     const target = e.currentTarget;
-    const id = target.getAttribute('data-menu-id');
-    const type = target.getAttribute('data-menu-type');
+    const id = target.getAttribute('data-view');
+    const type = target.getAttribute('data-type');
 
     if (type === 'view') {
       this.props.actions.nav.setView(id);
+    } else if (type === 'actions') {
+      // TODO
     }
   },
 
@@ -85,13 +91,15 @@ export default React.createClass({
         { /* MENU */ }
         <div className="foot">
           <ul className="menu">{
-            MENU.map(({ id, type, position }) => (
+            MENU.filter(
+              ({ id, type }) => type !== 'view' || id !== view
+            ).map(({ id, type, position }) => (
               <li
                 key={ id }
-                data-menu-id={ id }
-                data-menu-type={ type }
-                onClick={ this.onClickMenu }
+                data-view={ id }
+                data-type={ type }
                 className={ position }
+                onClick={ this.onClickMenu }
               >
                 <div className="icon" />
                 <div className="label">{

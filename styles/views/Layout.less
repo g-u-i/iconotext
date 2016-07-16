@@ -120,14 +120,17 @@
 
         transition: transform .2s;
       }
-      &[data-menu-id="about"] .icon {
+      &[data-view="about"] .icon {
         background-image: url(../../assets/icons/ico-about-1.svg);
       }
-      &[data-menu-id="publish"] .icon {
-        background-image: url(../../assets/icons/ico-save-1.svg);
+      &[data-view="editor"] .icon {
+        background-image: url(../../assets/icons/logo-mini.svg);
       }
-      &[data-menu-id="save"] .icon {
+      &[data-view="publish"] .icon {
         background-image: url(../../assets/icons/ico-preview-1.svg);
+      }
+      &[data-view="save"] .icon {
+        background-image: url(../../assets/icons/ico-save-1.svg);
       }
 
       &:hover .icon {
