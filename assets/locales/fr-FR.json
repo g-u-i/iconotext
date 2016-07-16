@@ -5,6 +5,12 @@
     "title": "iconotexte"
   },
 
+  "menu": {
+    "about": "à propos",
+    "publish": "publier",
+    "save": "enregistrer"
+  },
+
   "Editor": {
     "Section": {
       "placeholder": "Collez du texte ici!"

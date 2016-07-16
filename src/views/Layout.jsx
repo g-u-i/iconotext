@@ -8,6 +8,11 @@ import { t } from '../utils/translator.js';
 const VIEWS = {
   editor: Editor,
 };
+const MENU = [
+  { id: 'about', type: 'view', position: 'left' },
+  { id: 'publish', type: 'action', position: 'right' },
+  { id: 'save', type: 'action', position: 'right' },
+];
 
 export default React.createClass({
   displayName: 'iconotexte/Layout',
@@ -55,7 +60,21 @@ export default React.createClass({
 
         { /* MENU */ }
         <div className="foot">
-          { /* TODO */ }
+          <ul className="menu">{
+            MENU.map(({ id, type, position }) => (
+              <li
+                key={ id }
+                data-menu-id={ id }
+                data-menu-type={ type }
+                className={ position }
+              >
+                <div className="icon" />
+                <div className="label">{
+                  t(`menu.${ id }`)
+                }</div>
+              </li>
+            ))
+          }</ul>
         </div>
       </div>
     );
