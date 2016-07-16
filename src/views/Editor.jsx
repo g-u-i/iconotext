@@ -18,7 +18,7 @@ export default React.createClass({
    */
   handleAppendTextSection() {
     const index = this.state.sections.length;
-    this.props.actions.insertSection({ index });
+    this.props.actions.sections.insert({ index });
 
     // Give the newly inserted section the focus:
     window.setTimeout(
@@ -28,11 +28,11 @@ export default React.createClass({
   },
   handleAppendImageSection() {
     const index = this.state.sections.length;
-    this.props.actions.insertSection({ index });
-    this.props.actions.editSectionImage({ index });
+    this.props.actions.sections.insert({ index });
+    this.props.actions.sections.editImage({ index });
   },
   handleInsertSection({ index, text, img }) {
-    this.props.actions.insertSection({ index, text, img });
+    this.props.actions.sections.insert({ index, text, img });
 
     // Give the newly inserted section the focus:
     window.setTimeout(
@@ -41,26 +41,26 @@ export default React.createClass({
     );
   },
   handleDeleteSection({ index }) {
-    this.props.actions.deleteSection({ index });
+    this.props.actions.sections.delete({ index });
   },
   handleChangeSectionText({ index, text }) {
-    this.props.actions.updateSection({ index, updates: { text } });
+    this.props.actions.sections.update({ index, updates: { text } });
   },
   handleChangeSectionImg({ index, img }) {
-    this.props.actions.updateSection({ index, updates: { img } });
+    this.props.actions.sections.update({ index, updates: { img } });
   },
   handleMergeAfter({ index }) {
-    this.props.actions.mergeSectionAfter({ index });
+    this.props.actions.sections.mergeAfter({ index });
   },
   handleMergeBefore({ index }) {
-    this.props.actions.mergeSectionBefore({ index });
+    this.props.actions.sections.mergeBefore({ index });
 
     // Give the first section the focus:
     this.refs[`section-${ index - 1 }`].refs.editor.focus();
   },
 
   handleEditImage({ index }) {
-    this.props.actions.editSectionImage({ index });
+    this.props.actions.sections.editImage({ index });
   },
 
 
