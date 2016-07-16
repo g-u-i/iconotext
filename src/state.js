@@ -4,6 +4,10 @@ export default new Baobab({
   // Interface language:
   locale: 'fr-FR',
 
+  // Current view:
+  // 'editor', 'about', 'preview', etc...
+  view: 'editor',
+
   // Sections format:
   // { text: '?MarkdownString', img: '?Image' }
   sections: [],

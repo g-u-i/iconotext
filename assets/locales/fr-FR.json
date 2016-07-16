@@ -1,4 +1,10 @@
 {
+  "commons": {
+    "titleLeft": "icono",
+    "titleRight": "texte",
+    "title": "iconotexte"
+  },
+
   "Editor": {
     "Section": {
       "placeholder": "Collez du texte ici!"

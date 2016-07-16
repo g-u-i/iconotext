@@ -1,0 +1,123 @@
+*[data-view="layout"] {
+  @head_height: 160px;
+  @foot_height: 160px;
+
+  @logo_width: 100px;
+  @logo_height: 80px;
+
+  @transition_time: 1.2s;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .head {
+    height: @head_height;
+    position: relative;
+
+    i.logo {
+      position: absolute;
+      top: 0;
+
+      display: inline-block;
+      width: @logo_width;
+      height: @logo_height;
+
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      background-color: transparent;
+
+      transition: @transition_time ease-in-out;
+
+      &.logo.left {
+        background-image: url(../../assets/icons/logo-left.svg);
+        left: 0;
+      }
+      &.logo.right {
+        background-image: url(../../assets/icons/logo-right.svg);
+        right: 0;
+      }
+    }
+
+    h1.title {
+      display: inline-block;
+      position: absolute;
+      top: @logo_height;
+      color: white;
+      text-shadow:
+        2px 0 0 black,
+        -2px 0 0 black,
+        0 2px 0 black,
+        0 -2px 0 black,
+        1px 1px black,
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black;
+
+      transition: @transition_time ease-in-out;
+      transition-delay: @transition_time / 2;
+
+      &.title.left {
+        left: 0;
+      }
+      &.title.right {
+        right: 0;
+      }
+    }
+  }
+
+  .main {
+    flex-grow: 1;
+    position: relative;
+
+    & > .wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      & > div {
+        height: 100%;
+      }
+    }
+  }
+
+  .foot {
+    height: @foot_height;
+  }
+
+  .main,
+  .foot {
+    opacity: 0;
+    transition: @transition_time / 2 ease-in-out;
+    transition-delay: @transition_time;
+  }
+
+  &[data-anim] {
+    .head {
+      i.logo.left {
+        left: 50%;
+        margin-left: -@logo_width / 2;
+      }
+      i.logo.right {
+        right: 50%;
+        margin-right: -@logo_width / 2;
+      }
+      h1.title.left {
+        left: 50%;
+        transform: translateX(-100%);
+      }
+      h1.title.right {
+        right: 50%;
+        transform: translateX(100%);
+      }
+    }
+
+    .main,
+    .foot {
+      opacity: 1;
+    }
+  }
+}
