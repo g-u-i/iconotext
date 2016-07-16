@@ -8,7 +8,7 @@ export default React.createClass({
   mixins: [branchMixin],
   cursors: {
     ui: 'ui',
-    sections: 'sections',
+    sections: ['document', 'sections'],
   },
 
 

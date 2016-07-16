@@ -2,7 +2,7 @@ import state from '../state.js';
 
 export default {
   update({ index, updates }) {
-    const section = state.select('sections', index);
+    const section = state.select('document', 'sections', index);
     if (!section) throw new Error(`Section ${ index } does not exist.`);
 
     if ('img' in updates) section.set('img', updates.img);
@@ -10,22 +10,22 @@ export default {
   },
 
   delete({ index }) {
-    const sections = state.get('sections').slice(0);
+    const sections = state.get('document', 'sections').slice(0);
     sections.splice(index, 1);
 
-    state.set('sections', sections);
+    state.set(['document', 'sections'], sections);
   },
 
   insert({ index, text = '', img = null }) {
-    const sections = state.get('sections').slice(0);
+    const sections = state.get('document', 'sections').slice(0);
     sections.splice(index + 1, 0, { text, img });
 
-    state.set('sections', sections);
+    state.set(['document', 'sections'], sections);
     state.set(['ui', 'sectionEditingImage'], null);
   },
 
   mergeAfter({ index }) {
-    const sections = state.get('sections').slice(0);
+    const sections = state.get('document', 'sections').slice(0);
 
     if (index === sections.length - 1) {
       throw new Error(`Section ${ index + 1 } does not exist.`);
@@ -43,11 +43,11 @@ export default {
     // Delete section:
     sections.splice(index + 1, 1);
 
-    state.set('sections', sections);
+    state.set(['document', 'sections'], sections);
   },
 
   mergeBefore({ index }) {
-    const sections = state.get('sections').slice(0);
+    const sections = state.get('document', 'sections').slice(0);
 
     if (index === 0) {
       throw new Error(`Section ${ index - 1 } does not exist.`);
@@ -65,7 +65,7 @@ export default {
     // Delete section:
     sections.splice(index, 1);
 
-    state.set('sections', sections);
+    state.set(['document', 'sections'], sections);
   },
 
   editImage({ index }) {
