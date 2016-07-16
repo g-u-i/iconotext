@@ -1,7 +1,7 @@
-import state from './state.js';
-
+import nav from './actions/nav.js';
 import sections from './actions/sections.js';
 
 export default {
+  nav,
   sections,
 };

@@ -1,11 +1,13 @@
 import React from 'react';
 import { branch as branchMixin } from 'baobab-react/mixins';
 
+import About from './About.jsx';
 import Editor from './Editor.jsx';
 
 import { t } from '../utils/translator.js';
 
 const VIEWS = {
+  about: About,
   editor: Editor,
 };
 const MENU = [
@@ -21,6 +23,10 @@ export default React.createClass({
     view: ['view'],
   },
 
+  /**
+   * Lifecycle:
+   * **********
+   */
   getInitialState() {
     return {
       anim: false,
@@ -33,6 +39,24 @@ export default React.createClass({
     );
   },
 
+  /**
+   * Handlers:
+   * *********
+   */
+  onClickMenu(e) {
+    const target = e.currentTarget;
+    const id = target.getAttribute('data-menu-id');
+    const type = target.getAttribute('data-menu-type');
+
+    if (type === 'view') {
+      this.props.actions.nav.setView(id);
+    }
+  },
+
+  /**
+   * Render:
+   * *******
+   */
   render() {
     const { view } = this.state;
     const { actions } = this.props;
@@ -66,6 +90,7 @@ export default React.createClass({
                 key={ id }
                 data-menu-id={ id }
                 data-menu-type={ type }
+                onClick={ this.onClickMenu }
                 className={ position }
               >
                 <div className="icon" />
