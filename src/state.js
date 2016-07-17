@@ -30,4 +30,16 @@ export default new Baobab({
     //   - date
     meta: [],
   },
+
+  // Publication settings:
+  publish: {
+    // 'print' or 'screen'
+    support: 'print',
+
+    // 'a4' or 'pocket'
+    format: 'a4',
+
+    // 'landscape' or 'portait'
+    orientation: 'landscape',
+  },
 });

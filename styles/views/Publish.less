@@ -1,3 +1,153 @@
 *[data-view="publish"] {
-  // TODO
+  .actions {
+    position: fixed;
+    top: 64px;
+    right: -8px;
+
+    background: white;
+    border-radius: 8px;
+    padding: 8px;
+    padding-right: 16px;
+    border: 2px solid black;
+
+    li {
+      position: relative;
+
+      display: inline-block;
+      height: 90px;
+      width: 120px;
+      margin-top: 16px;
+      text-align: center;
+      cursor: pointer;
+
+      .label {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .icon {
+        width: 100%;
+        height: 30px;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        background-color: transparent;
+
+        transition: transform .2s;
+      }
+      &[data-action="exportPdf"] .icon {
+        background-image: url(../../assets/icons/ico-export-1.svg);
+      }
+      &[data-action="exportLulu"] .icon {
+        background-image: url(../../assets/icons/ico-laptop.svg);
+      }
+
+      &:hover .icon {
+        transform: rotate(-12deg);
+      }
+    }
+  }
+
+  .options {
+    position: fixed;
+    top: 50%;
+    right: 32px;
+    transform: translateY(-50%);
+
+    li.option {
+      .icon,
+      .values {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .icon {
+        width: 80px;
+        height: 100px;
+        margin-right: 16px;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        background-color: transparent;
+      }
+
+      label,
+      input[type="radio"] {
+        cursor: pointer;
+      }
+
+      &[data-option="support"][data-value="print"] .icon {
+        background-image: url(../../assets/icons/ico-printed.svg);
+      }
+      &[data-option="support"][data-value="screen"] .icon {
+        background-image: url(../../assets/icons/ico-slideshow.svg);
+      }
+      &[data-option="format"][data-value="a4"] .icon {
+        background-image: url(../../assets/icons/ico-a4.svg);
+      }
+      &[data-option="format"][data-value="pocket"] .icon {
+        background-image: url(../../assets/icons/ico-pocket.svg);
+      }
+      &[data-option="orientation"][data-value="landscape"] .icon {
+        background-image: url(../../assets/icons/ico-landscape.svg);
+      }
+      &[data-option="orientation"][data-value="portait"] .icon {
+        background-image: url(../../assets/icons/ico-portrait.svg);
+      }
+    }
+  }
+
+  .preview {
+    @section_width: 140px;
+    @section_height: 198px;
+
+    margin-top: 64px - 8px;
+
+    .page {
+      vertical-align: top;
+      display: inline-block;
+      width: 2 * @section_width;
+      height: @section_height;
+      background: white;
+      border: 2px solid black;
+      margin: 8px;
+      position: relative;
+    }
+
+    .cover,
+    .section {
+      width: @section_width;
+      height: @section_height;
+      border: 2px solid black;
+      padding: 4px;
+      text-align: center;
+
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-color: white;
+
+      font-size: 12px;
+
+      span.content > * {
+        background: white;
+        border: 2px solid black;
+      }
+    }
+
+    .cover {
+      margin: 8px;
+      position: absolute;
+      right: 100%;
+    }
+
+    .section {
+      position: absolute;
+      right: -2px;
+      top: -2px;
+    }
+  }
 }

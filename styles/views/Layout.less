@@ -9,6 +9,9 @@
   @transition_time_half: @transition_time / 2;
   @transition_time_twice: @transition_time * 2;
 
+  max-width: 800px;
+  margin: auto;
+
   height: 100%;
   position: relative;
 
@@ -196,6 +199,16 @@
     .main,
     .foot {
       opacity: 1;
+    }
+  }
+
+  &[data-current-view="publish"] {
+    .head {
+      display: none;
+    }
+
+    .main > .wrapper > div {
+      padding-top: 0;
     }
   }
 }

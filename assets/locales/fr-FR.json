@@ -38,5 +38,22 @@
     "textDescription": "quels textes\u00A0?",
     "author": "par qui\u00A0?",
     "date": "quand\u00A0?"
+  },
+
+  "Publish": {
+    "actions": {
+      "exportPdf": "exporter en pdf",
+      "exportLulu": "pdf pour lulu.com"
+    },
+    "options": {
+      "support:print": "impression",
+      "support:screen": "écran",
+
+      "format:a4": "a4",
+      "format:pocket": "poche",
+
+      "orientation:landscape": "paysage",
+      "orientation:portait": "portrait"
+    }
   }
 }
