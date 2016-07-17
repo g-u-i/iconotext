@@ -7,14 +7,15 @@
 
   @transition_time: 1.2s;
 
-  display: flex;
-  flex-direction: column;
   height: 100%;
+  position: relative;
 
   .head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: @head_height;
-    position: relative;
-    border-bottom: 2px dashed black;
 
     i.logo {
       position: absolute;
@@ -69,9 +70,6 @@
   }
 
   .main {
-    flex-grow: 1;
-    position: relative;
-
     & > .wrapper {
       position: absolute;
       top: 0;
@@ -80,14 +78,18 @@
       bottom: 0;
 
       & > div {
-        height: 100%;
+        padding-top: @head_height + 32px;
+        margin-bottom: @foot_height + 32px;
       }
     }
   }
 
   .foot {
-    height: @foot_height;
-    border-top: 2px dashed black;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: @head_height;
 
     .menu li {
       position: relative;
@@ -150,6 +152,16 @@
     opacity: 0;
     transition: @transition_time / 2 ease-in-out;
     transition-delay: @transition_time;
+  }
+
+  .head,
+  .foot {
+    z-index: 1000;
+
+    & > .wrapper {
+      max-width: 800px;
+      margin: auto;
+    }
   }
 
   &[data-anim] {

@@ -74,14 +74,6 @@ export default React.createClass({
         data-view="layout"
         data-anim={ this.state.anim || undefined }
       >
-        { /* TITLE */ }
-        <div className="head">
-          <i className="logo left" />
-          <i className="logo right" />
-          <h1 className="title left">{ t('commons.titleLeft') }</h1>
-          <h1 className="title right">{ t('commons.titleRight') }</h1>
-        </div>
-
         { /* CURRENT VIEW */ }
         <div className="main">
           <div className="wrapper">
@@ -89,9 +81,19 @@ export default React.createClass({
           </div>
         </div>
 
+        { /* TITLE */ }
+        <div className="head">
+          <div className="wrapper">
+            <i className="logo left" />
+            <i className="logo right" />
+            <h1 className="title left">{ t('commons.titleLeft') }</h1>
+            <h1 className="title right">{ t('commons.titleRight') }</h1>
+          </div>
+        </div>
+
         { /* MENU */ }
         <div className="foot">
-          <ul className="menu">{
+          <ul className="menu wrapper">{
             MENU.filter(
               ({ id, type }) => type !== 'view' || id !== view
             ).map(({ id, type, position }) => (
