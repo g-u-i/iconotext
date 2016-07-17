@@ -1,6 +1,7 @@
 import React from 'react';
 import { branch as branchMixin } from 'baobab-react/mixins';
 
+import PDFRendering from '../components/PDFRendering.jsx';
 import { t } from '../utils/translator.js';
 
 const ACTIONS = [
@@ -105,52 +106,12 @@ export default React.createClass({
           ))
         }</ul>
 
-        <div
-          className="preview"
-          data-format={ publish.format }
-          data-support={ publish.support }
-          data-orientation={ publish.orientation }
-        >
-          <div
-            key="cover"
-            className="cover"
-            style={{
-              backgroundImage:
-                meta.image ?
-                  `url(${ meta.image.base64 })` :
-                  undefined,
-            }}
-          >
-            <span
-              className="content"
-              dangerouslySetInnerHTML={{
-                __html: meta.title,
-              }}
-            />
-          </div>
-
-          {
-            sections.map(({ img, text }, i) => (
-              <div
-                key={ i }
-                className="page"
-              >
-                <div
-                  className="section"
-                  style={{
-                    backgroundImage: img ? `url(${ img.base64 })` : undefined,
-                  }}
-                >
-                  <span
-                    className="content"
-                    dangerouslySetInnerHTML={{
-                      __html: text,
-                    }}
-                  />
-                </div>
-              </div>
-            ))
-          }
+        <div className="preview">
+          <PDFRendering
+            cover={ meta }
+            pages={ sections }
+            options={ publish }
+          />
         </div>
       </div>
     );

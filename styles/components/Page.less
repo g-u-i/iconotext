@@ -1,0 +1,59 @@
+*[data-component="page"] {
+  // This "ratio" variable is temporary:
+  @ratio: 5;
+
+  @width: 794px / @ratio;
+  @height: 1223px / @ratio;
+  @padding: 64px / @ratio;
+  @font_size: 64px / @ratio;
+
+  height: @height;
+  position: relative;
+  background: white;
+
+  font-size: @font_size;
+
+  &:not([data-cover]) {
+    width: 2 * @width;
+
+    .content,
+    .background {
+      left: 50%;
+    }
+  }
+
+  &[data-cover] {
+    width: @width;
+
+    .content,
+    .background {
+      left: 0;
+    }
+  }
+
+  .content,
+  .background {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+  }
+
+  .content {
+    padding: 64px / 10;
+
+    & > * {
+      background: white;
+      border: 2px solid black;
+      text-align: center;
+    }
+  }
+
+  .background {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: white;
+  }
+}
