@@ -72,6 +72,7 @@ export default React.createClass({
     return (
       <div
         data-view="layout"
+        data-current-view={ view }
         data-anim={ this.state.anim || undefined }
       >
         { /* CURRENT VIEW */ }

@@ -6,7 +6,7 @@ const INLINE_STYLES = [
 ];
 
 export default React.createClass({
-  displayName: 'iconotexte/Editor.InlineToolbar',
+  displayName: 'iconotexte/InlineToolbar',
 
   toggleInlineStyle(e) {
     e.preventDefault();
