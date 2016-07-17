@@ -6,6 +6,8 @@
   @logo_height: 80px;
 
   @transition_time: 1.2s;
+  @transition_time_half: @transition_time / 2;
+  @transition_time_twice: @transition_time * 2;
 
   height: 100%;
   position: relative;
@@ -47,6 +49,9 @@
       position: absolute;
       top: @logo_height;
       color: white;
+      user-select: none;
+      opacity: 1;
+
       text-shadow:
         2px 0 0 black,
         -2px 0 0 black,
@@ -57,8 +62,11 @@
         1px -1px 0 black,
         -1px 1px 0 black;
 
-      transition: @transition_time ease-in-out;
-      transition-delay: @transition_time / 2;
+      transition:
+        @transition_time @transition_time_half left ease-in-out,
+        @transition_time @transition_time_half right ease-in-out,
+        @transition_time @transition_time_half transform ease-in-out,
+        @transition_time_twice @transition_time opacity ease-in-out;
 
       &.title.left {
         left: 0;
@@ -150,8 +158,7 @@
   .main,
   .foot {
     opacity: 0;
-    transition: @transition_time / 2 ease-in-out;
-    transition-delay: @transition_time;
+    transition: @transition_time @transition_time_half ease-in-out;
   }
 
   .head,
@@ -177,10 +184,12 @@
       h1.title.left {
         left: 50%;
         transform: translateX(-100%);
+        opacity: 0;
       }
       h1.title.right {
         right: 50%;
         transform: translateX(100%);
+        opacity: 0;
       }
     }
 
