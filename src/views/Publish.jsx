@@ -37,9 +37,11 @@ export default React.createClass({
    * Handlers:
    * *********
    */
-  onClickAction(/* e */) {
-    // const target = e.currentTarget;
-    // const action = target.getAttribute('data-action');
+  onClickAction(e) {
+    const target = e.currentTarget;
+    const action = target.getAttribute('data-action');
+
+    this.props.actions.publish[action]();
   },
   onSelectOption(e) {
     const target = e.currentTarget;

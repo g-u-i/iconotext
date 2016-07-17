@@ -41,6 +41,8 @@
   },
 
   "Publish": {
+    "pdf": "Fichier .pdf",
+
     "actions": {
       "exportPdf": "exporter en pdf",
       "exportLulu": "pdf pour lulu.com"

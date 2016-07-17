@@ -1,6 +1,14 @@
 import Baobab from 'baobab';
 
 export default new Baobab({
+  // Dirty trick:
+  // ************
+  // Since contents#printToPDF can only print an opened window and it looks very
+  // difficult to setup a valid webpage, we will print the current one.
+  // The actual document to save into the PDF will be displayed when this flag
+  // is true:
+  __exporting: false,
+
   // Interface language:
   locale: 'fr-FR',
 

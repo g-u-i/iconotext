@@ -5,6 +5,8 @@ import About from './About.jsx';
 import Editor from './Editor.jsx';
 import Publish from './Publish.jsx';
 
+import Export from './Export.jsx';
+
 import { t } from '../utils/translator.js';
 
 const VIEWS = {
@@ -26,6 +28,7 @@ export default React.createClass({
   mixins: [branchMixin],
   cursors: {
     view: ['view'],
+    exporting: ['__exporting'],
   },
 
   /**
@@ -65,9 +68,17 @@ export default React.createClass({
    * *******
    */
   render() {
-    const { view } = this.state;
+    const { exporting, view } = this.state;
     const { actions } = this.props;
     const ReactView = VIEWS[view || 'editor'];
+
+    // Weird trick for PDF export:
+    // If the __exporting flag is true, only render the Export view:
+    if (exporting) {
+      return (
+        <Export />
+      );
+    }
 
     return (
       <div
