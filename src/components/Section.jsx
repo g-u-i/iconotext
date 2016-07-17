@@ -241,8 +241,8 @@ export default React.createClass({
    * **********
    */
   render() {
-    const { section, editingImg } = this.props;
-    const { img, text, imgIcon } = section;
+    const { section, editingImg, placeholder } = this.props;
+    const { img, text, imgIcon = 1 } = section;
 
     return (
       <div
@@ -297,11 +297,13 @@ export default React.createClass({
             }
             <Editor
               ref="editor"
-              placeholder={ t('Editor.Section.placeholder') }
               onBlur={ this.onTextBlur }
               onChange={ this.onChangeText }
               handleKeyCommand={ this.onKeyCommand }
               editorState={ this.state.editorState }
+              placeholder={
+                placeholder || t('Editor.Section.placeholder')
+              }
             />
           </div>
         </div>

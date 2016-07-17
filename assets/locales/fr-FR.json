@@ -30,5 +30,13 @@
   "ImageBlockEdit": {
     "webcamText": "capturer depuis la webcam\u00A0?",
     "imageText": "glisser une image ou cliquer pour sélectionner un fichier"
+  },
+
+  "MetaForm": {
+    "title": "titre\u00A0?",
+    "imageDescription": "quelles images\u00A0?",
+    "textDescription": "quels textes\u00A0?",
+    "author": "par qui\u00A0?",
+    "date": "quand\u00A0?"
   }
 }

@@ -2,12 +2,14 @@ import React from 'react';
 import { branch as branchMixin } from 'baobab-react/mixins';
 
 import Section from '../components/Section.jsx';
+import MetaForm from '../components/MetaForm.jsx';
 
 export default React.createClass({
   displayName: 'iconotexte/Editor',
   mixins: [branchMixin],
   cursors: {
     ui: 'ui',
+    meta: ['document', 'meta'],
     sections: ['document', 'sections'],
   },
 
@@ -63,17 +65,28 @@ export default React.createClass({
     this.props.actions.sections.editImage({ index });
   },
 
+  handleEditMeta(meta) {
+    this.props.actions.meta.update(meta);
+  },
+
 
   /**
    * Rendering:
    * **********
    */
   render() {
-    const { ui, sections } = this.state;
+    const { ui, meta, sections } = this.state;
 
     return (
       <div data-view="editor">
-        <ul>{
+        <MetaForm
+          meta={ meta }
+          onChange={ this.handleEditMeta }
+          editImg={ this.handleEditImage }
+          editingImg={ ui.sectionEditingImage === 'meta' }
+        />
+
+        <ul className="sections">{
           sections.map((section, i) => (
             <li key={ i }>
               <Section

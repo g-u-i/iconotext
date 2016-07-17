@@ -1,0 +1,38 @@
+*[data-component="meta-form"] {
+  margin-bottom: 64px;
+
+  fieldset {
+    outline: none;
+    border: none;
+    text-align: center;
+  }
+
+  input {
+    font-family: iconofont;
+    font-size: 20px;
+    color: black;
+
+    border: 2px solid black;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 8px;
+    margin: 4px 0;
+
+    width: auto;
+
+    transition: 0.4s;
+
+    &:not(:first-child) {
+      margin-left: -2px;
+    }
+
+    &[value=""],
+    &:not([value]) {
+      border-radius: 6px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

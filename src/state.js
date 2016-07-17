@@ -20,5 +20,14 @@ export default new Baobab({
     // Sections format:
     // { text: '?HTMLString', img: '?Image', textIcon: '?int', imgIcon: '?int' }
     sections: [],
+
+    // Document metadata:
+    //   - title
+    //   - image
+    //   - imageDescription
+    //   - textDescription
+    //   - author
+    //   - date
+    meta: [],
   },
 });
