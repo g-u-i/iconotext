@@ -6,4 +6,7 @@ $(document).ready(function() {
     loopHorizontal: false,
     slidesNavigation: true
   });
+
+  $("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
+  $("iframe").addClass('embed-responsive-item');
 });

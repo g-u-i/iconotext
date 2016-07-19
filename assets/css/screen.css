@@ -7091,7 +7091,9 @@ hr {
   margin-bottom: 24px;
 }
 .tpl-home .maincontent .sqr img,
-.tpl-home .jumbotron .sqr img {
+.tpl-home .jumbotron .sqr img,
+.tpl-home .maincontent .sqr .embed-responsive,
+.tpl-home .jumbotron .sqr .embed-responsive {
   background: #FFFFFF;
   border: 2px solid #000000;
   border-radius: 6px;
