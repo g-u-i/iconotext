@@ -5,7 +5,7 @@ export default React.createClass({
   displayName: 'iconotexte/Page',
 
   render() {
-    const { text, img, options, cover } = this.props;
+    const { text, img, options, className } = this.props;
 
     return (
       React.createElement(
@@ -17,22 +17,21 @@ export default React.createClass({
             return iter;
           },
           {
-            'data-cover': cover || undefined,
+            className,
             'data-component': 'page',
           }
         ),
-        <div
-          className="background"
-          style={{
-            backgroundImage: img ? `url(${ img.base64 })` : undefined,
-          }}
-        />,
         <span
           className="content"
           dangerouslySetInnerHTML={{
             __html: text,
           }}
-        />
+        />,
+        img ?
+          <div className="background">
+            <img src={ img.base64 } />
+          </div> :
+          undefined
       )
     );
   },
