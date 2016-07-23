@@ -125,25 +125,9 @@
     }
   }
 
-  @media screen {
+  @media not print {
     *[data-component="pdf-rendering"] {
       padding-top: 56px;
-
-      *[data-component="page"] {
-        display: inline-block;
-        border: 2px solid black;
-        margin: 8px;
-
-        & > * {
-          transform: scale(0.25);
-          transform-origin: top left;
-        }
-
-        &[data-cover] {
-          position: absolute;
-          right: 100%;
-        }
-      }
     }
   }
 

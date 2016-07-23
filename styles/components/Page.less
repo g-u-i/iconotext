@@ -1,23 +1,10 @@
 *[data-component="page"] {
-  // This "ratio" variable is temporary:
-  @ratio: 1;
+  @preview_ratio: 4;
 
-  @width: 794px / @ratio;
-  @height: 1223px / @ratio;
-  @padding: 64px / @ratio;
-  @font_size: 64px / @ratio;
-
-  width: @width;
-  height: @height;
   position: relative;
   background: white;
 
-  font-size: @font_size;
-
-  page-break-after: always !important;
-
-  .content,
-  .background {
+  & > * {
     position: absolute;
     top: 0;
     left: 0;
@@ -26,7 +13,7 @@
   }
 
   .content {
-    padding: 64px / 10;
+    padding: 64px;
 
     & > * {
       background: white;
@@ -42,35 +29,61 @@
     background-color: white;
   }
 
+  @media not print {
+    display: inline-block;
+    border: 2px solid black;
+    margin: 8px;
+
+    & > * {
+      transform: scale(1 / @preview_ratio);
+      transform-origin: top left;
+    }
+  }
+
+  @media print {
+    display: block;
+    break-inside: avoid;
+
+    // Cannot calibrate pages with a 18mm margin...
+    // This hacks kind of fixes it:
+    margin-bottom: -1mm;
+  }
+
+  @ic_print_margin: 18mm;
+  @ic_a4_width: 210mm - 2 * @ic_print_margin;
+  @ic_a4_height: 297mm - 2 * @ic_print_margin;
+  @ic_pocket_width: 107.9mm - 2 * @ic_print_margin;
+  @ic_pocket_height: 174.6mm - 2 * @ic_print_margin;
+
   &[data-format="a4"] {
     &[data-orientation="portrait"] {
       @media not print {
-        width: 21cm / @ic_preview_ratio;
-        height: 29.7cm / @ic_preview_ratio;
+        width: 21cm / @preview_ratio;
+        height: 29.7cm / @preview_ratio;
 
         & > * {
-          width: 100% * @ic_preview_ratio;
-          height: 100% * @ic_preview_ratio;
+          width: 100% * @preview_ratio;
+          height: 100% * @preview_ratio;
         }
       }
       @media print {
-        width: 21cm;
-        height: 29.7cm;
+        width: @ic_a4_width;
+        height: @ic_a4_height;
       }
     }
     &[data-orientation="landscape"] {
       @media not print {
-        width: 29.7cm / @ic_preview_ratio;
-        height: 21cm / @ic_preview_ratio;
+        width: 29.7cm / @preview_ratio;
+        height: 21cm / @preview_ratio;
 
         & > * {
-          width: 100% * @ic_preview_ratio;
-          height: 100% * @ic_preview_ratio;
+          width: 100% * @preview_ratio;
+          height: 100% * @preview_ratio;
         }
       }
       @media print {
-        width: 29.7cm;
-        height: 21cm;
+        width: @ic_a4_height;
+        height: @ic_a4_width;
       }
     }
   }
@@ -78,32 +91,32 @@
   &[data-format="pocket"] {
     &[data-orientation="portrait"] {
       @media not print {
-        width: 10.79cm / @ic_preview_ratio;
-        height: 17.46cm / @ic_preview_ratio;
+        width: 10.79cm / @preview_ratio;
+        height: 17.46cm / @preview_ratio;
 
         & > * {
-          width: 100% * @ic_preview_ratio;
-          height: 100% * @ic_preview_ratio;
+          width: 100% * @preview_ratio;
+          height: 100% * @preview_ratio;
         }
       }
       @media print {
-        width: 10.79cm;
-        height: 17.46cm;
+        width: @ic_pocket_width;
+        height: @ic_pocket_height;
       }
     }
     &[data-orientation="landscape"] {
       @media not print {
-        width: 17.46cm / @ic_preview_ratio;
-        height: 10.79cm / @ic_preview_ratio;
+        width: 17.46cm / @preview_ratio;
+        height: 10.79cm / @preview_ratio;
 
         & > * {
-          width: 100% * @ic_preview_ratio;
-          height: 100% * @ic_preview_ratio;
+          width: 100% * @preview_ratio;
+          height: 100% * @preview_ratio;
         }
       }
       @media print {
-        width: 17.46cm;
-        height: 10.79cm;
+        width: @ic_pocket_height;
+        height: @ic_pocket_width;
       }
     }
   }

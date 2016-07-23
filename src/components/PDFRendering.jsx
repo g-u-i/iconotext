@@ -33,6 +33,7 @@ export default React.createClass({
           @media print {
             @page {
               size: ${ size };
+              margin: 18mm;
             }
           }
         `}</style>

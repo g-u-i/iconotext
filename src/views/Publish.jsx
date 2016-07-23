@@ -61,6 +61,14 @@ export default React.createClass({
 
     return (
       <div data-view="publish">
+        <div className="preview">
+          <PDFRendering
+            cover={ meta }
+            pages={ sections }
+            options={ publish }
+          />
+        </div>
+
         <div className="description">
         </div>
 
@@ -108,14 +116,6 @@ export default React.createClass({
             </li>
           ))
         }</ul>
-
-        <div className="preview">
-          <PDFRendering
-            cover={ meta }
-            pages={ sections }
-            options={ publish }
-          />
-        </div>
 
         {
           exporting ?

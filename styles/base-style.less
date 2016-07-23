@@ -1,5 +1,4 @@
 @ic_blue: #e1f5f7;
-@ic_preview_ratio: 4;
 
 body {
   background: @ic_blue;
@@ -9,6 +8,12 @@ body {
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0.3px;
+}
+
+@media print {
+  body {
+    background: none;
+  }
 }
 
 /*
