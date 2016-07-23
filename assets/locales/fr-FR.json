@@ -42,6 +42,7 @@
 
   "Publish": {
     "pdf": "Fichier .pdf",
+    "exportMessage": "Le PDF est en train d'être généré.",
 
     "actions": {
       "exportPdf": "exporter en pdf",
@@ -55,7 +56,7 @@
       "format:pocket": "poche",
 
       "orientation:landscape": "paysage",
-      "orientation:portait": "portrait"
+      "orientation:portrait": "portrait"
     }
   }
 }

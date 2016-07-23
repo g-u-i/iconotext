@@ -1,41 +1,26 @@
 *[data-component="page"] {
   // This "ratio" variable is temporary:
-  @ratio: 5;
+  @ratio: 1;
 
   @width: 794px / @ratio;
   @height: 1223px / @ratio;
   @padding: 64px / @ratio;
   @font_size: 64px / @ratio;
 
+  width: @width;
   height: @height;
   position: relative;
   background: white;
 
   font-size: @font_size;
 
-  &:not([data-cover]) {
-    width: 2 * @width;
-
-    .content,
-    .background {
-      left: 50%;
-    }
-  }
-
-  &[data-cover] {
-    width: @width;
-
-    .content,
-    .background {
-      left: 0;
-    }
-  }
+  page-break-after: always !important;
 
   .content,
   .background {
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 0;
     right: 0;
     bottom: 0;
   }
@@ -55,5 +40,71 @@
     background-position: center center;
     background-size: cover;
     background-color: white;
+  }
+
+  &[data-format="a4"] {
+    &[data-orientation="portrait"] {
+      @media not print {
+        width: 21cm / @ic_preview_ratio;
+        height: 29.7cm / @ic_preview_ratio;
+
+        & > * {
+          width: 100% * @ic_preview_ratio;
+          height: 100% * @ic_preview_ratio;
+        }
+      }
+      @media print {
+        width: 21cm;
+        height: 29.7cm;
+      }
+    }
+    &[data-orientation="landscape"] {
+      @media not print {
+        width: 29.7cm / @ic_preview_ratio;
+        height: 21cm / @ic_preview_ratio;
+
+        & > * {
+          width: 100% * @ic_preview_ratio;
+          height: 100% * @ic_preview_ratio;
+        }
+      }
+      @media print {
+        width: 29.7cm;
+        height: 21cm;
+      }
+    }
+  }
+
+  &[data-format="pocket"] {
+    &[data-orientation="portrait"] {
+      @media not print {
+        width: 10.79cm / @ic_preview_ratio;
+        height: 17.46cm / @ic_preview_ratio;
+
+        & > * {
+          width: 100% * @ic_preview_ratio;
+          height: 100% * @ic_preview_ratio;
+        }
+      }
+      @media print {
+        width: 10.79cm;
+        height: 17.46cm;
+      }
+    }
+    &[data-orientation="landscape"] {
+      @media not print {
+        width: 17.46cm / @ic_preview_ratio;
+        height: 10.79cm / @ic_preview_ratio;
+
+        & > * {
+          width: 100% * @ic_preview_ratio;
+          height: 100% * @ic_preview_ratio;
+        }
+      }
+      @media print {
+        width: 17.46cm;
+        height: 10.79cm;
+      }
+    }
   }
 }

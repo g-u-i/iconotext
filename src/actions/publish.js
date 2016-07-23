@@ -14,7 +14,7 @@ export default {
     const dialog = remote.dialog;
     const webContents = remote.getCurrentWebContents();
 
-    state.set('__exporting', true);
+    state.set(['ui', 'exporting'], true);
 
     // Wait for the export view to be rendered:
     setTimeout(
@@ -35,6 +35,8 @@ export default {
               ],
             },
             fileName => {
+              state.set(['ui', 'exporting'], false);
+
               if (fileName === undefined) return;
 
               fs.writeFile(
@@ -52,8 +54,6 @@ export default {
                       buttons: ['OK'],
                     });
                   }
-
-                  state.set('__exporting', false);
                 }
               );
             }

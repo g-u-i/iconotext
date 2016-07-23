@@ -1,13 +1,6 @@
 import Baobab from 'baobab';
 
 export default new Baobab({
-  // Dirty trick:
-  // ************
-  // Since contents#printToPDF can only print an opened window and it looks very
-  // difficult to setup a valid webpage, we will print the current one.
-  // The actual document to save into the PDF will be displayed when this flag
-  // is true:
-  __exporting: false,
 
   // Interface language:
   locale: 'fr-FR',
@@ -21,6 +14,9 @@ export default new Baobab({
   ui: {
     // The index of the section with the image import panel opened:
     sectionEditingImage: null,
+
+    // True during the PDF generation:
+    exporting: false,
   },
 
   // Document state:
@@ -47,7 +43,7 @@ export default new Baobab({
     // 'a4' or 'pocket'
     format: 'a4',
 
-    // 'landscape' or 'portait'
-    orientation: 'landscape',
+    // 'portrait' or 'landscape'
+    orientation: 'portrait',
   },
 });

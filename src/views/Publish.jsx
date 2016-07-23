@@ -20,7 +20,7 @@ const OPTIONS = [
   },
   {
     id: 'orientation',
-    values: ['landscape', 'portait'],
+    values: ['portrait', 'landscape'],
   },
 ];
 
@@ -30,6 +30,7 @@ export default React.createClass({
   cursors: {
     publish: ['publish'],
     meta: ['document', 'meta'],
+    exporting: ['ui', 'exporting'],
     sections: ['document', 'sections'],
   },
 
@@ -56,7 +57,7 @@ export default React.createClass({
    * **********
    */
   render() {
-    const { publish, meta, sections } = this.state;
+    const { publish, meta, sections, exporting } = this.state;
 
     return (
       <div data-view="publish">
@@ -115,6 +116,16 @@ export default React.createClass({
             options={ publish }
           />
         </div>
+
+        {
+          exporting ?
+            <div className="export-message">
+              <div className="wrapper">
+                <div className="message">{ t('Publish.exportMessage') }</div>
+              </div>
+            </div> :
+            undefined
+        }
       </div>
     );
   },
