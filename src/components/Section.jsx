@@ -2,7 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { stateToHTML } from 'draft-js-export-html';
 import { stateFromHTML } from 'draft-js-import-html';
-import { Editor, RichUtils, EditorState, ContentState } from 'draft-js';
+import {
+  Editor,
+  RichUtils,
+  EditorState,
+  ContentState,
+  SelectionState,
+} from 'draft-js';
 
 import ImageBlock from './ImageBlock.jsx';
 import ImageBlockEdit from './ImageBlockEdit.jsx';
@@ -144,24 +150,24 @@ export default React.createClass({
     this.props.editImg({ index: null });
   },
   onTextBlur() {
-    // There are some collision between this handler and this.onChangeText.
-    // This setTimeout is here to ensure that the frame following the loss of
-    // the focus, the editor will effectively lose its selection:
-    setTimeout(
-      () => {
-        if (!this.isMounted()) return; // eslint-disable-line
-
-        this.setState({
-          // Hide toolbar:
-          showToolbar: false,
-        });
-      },
-      0
-    );
+    if (this.state.showToolbar) {
+      this.setState({
+        // Hide toolbar:
+        showToolbar: false,
+        editorState: EditorState.acceptSelection(
+          this.state.editorState,
+          SelectionState.createEmpty(),
+        ),
+      });
+    }
   },
   onChangeText(editorState) {
     const hasFocus = editorState.getSelection().getHasFocus();
     let newText = this.getHTMLText(editorState.getCurrentContent());
+
+    // In the specific case of focus losing while showing the toolbar, the
+    // onTextBlur handler will deal with the state update:
+    if (!hasFocus && this.state.showToolbar) return;
 
     // Check selection:
     if (
@@ -189,7 +195,7 @@ export default React.createClass({
     }
 
     // Check if text has been updated:
-    if (newText !== this.props.section.text) {
+    if (hasFocus && newText !== this.props.section.text) {
       // Split the section if new paragraph:
       if (
         newText.match(PARAGRAPH_REGEXP) &&
