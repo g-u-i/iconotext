@@ -39,21 +39,7 @@ export default {
       throw new Error(`Section ${ index + 1 } does not exist.`);
     }
 
-    // Create merged section:
-    sections[index] = {
-      img: sections[index].img || sections[index + 1].img,
-      text: [
-        sections[index].text,
-        sections[index + 1].text,
-      ].filter(s => !!s).join('\n'),
-      imgIcon: sections[index].imgIcon,
-      textIcon: sections[index].textIcon,
-    };
-
-    // Delete section:
-    sections.splice(index + 1, 1);
-
-    state.set(['document', 'sections'], sections);
+    this.mergeBefore({ index: index + 1 });
   },
 
   mergeBefore({ index }) {
@@ -64,18 +50,33 @@ export default {
     }
 
     // Merge texts:
+    const preserveSection =
+      sections[index - 1].img && sections[index].img;
+    const mergedText = [
+      sections[index - 1].text,
+      sections[index].text,
+    ].filter(s => !!s).join('\n');
+
     sections[index - 1] = {
+      text: mergedText,
       img: sections[index - 1].img || sections[index].img,
-      text: [
-        sections[index - 1].text,
-        sections[index].text,
-      ].filter(s => !!s).join('\n'),
       imgIcon: sections[index - 1].imgIcon,
       textIcon: sections[index - 1].textIcon,
     };
 
-    // Delete section:
-    sections.splice(index, 1);
+    // If both sections have images, keep both sections and move the text:
+    if (preserveSection) {
+      sections[index] = {
+        text: '',
+        img: sections[index].img,
+        imgIcon: sections[index].imgIcon,
+        textIcon: sections[index].textIcon,
+      };
+
+    // If there is zero or one image, delete the emptied section:
+    } else {
+      sections.splice(index, 1);
+    }
 
     state.set(['document', 'sections'], sections);
   },
