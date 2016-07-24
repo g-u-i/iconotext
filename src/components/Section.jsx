@@ -247,7 +247,7 @@ export default React.createClass({
     return (
       <div
         data-component="section"
-        data-full={ !!(img && text) || undefined }
+        data-full={ !!(img && text && text !== '<p><br></p>') || undefined }
       >
         <div className="wrapper">
           <div className="img">
@@ -272,7 +272,7 @@ export default React.createClass({
 
         <div className="icons">
           {
-            !editingImg ?
+            (!editingImg && !img) ?
               <button onClick={ this.onClickEditImg }>
                 <img src={ `../assets/icons/ico-edit-img-${ imgIcon }.svg` } />
               </button> :
