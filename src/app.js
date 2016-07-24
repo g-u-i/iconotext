@@ -19,6 +19,19 @@ const app = {
   actions,
 };
 
+// The default behaviour of Electron when dropping an image (or other files,
+// actually) is to "redirect" the whole window to the image.
+// The following code prevents this default behaviour, and preserves drag and
+// dropping in other features of the application:
+document.addEventListener('dragover', event => {
+  event.preventDefault();
+  return false;
+}, false);
+document.addEventListener('drop', event => {
+  event.preventDefault();
+  return false;
+}, false);
+
 // (@jacomyal) TODO:
 // I did not manage to use the "library" key in the dev Webpack config to expose
 // the core elements of the app, so here is this little dirty hack...
