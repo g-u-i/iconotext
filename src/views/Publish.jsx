@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import { branch as branchMixin } from 'baobab-react/mixins';
 
@@ -22,6 +23,12 @@ const OPTIONS = [
     id: 'orientation',
     values: ['portrait', 'landscape'],
   },
+];
+
+// A serie of uncompatible option setups:
+const OPTIONS_FORBIDDEN = [
+  { orientation: 'portrait', support: 'screen' },
+  { support: 'screen', format: 'pocket' },
 ];
 
 export default React.createClass({
@@ -106,6 +113,15 @@ export default React.createClass({
                       checked={ publish[id] === value }
                       name={ `Publish.options.${ id }` }
                       id={ `Publish.options.${ id }.${ value }` }
+                      disabled={
+                        OPTIONS_FORBIDDEN.some(o => (
+                          o[id] === value &&
+                          _.some(
+                            _.omit(o, [id]),
+                            (val, key) => publish[key] === val
+                          )
+                        ))
+                      }
                     />
                     <label htmlFor={ `Publish.options.${ id }.${ value }` }>{
                       t(`Publish.options.${ id }:${ value }`)
