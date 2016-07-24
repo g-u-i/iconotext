@@ -46,7 +46,7 @@ export default React.createClass({
         key={ field }
         data-field={ field }
         onChange={ this.onChange }
-        value={ this.props.meta[field] }
+        value={ this.props.meta[field] || '' }
         placeholder={ t(`MetaForm.${ field }`) }
       />
     );
