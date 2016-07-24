@@ -15,7 +15,7 @@ const VIEWS = {
 
 const MENU = [
   { id: 'about', type: 'view', position: 'left' },
-  { id: 'editor', type: 'view', position: 'left' },
+  { id: 'editor', type: 'view', position: 'right' },
   { id: 'publish', type: 'view', position: 'right' },
   { id: 'save', type: 'action', position: 'right' },
   { id: 'open', type: 'action', position: 'right' },
