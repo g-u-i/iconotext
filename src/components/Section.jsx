@@ -11,7 +11,6 @@ import InlineToolbar from './InlineToolbar.jsx';
 import { t } from '../utils/translator.js';
 import selectionUtils from '../utils/selection.js';
 
-const PARAGRAPH_JOIN = '\n<p><br></p>\n';
 const PARAGRAPH_REGEXP = /\n<p><br><\/p>\n/;
 
 export default React.createClass({
@@ -171,14 +170,15 @@ export default React.createClass({
         newText !== '<p><br></p>'
       ) {
         const splitted = newText.split(PARAGRAPH_REGEXP);
-        const next = splitted.slice(1).join(PARAGRAPH_JOIN);
-        newText = splitted[0];
+        newText = splitted.shift();
 
         // Insert new section:
-        this.props.onNew({
-          index: this.props.index,
-          text: next,
-        });
+        while (splitted.length) {
+          this.props.onNew({
+            index: this.props.index,
+            text: splitted.pop(),
+          });
+        }
       }
 
       // Update current section else:
