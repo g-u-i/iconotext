@@ -59,7 +59,7 @@ export default React.createClass({
 
       // 8. Project credits:
       //   -> Insert a page if needed, to ensure this page is on verso:
-      if (!(pages.length % 2)) pages.push({});
+      if (!(pages.length % 2)) printPages.push({});
       printPages.push({
         className: 'credits',
         text: [
