@@ -60,6 +60,7 @@ export default React.createClass({
     const target = e.currentTarget;
     const action = target.getAttribute('data-action');
 
+    this.setState({ action });
     this.props.actions.publish[action]();
   },
   onSelectOption(e) {
@@ -75,7 +76,7 @@ export default React.createClass({
    * **********
    */
   render() {
-    const { publish, meta, sections, exporting } = this.state;
+    const { publish, meta, sections, exporting, action } = this.state;
 
     return (
       <div data-view="publish">
@@ -83,7 +84,7 @@ export default React.createClass({
           <PDFRendering
             cover={ meta }
             pages={ sections }
-            options={ publish }
+            options={ _.defaults({ action }, publish) }
           />
         </div>
 
