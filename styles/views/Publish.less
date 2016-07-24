@@ -18,7 +18,6 @@
       width: 120px;
       margin-top: 16px;
       text-align: center;
-      cursor: pointer;
 
       .label {
         position: absolute;
@@ -43,9 +42,20 @@
       &[data-action="exportLulu"] .icon {
         background-image: url(../../assets/icons/ico-laptop.svg);
       }
+      &[data-action="exportImgs"] .icon {
+        background-image: url(../../assets/icons/ico-txt-as-sub.svg);
+      }
 
-      &:hover .icon {
+      &[disabled] {
+        color: grey;
+
+        .icon {
+          opacity: 0.6;
+        }
+      }
+      &:not([disabled]):hover .icon {
         transform: rotate(-12deg);
+        cursor: pointer;
       }
     }
   }

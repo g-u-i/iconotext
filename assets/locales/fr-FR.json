@@ -46,7 +46,8 @@
 
     "actions": {
       "exportPdf": "exporter en pdf",
-      "exportLulu": "pdf pour lulu.com"
+      "exportLulu": "pdf pour lulu.com",
+      "exportImgs": "exporter en images"
     },
     "options": {
       "support:print": "impression",

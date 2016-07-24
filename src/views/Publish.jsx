@@ -8,6 +8,7 @@ import { t } from '../utils/translator.js';
 const ACTIONS = [
   'exportPdf',
   'exportLulu',
+  'exportImgs',
 ];
 
 const OPTIONS = [
@@ -29,6 +30,16 @@ const OPTIONS = [
 const OPTIONS_FORBIDDEN = [
   { orientation: 'portrait', support: 'screen' },
   { support: 'screen', format: 'pocket' },
+];
+
+// A serie of uncompatible action / option setups:
+const ACTIONS_FORBIDDEN = [
+  { action: 'exportImgs', orientation: 'portrait' },
+  { action: 'exportImgs', format: 'pocket' },
+  { action: 'exportImgs', support: 'print' },
+  { action: 'exportPdf', support: 'screen' },
+  { action: 'exportPdf', format: 'pocket' },
+  { action: 'exportLulu', support: 'screen' },
 ];
 
 export default React.createClass({
@@ -85,6 +96,15 @@ export default React.createClass({
               key={ id }
               data-action={ id }
               onClick={ this.onClickAction }
+              disabled={
+                ACTIONS_FORBIDDEN.some(o => (
+                  o.action === id &&
+                  _.some(
+                    _.omit(o, ['action']),
+                    (val, key) => publish[key] === val
+                  )
+                ))
+              }
             >
               <div className="icon" />
               <div className="label">{

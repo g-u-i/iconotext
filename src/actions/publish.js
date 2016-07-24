@@ -66,4 +66,7 @@ export default {
   exportLulu() {
     // TODO
   },
+  exportImgs() {
+    // TODO
+  },
 };
