@@ -95,6 +95,18 @@ export default React.createClass({
               size: ${ size };
               margin: 18mm;
             }
+            ${
+              options.action === 'pdf' ?
+                `
+                @page :left {
+                  margin-right: 39mm;
+                }
+                @page :right {
+                  margin-left: 39mm;
+                }
+                ` :
+                ''
+            }
           }
         `}</style>
 
