@@ -12,6 +12,7 @@ import { t } from '../utils/translator.js';
 import selectionUtils from '../utils/selection.js';
 
 const PARAGRAPH_REGEXP = /\n<p><br><\/p>\n/;
+const PARAGRAPH_EMPTY = '<p><br></p>';
 
 export default React.createClass({
   displayName: 'iconotexte/Section',
@@ -67,6 +68,38 @@ export default React.createClass({
    * Handlers:
    * *********
    */
+  onUpArrow() {
+    const range = selectionUtils.getSelectionRange();
+
+    if (!range) return;
+
+    const editorBounds = this.refs.editorWrapper.getBoundingClientRect();
+    const rangeBounds = range.getBoundingClientRect();
+    const diff = editorBounds.top - rangeBounds.top;
+
+    if (
+      this.props.focusPreviousSection &&
+      (Math.abs(diff) < 10 || this.props.section.text === PARAGRAPH_EMPTY)
+    ) {
+      this.props.focusPreviousSection({ index: this.props.index });
+    }
+  },
+  onDownArrow() {
+    const range = selectionUtils.getSelectionRange();
+
+    if (!range) return;
+
+    const editorBounds = this.refs.editorWrapper.getBoundingClientRect();
+    const rangeBounds = range.getBoundingClientRect();
+    const diff = editorBounds.bottom - rangeBounds.bottom;
+
+    if (
+      this.props.focusNextSection &&
+      (Math.abs(diff) < 10 || this.props.section.text === PARAGRAPH_EMPTY)
+    ) {
+      this.props.focusNextSection({ index: this.props.index });
+    }
+  },
   onClickBody(e) {
     if (!this.props.editingImg) {
       return;
@@ -121,11 +154,6 @@ export default React.createClass({
         this.setState({
           // Hide toolbar:
           showToolbar: false,
-
-          // Clear current selection:
-          editorState: EditorState.moveSelectionToEnd(
-            this.state.editorState,
-          ),
         });
       },
       0
@@ -167,7 +195,7 @@ export default React.createClass({
         newText.match(PARAGRAPH_REGEXP) &&
         // The following test is about that:
         // https://github.com/sstur/draft-js-export-html/issues/25
-        newText !== '<p><br></p>'
+        newText !== PARAGRAPH_EMPTY
       ) {
         const splitted = newText.split(PARAGRAPH_REGEXP);
         newText = splitted.shift();
@@ -247,7 +275,7 @@ export default React.createClass({
     return (
       <div
         data-component="section"
-        data-full={ !!(img && text && text !== '<p><br></p>') || undefined }
+        data-full={ !!(img && text && text !== PARAGRAPH_EMPTY) || undefined }
       >
         <div className="wrapper">
           <div className="img">
@@ -295,16 +323,20 @@ export default React.createClass({
                 /> :
                 null
             }
-            <Editor
-              ref="editor"
-              onBlur={ this.onTextBlur }
-              onChange={ this.onChangeText }
-              handleKeyCommand={ this.onKeyCommand }
-              editorState={ this.state.editorState }
-              placeholder={
-                placeholder || t('Editor.Section.placeholder')
-              }
-            />
+            <div ref="editorWrapper">
+              <Editor
+                ref="editor"
+                onBlur={ this.onTextBlur }
+                onUpArrow={ this.onUpArrow }
+                onChange={ this.onChangeText }
+                onDownArrow={ this.onDownArrow }
+                handleKeyCommand={ this.onKeyCommand }
+                editorState={ this.state.editorState }
+                placeholder={
+                  placeholder || t('Editor.Section.placeholder')
+                }
+              />
+            </div>
           </div>
         </div>
       </div>

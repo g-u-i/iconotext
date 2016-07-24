@@ -1,4 +1,5 @@
 import React from 'react';
+import { EditorState, SelectionState } from 'draft-js';
 import { branch as branchMixin } from 'baobab-react/mixins';
 
 import Section from '../components/Section.jsx';
@@ -51,6 +52,35 @@ export default React.createClass({
   handleChangeSectionImg({ index, img }) {
     this.props.actions.sections.update({ index, updates: { img } });
   },
+  focusNextSection({ index }) {
+    const section = this.refs[`section-${ index + 1 }`];
+    section.setState({
+      editorState: EditorState.acceptSelection(
+        section.state.editorState,
+        SelectionState.createEmpty(),
+      ),
+    });
+
+    // Once the editor state has properly been reset, let's give it focus:
+    setTimeout(
+      () => section.refs.editor.focus(),
+      0
+    );
+  },
+  focusPreviousSection({ index }) {
+    const section = this.refs[`section-${ index - 1 }`];
+    section.setState({
+      editorState: EditorState.moveSelectionToEnd(
+        section.state.editorState,
+      ),
+    });
+
+    // Once the editor state has properly been reset, let's give it focus:
+    setTimeout(
+      () => section.refs.editor.focus(),
+      0
+    );
+  },
   handleMergeAfter({ index }) {
     this.props.actions.sections.mergeAfter({ index });
   },
@@ -102,6 +132,17 @@ export default React.createClass({
                 onDelete={ this.handleDeleteSection }
                 onChangeImg={ this.handleChangeSectionImg }
                 onChangeText={ this.handleChangeSectionText }
+
+                focusNextSection={
+                  (i < this.state.sections.length - 1) ?
+                    this.focusNextSection :
+                    null
+                }
+                focusPreviousSection={
+                  (i > 0) ?
+                    this.focusPreviousSection :
+                    null
+                }
 
                 onMergeAfter={
                   (i < this.state.sections.length - 1) ?
