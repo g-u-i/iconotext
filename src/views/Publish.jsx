@@ -6,9 +6,10 @@ import PDFRendering from '../components/PDFRendering.jsx';
 import { t } from '../utils/translator.js';
 
 const ACTIONS = [
-  'exportPdf',
-  'exportLulu',
-  'exportImgs',
+  'pdf',
+  'lulu',
+  // Disabled until the action is properly developped:
+  // 'images',
 ];
 
 const OPTIONS = [
@@ -34,12 +35,12 @@ const OPTIONS_FORBIDDEN = [
 
 // A serie of uncompatible action / option setups:
 const ACTIONS_FORBIDDEN = [
-  { action: 'exportImgs', orientation: 'portrait' },
-  { action: 'exportImgs', format: 'pocket' },
-  { action: 'exportImgs', support: 'print' },
-  { action: 'exportPdf', support: 'screen' },
-  { action: 'exportPdf', format: 'pocket' },
-  { action: 'exportLulu', support: 'screen' },
+  { action: 'images', orientation: 'portrait' },
+  { action: 'images', format: 'pocket' },
+  { action: 'images', support: 'print' },
+  { action: 'pdf', support: 'screen' },
+  { action: 'pdf', format: 'pocket' },
+  { action: 'lulu', support: 'screen' },
 ];
 
 export default React.createClass({

@@ -45,9 +45,9 @@
     "exportMessage": "Le PDF est en train d'être généré.",
 
     "actions": {
-      "exportPdf": "exporter en pdf",
-      "exportLulu": "pdf pour lulu.com",
-      "exportImgs": "exporter en images"
+      "pdf": "exporter en pdf",
+      "lulu": "pdf pour lulu.com",
+      "images": "exporter en images"
     },
     "options": {
       "support:print": "impression",

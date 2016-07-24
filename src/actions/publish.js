@@ -10,7 +10,7 @@ export default {
     state.set(['publish', option], value);
   },
 
-  exportPdf() {
+  pdf() {
     const dialog = remote.dialog;
     const webContents = remote.getCurrentWebContents();
 
@@ -63,10 +63,12 @@ export default {
       0
     );
   },
-  exportLulu() {
-    // TODO
+  lulu() {
+    // The differences between this export and the classic PDF export is dealt
+    // by the CSS print sheets:
+    this.pdf();
   },
-  exportImgs() {
+  images() {
     // TODO
   },
 };
