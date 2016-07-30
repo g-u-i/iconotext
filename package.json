@@ -1,7 +1,7 @@
 {
   "name": "iconotext",
   "productName": "Iconotext",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "a tool to link images with text",
   "main": "main.js",
   "scripts": {
