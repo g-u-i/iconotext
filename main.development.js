@@ -1,4 +1,5 @@
 import { app, BrowserWindow, Menu, shell } from 'electron'; // eslint-disable-line
+import path from 'path';
 
 let menu;
 let template;
@@ -37,6 +38,7 @@ app.on('ready', async () => {
     show: false,
     width: 1024,
     height: 728,
+    icon: path.resolve(__dirname, 'assets/app-icons/app.png'),
   });
 
   mainWindow.loadURL(`file://${ __dirname }/html/app.html`);

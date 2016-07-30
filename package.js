@@ -3,6 +3,7 @@
 
 require('babel-polyfill');
 const os = require('os');
+const path = require('path');
 const webpack = require('webpack');
 const electronCfg = require('./webpack.config.electron.js');
 const cfg = require('./webpack.config.production.js');
@@ -23,6 +24,7 @@ const DEFAULT_OPTS = {
   dir: './',
   name: appName,
   asar: shouldUseAsar,
+  icon: path.resolve(__dirname, 'assets/app-icons/app'),
   ignore: [
     '^/test($|/)',
     '^/tools($|/)',
