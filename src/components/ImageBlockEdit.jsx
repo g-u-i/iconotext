@@ -6,6 +6,11 @@ import Dropzone from 'react-dropzone';
 import { t } from '../utils/translator.js';
 import resizable from '../utils/mixin.resizable.js';
 
+const MAX_SIZE = {
+  width: 3000,
+  height: 3000,
+};
+
 export default React.createClass({
   displayName: 'iconotexte/ImageBlockEdit',
   mixins: [resizable],
@@ -21,6 +26,33 @@ export default React.createClass({
   },
 
   /**
+   * Helpers:
+   * ********
+   */
+  limitImgSize(base64, cb) {
+    const image = new Image();
+    image.onload = () => {
+      const r = Math.min(
+        MAX_SIZE.width / image.width,
+        MAX_SIZE.height / image.height
+      );
+
+      if (r >= 1) {
+        cb(base64);
+      } else {
+        const c = document.createElement('canvas');
+        c.width = image.width * r;
+        c.height = image.height * r;
+
+        const ctx = c.getContext('2d');
+        ctx.drawImage(image, 0, 0, c.width, c.height);
+        cb(c.toDataURL());
+      }
+    };
+    image.src = base64;
+  },
+
+  /**
    * Handlers:
    * *********
    */
@@ -32,11 +64,16 @@ export default React.createClass({
   onSnapshot() {
     const img = this.refs.webcam.getScreenshot();
 
-    this.props.setImg({
-      name: 'Webcam screenshot',
-      type: 'image/webp',
-      base64: img,
-    });
+    this.limitImgSize(
+      img,
+      finalImg => {
+        this.props.setImg({
+          name: 'Webcam screenshot',
+          type: 'image/webp',
+          base64: finalImg,
+        });
+      }
+    );
   },
   onDrop(files) {
     const file = files[0];
@@ -50,11 +87,16 @@ export default React.createClass({
 
         const base64 = new Buffer(data, 'binary').toString('base64');
 
-        this.props.setImg({
-          name: file.name,
-          type: file.type,
-          base64: `data:${ file.type };base64,${ base64 }`,
-        });
+        this.limitImgSize(
+          `data:${ file.type };base64,${ base64 }`,
+          finalImg => {
+            this.props.setImg({
+              name: file.name,
+              type: file.type,
+              base64: finalImg,
+            });
+          }
+        );
       }
     );
   },
