@@ -10,6 +10,10 @@ body {
   letter-spacing: 0.3px;
 }
 
+a {
+  color: black;
+}
+
 @media print {
   body {
     background: none;
@@ -19,8 +23,9 @@ body {
 /*
   Custom Iconotext reusable classes:
 */
-.ic-custom-button {
+.ic-custom-button(@transition: true) {
   display: inline-block;
+  outline: none;
   border: none;
   padding: 0;
   margin: 0;
@@ -30,15 +35,19 @@ body {
   background-size: contain;
   background-color: transparent;
 
-  outline: none;
-  transition: transform .2s;
-
-  &:hover:not([disabled]) {
-    transform: rotate(-12deg);
-    cursor: pointer;
-  }
   img {
     pointer-events: none;
+  }
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+
+  & when (@transition = true) {
+    transition: transform .2s;
+
+    &:hover:not([disabled]) {
+      transform: rotate(-12deg);
+    }
   }
 }
 

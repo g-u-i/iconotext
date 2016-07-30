@@ -7,7 +7,7 @@ export default new Baobab({
 
   // Current view:
   // 'editor', 'about', 'preview', etc...
-  view: 'editor',
+  view: 'welcome',
 
   // The "ui" branch only contains data related to UI manipulations, and are
   // not data to save:
