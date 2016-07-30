@@ -143,10 +143,26 @@ export default React.createClass({
     );
   },
   onChangeImg(img) {
-    this.props.onChangeImg({
-      img,
-      index: this.props.index,
-    });
+    // Delete section if the image is deleted and there is no text:
+    if (
+      !img &&
+      (
+        !this.props.section.text ||
+        this.props.section.text === PARAGRAPH_EMPTY
+      )
+    ) {
+      this.props.onDelete({
+        index: this.props.index,
+      });
+
+    // Update the section else:
+    } else {
+      this.props.onChangeImg({
+        img,
+        index: this.props.index,
+      });
+    }
+
     this.props.editImg({ index: null });
   },
   onTextBlur() {
