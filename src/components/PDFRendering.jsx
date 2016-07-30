@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Page from './Page.jsx';
+import { t } from '../utils/translator.js';
 
 export default React.createClass({
   displayName: 'iconotexte/PDFRendering',
@@ -62,17 +63,7 @@ export default React.createClass({
       if (!(pages.length % 2)) printPages.push({});
       printPages.push({
         className: 'credits',
-        text: [
-          /* eslint-disable */
-          'Iconotexte est un projet de Benoît Verjat et Nicolas Couturier (association &&)',
-          'Production Cneai=, en partenariat avec la Fondation Daniel et Nina Carasso',
-          'Édition du site avec Tanguy Wermelinger',
-          'Développement de l’application g.u.i. avec Alexis Jacomy',
-          'Licence Creative Commons, libre de diffusion — Attribution — Pas d’utilisation commerciale — Partage des conditions initiales à l’identique',
-          'CC BY-NC-SA 4.0, && - Cneai, 2016, France',
-          'iconotexte.et-et.xyz',
-          /* eslint-enable */
-        ].join('<br />'),
+        text: t('pages.credits'),
       });
 
       // 9. Back cover (recto, empty):

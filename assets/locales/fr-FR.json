@@ -21,6 +21,10 @@
     "saveSuccess": "Le fichier a bien été enregistré."
   },
 
+  "pages": {
+    "credits": "<p>CENTRE NATIONAL ÉDITION ART IMAGE<br>ÎLE DES IMPRESSIONNISTES 78400 CHATOU FRANCE<br>+33(0)139524535 <a href=\"http://www.cneai.com\">WWW.CNEAI.COM</a><br></p><p>Direction&nbsp;: Sylvie Boulanger<br>Production&nbsp;: Juliette Giovannoni, Thomas Mercier-Bellevue et Alice Lingerat<br>Administration&nbsp;: Anaïs Déléage</p><p>Contact&nbsp;: <a href=\"mailto:public@cneai.com\">public@cneai.com</a></p><p>La conception et les workshops 2015-2016 ont été réalisés par Benoît Verjat et Nicolas Couturier<br>L'édition du site a été réalisée avec Tanguy Wermelinger<br>g.u.i et Alexis Jacomy ont développés l'application<br>Licence Creative Commons, libre de diffusion – Attribution – Pas d’utilisation commerciale – partage des conditions initiales à l’identique<br>CC BY-NC-SA 4.0, && - Cneai, 2016, France</p>"
+  },
+
   "Editor": {
     "Section": {
       "placeholder": "Collez du texte ici!"

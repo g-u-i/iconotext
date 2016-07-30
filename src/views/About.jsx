@@ -1,6 +1,8 @@
 import React from 'react';
 import { branch as branchMixin } from 'baobab-react/mixins';
 
+import { t } from '../utils/translator.js';
+
 export default React.createClass({
   displayName: 'iconotexte/About',
   mixins: [branchMixin],
@@ -12,7 +14,12 @@ export default React.createClass({
   render() {
     return (
       <div data-view="about">
-        <div>TODO</div>
+        <div
+          className="credits"
+          dangerouslySetInnerHTML={{
+            __html: t('pages.credits'),
+          }}
+        />
       </div>
     );
   },
