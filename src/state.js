@@ -23,7 +23,15 @@ export default new Baobab({
   document: {
     // Sections format:
     // { text: '?HTMLString', img: '?Image', textIcon: '?int', imgIcon: '?int' }
-    sections: [],
+    sections: [
+      // Initial empty section
+      {
+        img: null,
+        text: '',
+        imgIcon: 1,
+        textIcon: 1,
+      },
+    ],
 
     // Document metadata:
     //   - title
