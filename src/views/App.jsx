@@ -24,6 +24,7 @@ export default React.createClass({
     if (target.tagName !== 'A' || !target.getAttribute('href')) return;
 
     e.preventDefault();
+    e.stopPropagation();
 
     const url = target.getAttribute('href');
     shell.openExternal(url);
