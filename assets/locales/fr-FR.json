@@ -26,12 +26,12 @@
   },
 
   "Welcome": {
-    "content": "Pour commencer coller ou saisir du texte, ajouter des images depuis votre ordinateur ou la webcam enfin publier vos séquences pour les partager.<br><br>Pour en savoir plus ou obtenir de l'aide, visitez <a href=\"http://iconotexte.et-et.xyz\">http://iconotexte.et-et.xyz</a>"
+    "content": "<img src=\"./../assets/icons/logo-text-alone.svg\"><br/> Pour commencer coller ou saisir du texte, <br/> ajouter des images depuis votre ordinateur ou la webcam <br/> enfin mettez en forme vos séquences pour les partager.<br><br>Pour en savoir plus ou obtenir de l'aide, <br/> visitez <a href=\"http://iconotexte.et-et.xyz\">http://iconotexte.et-et.xyz</a>"
   },
 
   "Editor": {
     "Section": {
-      "placeholder": "Collez du texte ici!"
+      "placeholder": "texte …"
     }
   },
 

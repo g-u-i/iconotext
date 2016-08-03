@@ -89,8 +89,8 @@ export default React.createClass({
           <div className="wrapper">
             <i className="logo left" />
             <i className="logo right" />
-            <h1 className="title left">{ t('commons.titleLeft') }</h1>
-            <h1 className="title right">{ t('commons.titleRight') }</h1>
+            <h1 className="title left"></h1>
+            <h1 className="title right"></h1>
           </div>
         </div>
 
