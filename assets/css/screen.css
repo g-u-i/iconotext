@@ -7044,21 +7044,21 @@ hr {
 .logo img {
   width: 276px;
 }
-.tpl-home .jumbotron {
+.tpl-homex .jumbotron {
   padding-top: 50vh;
   background-color: #E1F5F7;
 }
-.tpl-home .rejetee {
+.tpl-homex .rejetee {
   height: 30vh;
   margin: 1em 0 1em;
   margin-left: 48px;
 }
-.tpl-home .maincontent h2,
-.tpl-home .jumbotron h2,
-.tpl-home .maincontent h3,
-.tpl-home .jumbotron h3,
-.tpl-home .maincontent h4,
-.tpl-home .jumbotron h4 {
+.tpl-homex .maincontent h2,
+.tpl-homex .jumbotron h2,
+.tpl-homex .maincontent h3,
+.tpl-homex .jumbotron h3,
+.tpl-homex .maincontent h4,
+.tpl-homex .jumbotron h4 {
   /* text-main-title copy: */
   border: 0px solid #000000;
   font-family: "Marche_M";
@@ -7072,25 +7072,25 @@ hr {
   padding: 24px;
   margin-left: -24px;
 }
-.tpl-home .maincontent img,
-.tpl-home .jumbotron img {
+.tpl-homex .maincontent img,
+.tpl-homex .jumbotron img {
   display: block;
   max-width: 100%;
   height: auto;
   margin-bottom: 24px;
 }
-.tpl-home .maincontent .sqr img,
-.tpl-home .jumbotron .sqr img,
-.tpl-home .maincontent .sqr .embed-responsive,
-.tpl-home .jumbotron .sqr .embed-responsive {
+.tpl-homex .maincontent .sqr img,
+.tpl-homex .jumbotron .sqr img,
+.tpl-homex .maincontent .sqr .embed-responsive,
+.tpl-homex .jumbotron .sqr .embed-responsive {
   background: #FFFFFF;
   border: 2px solid #000000;
   border-radius: 6px;
   margin-left: 24px;
   margin-bottom: 24px;
 }
-.tpl-home .maincontent p,
-.tpl-home .jumbotron p {
+.tpl-homex .maincontent p,
+.tpl-homex .jumbotron p {
   padding: 24px;
 }
 .tpl-default {

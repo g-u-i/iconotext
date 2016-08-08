@@ -1,6 +1,6 @@
 <?php if(!defined('KIRBY')) exit ?>
 
-title: Page
+title: Projets
 pages: true
 files: true
   sortable: true
@@ -15,7 +15,3 @@ fields:
   header:
    label: Chapeau
    type:  textarea
-  text:
-   label: Texte
-   type:  textarea
-   size:  large

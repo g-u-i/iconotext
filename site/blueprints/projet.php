@@ -1,6 +1,6 @@
 <?php if(!defined('KIRBY')) exit ?>
 
-title: Page
+title: Projet
 pages: true
 files: true
   sortable: true
@@ -15,7 +15,19 @@ fields:
   header:
    label: Chapeau
    type:  textarea
-  text:
-   label: Texte
+  context:
+   label: Contexte
    type:  textarea
-   size:  large
+  conclusion:
+   label: Bilan
+   type:  textarea
+  link:
+   label: Lien vers le projet
+   type:  url
+   width: 1/3
+  attachments:
+      label: Post Attachments
+      type:  selector
+      mode:  multiple
+      types:
+          - all

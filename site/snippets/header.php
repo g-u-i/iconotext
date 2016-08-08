@@ -11,3 +11,8 @@
   <link rel="stylesheet" type="text/css" href="assets/css/screen.css">
 </head>
 <body class="tpl-<?php echo $page->template() ?>">
+  <div class="container-fluid ">
+    <h1 class="navbar-fixed-top logo">
+    <img src="/assets/images/iconologo.svg">
+    <?php // echo  $page->title()->html() ?></h1>
+  </div>
