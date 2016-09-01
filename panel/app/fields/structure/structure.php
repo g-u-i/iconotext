@@ -16,6 +16,7 @@ class StructureField extends BaseField {
   public $structure = null;
   public $style     = 'items';
   public $modalsize = 'medium';
+  public $limit     = null;
 
   public function routes() {
 
@@ -79,8 +80,18 @@ class StructureField extends BaseField {
     return $this->structure()->data();
   }
 
-  public function result() {
-    return $this->structure()->toYaml();
+  public function result() {  
+    /**
+     * Users store their data as plain yaml. 
+     * So we need this hacky solution to give data 
+     * as an array to the form serializer in case 
+     * of users, in order to not mess up their data
+     */
+    if(is_a($this->model, 'Kirby\\Panel\\Models\\User')) {
+      return $this->structure()->toArray();      
+    } else {
+      return $this->structure()->toYaml();            
+    }
   }
 
   public function entry($data) {
@@ -116,7 +127,11 @@ class StructureField extends BaseField {
 
   public function headline() {
 
-    if(!$this->readonly) {
+    // get entries
+    $entries = $this->entries();
+
+    // check if limit is either null or the number of entries less than limit 
+    if(!$this->readonly && (is_null($this->limit) || (is_int($this->limit) && $entries->count() < $this->limit))) {
 
       $add = new Brick('a');
       $add->html('<i class="icon icon-left fa fa-plus-circle"></i>' . l('fields.structure.add'));
@@ -128,6 +143,11 @@ class StructureField extends BaseField {
       $add = null;
     }
 
+    // make sure there's at least an empty label
+    if(!$this->label) {
+      $this->label = '&nbsp;';
+    }
+ 
     $label = parent::label();
     $label->addClass('structure-label');
     $label->append($add);

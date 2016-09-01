@@ -1,12 +1,25 @@
 $(document).ready(function() {
-  $('#fullpage').fullpage({
-    anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
-    menu: '#menu',
-    scrollingSpeed: 1500,
-    loopHorizontal: false,
-    slidesNavigation: true
+
+  locationHashChanged();
+
+  $("a[href^='#']").on('click', function(e) {
+
+    e.preventDefault();
+
+    var newHash = this.hash;
+
+    $('html, body').animate({
+       scrollTop: $(this.hash).offset().top
+    }, 300, function(){ window.location.hash = newHash });
+
   });
 
+  function locationHashChanged() {
+    $("#nav a").removeClass('active');
+    $("#nav a[href='"+location.hash+"']").addClass('active');
+  }
+
+  window.onhashchange = locationHashChanged;
   $("iframe").wrap('<div class="embed-responsive embed-responsive-16by9"/>');
   $("iframe").addClass('embed-responsive-item');
 });

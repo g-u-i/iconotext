@@ -57,34 +57,16 @@ class Field extends Obj {
   }
 
 
-
-  public function _snippet($name) {
-
-    $base = kirby()->roots()->blueprints() . DS . 'fields' . DS . $name;
-
-
-    if(file_exists($base . '.yml')) {
-      return $base . '.yml';
-    } else if(file_exists($base . '.php')) {
-      return $base . '.php';
-    } else if(file_exists($base . '.yaml')) {
-      return $base . '.yaml';
-    } else {
-      return false;
-    }
-
-  }
-
   public function _extend($params) {
 
     $extends = $params['extends'];
-    $snippet = f::resolve(kirby()->roots()->blueprints() . DS . 'fields' . DS . $extends, array('yml', 'php', 'yaml'));
+    $file = kirby()->get('blueprint', 'fields/' . $extends);
 
-    if(empty($snippet)) {
+    if(empty($file) || !is_file($file)) {
       throw new Exception(l('fields.error.extended'));
     }
 
-    $yaml   = data::read($snippet, 'yaml');
+    $yaml   = data::read($file, 'yaml');
     $params = a::merge($yaml, $params);
 
     return $params;

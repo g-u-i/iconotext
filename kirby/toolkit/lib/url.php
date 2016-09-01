@@ -23,7 +23,8 @@ class Url {
         (isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') ||
         server::get('SERVER_PORT')            == '443' || 
         server::get('HTTP_X_FORWARDED_PORT')  == '443' || 
-        server::get('HTTP_X_FORWARDED_PROTO') == 'https'
+        server::get('HTTP_X_FORWARDED_PROTO') == 'https' ||
+        server::get('HTTP_X_FORWARDED_PROTO') == 'https, http'
       ) {
         return 'https';
       } else {
@@ -354,6 +355,23 @@ class Url {
     $url = rtrim($url, '/');
 
     return ($length) ? str::short($url, $length, $rep) : $url;
+
+  }
+
+  /**
+   * Tries to convert an internationalized domain name to
+   * the UTF8 representation
+   * Requires the intl PHP extension
+   *
+   * @param string $url
+   * @return string
+   */
+  public static function idn($url) {
+
+    if(static::isAbsolute($url)) $url = static::short($url);
+
+    if(!function_exists('idn_to_utf8')) return $url;
+    return idn_to_utf8($url);
 
   }
 

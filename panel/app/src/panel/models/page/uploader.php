@@ -56,7 +56,14 @@ class Uploader {
     $file = $this->move($upload);
 
     // create the initial meta file
-    $file->createMeta();
+    // without triggering the update hook
+    $file->createMeta(false);
+
+    // make sure that the file is being marked as updated
+    touch($file->root());
+
+    // clean the thumbs folder
+    $this->page->removeThumbs();
 
     kirby()->trigger('panel.file.upload', $file);          
 
@@ -64,7 +71,11 @@ class Uploader {
 
   public function replace() {
 
-    $file   = $this->file;
+    $file = $this->file;
+    
+    // keep the old state of the file object
+    $old = clone $file;
+    
     $upload = new Upload($file->root(), array(
       'overwrite' => true,
       'accept' => function($upload) use($file) {
@@ -76,7 +87,13 @@ class Uploader {
 
     $file = $this->move($upload);
 
-    kirby()->trigger('panel.file.replace', $file);
+    // make sure that the file is being marked as updated
+    touch($file->root());
+
+    // clean the thumbs folder
+    $this->page->removeThumbs();
+
+    kirby()->trigger('panel.file.replace', array($file, $old));
 
   }
 

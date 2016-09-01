@@ -7,12 +7,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="description" content="<?php echo $site->description()->html() ?>">
   <meta name="keywords" content="<?php echo $site->keywords()->html() ?>">
-  <title>Iconotexte</title>
-  <link rel="stylesheet" type="text/css" href="assets/css/screen.css">
+  <title>Iconotexte — <?php echo $page->title()->html()?></title>
+  <?php echo css('assets/css/screen.css') ?>
 </head>
-<body class="tpl-<?php echo $page->template() ?>">
-  <div class="container-fluid ">
-    <h1 class="navbar-fixed-top logo">
-    <img src="/assets/images/iconologo.svg">
-    <?php // echo  $page->title()->html() ?></h1>
-  </div>
+<body id="body" class="tpl-<?php echo $page->template() ?>">
+  <?php snippet('navbar') ?>

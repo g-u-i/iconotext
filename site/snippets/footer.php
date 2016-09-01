@@ -1,5 +1,8 @@
 
-    <script type="text/javascript" src="assets/js/all.min.js"></script>
-    <script type="text/javascript" src="assets/js/icono.js"></script>
+  <?php echo js(array(
+    'assets/js/all.min.js',
+    'assets/js/icono.js'
+  )) ?>
+
 </body>
 </html>

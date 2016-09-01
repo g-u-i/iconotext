@@ -17,7 +17,6 @@ class Str {
   public static $ascii = array(
     '/Ä/' => 'Ae',
     '/æ|ǽ|ä/' => 'ae',
-    '/œ|ö/' => 'oe',
     '/À|Á|Â|Ã|Å|Ǻ|Ā|Ă|Ą|Ǎ|А/' => 'A',
     '/à|á|â|ã|å|ǻ|ā|ă|ą|ǎ|ª|а/' => 'a',
     '/Б/' => 'B',
@@ -49,7 +48,7 @@ class Str {
     '/Ñ|Ń|Ņ|Ň|Н/' => 'N',
     '/ñ|ń|ņ|ň|ŉ|н/' => 'n',
     '/Ö/' => 'Oe',
-    '/ö/' => 'oe',
+    '/œ|ö/' => 'oe',
     '/Ò|Ó|Ô|Õ|Ō|Ŏ|Ǒ|Ő|Ơ|Ø|Ǿ|О/' => 'O',
     '/ò|ó|ô|õ|ō|ŏ|ǒ|ő|ơ|ø|ǿ|º|о/' => 'o',
     '/П/' => 'P',
@@ -89,6 +88,18 @@ class Str {
     '/щ/' => 'shch',
     '/Ж/' => 'Zh',
     '/ж/' => 'zh',
+  );
+
+  /**
+   * Default options for string methods
+   * 
+   * @var array
+   */
+  public static $defaults = array(
+    'slug' => array(
+      'separator' => '-', 
+      'allowed'   => 'a-z0-9'
+    )
   );
 
   /**
@@ -227,8 +238,15 @@ class Str {
   public static function encode($string) {
     $string  = (string)$string;
     $encoded = '';
-    for($i=0; $i < static::length($string); $i++) {
-      $encoded .= rand(1, 2) == 1 ? '&#' . ord($string[$i]) . ';' : '&#x' . dechex(ord($string[$i])) . ';';
+    for($i = 0; $i < static::length($string); $i++) {
+      $char = static::substr($string, $i, 1);
+      if(MB) {
+        list(, $code) = unpack('N', mb_convert_encoding($char, 'UCS-4BE', 'UTF-8'));        
+      } else {
+        $code = ord($char);
+      }
+      
+      $encoded .= rand(1, 2) == 1 ? '&#' . $code . ';' : '&#x' . dechex($code) . ';';
     }
     return $encoded;
   }
@@ -373,7 +391,8 @@ class Str {
    * @return string
    */
   public static function substr($str, $start, $length = null) {
-    return MB ? mb_substr($str, $start, $length === null ? static::length($str) : $length, 'UTF-8') : substr($str, $start, $length);
+    $length = $length === null ? static::length($str) : $length;
+    return MB ? mb_substr($str, $start, $length, 'UTF-8') : substr($str, $start, $length);
   }
 
   /**
@@ -447,7 +466,10 @@ class Str {
    * @param  string  $separator To be used instead of space and other non-word characters.
    * @return string  The safe string
    */
-  public static function slug($string, $separator = '-', $allowed = 'a-z0-9') {
+  public static function slug($string, $separator = null, $allowed = null) {
+
+    $separator = $separator ?: static::$defaults['slug']['separator'];
+    $allowed   = $allowed   ?: static::$defaults['slug']['allowed'];
 
     $string = trim($string);
     $string = static::lower($string);

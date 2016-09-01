@@ -12,6 +12,12 @@ fields:
   title:
    label: Titre
    type:  text
+   width: 3/4
+  cssclasses:
+   label: Classes CSS
+   help: ne pas modifier
+   type:  text
+   width: 1/4
   header:
    label: Chapeau
    type:  textarea

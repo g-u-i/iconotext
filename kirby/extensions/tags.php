@@ -102,7 +102,8 @@ kirbytext::$tags['image'] = array(
 
     }
 
-    if(empty($alt)) $alt = pathinfo($url, PATHINFO_FILENAME);
+    // at least some accessibility for the image
+    if(empty($alt)) $alt = ' ';
 
     // link builder
     $_link = function($image) use($tag, $url, $link, $file) {
@@ -162,6 +163,7 @@ kirbytext::$tags['link'] = array(
   'attr' => array(
     'text',
     'class',
+    'role',
     'title',
     'rel',
     'lang',
@@ -184,6 +186,7 @@ kirbytext::$tags['link'] = array(
     return html::a($link, $text, array(
       'rel'    => $tag->attr('rel'),
       'class'  => $tag->attr('class'),
+      'role'  => $tag->attr('role'),
       'title'  => $tag->attr('title'),
       'target' => $tag->target(),
     ));
@@ -264,8 +267,9 @@ kirbytext::$tags['youtube'] = array(
     }
 
     return '<figure class="' . $tag->attr('class', kirby()->option('kirbytext.video.class', 'video')) . '">' . embed::youtube($tag->attr('youtube'), array(
-      'width'  => $tag->attr('width',  kirby()->option('kirbytext.video.width')),
-      'height' => $tag->attr('height', kirby()->option('kirbytext.video.height')),
+      'width'   => $tag->attr('width',  kirby()->option('kirbytext.video.width')),
+      'height'  => $tag->attr('height', kirby()->option('kirbytext.video.height')),
+      'options' => kirby()->option('kirbytext.video.youtube.options')
     )) . $figcaption . '</figure>';
 
   }
@@ -289,8 +293,9 @@ kirbytext::$tags['vimeo'] = array(
     }
 
     return '<figure class="' . $tag->attr('class', kirby()->option('kirbytext.video.class', 'video')) . '">' . embed::vimeo($tag->attr('vimeo'), array(
-      'width'  => $tag->attr('width',  kirby()->option('kirbytext.video.width')),
-      'height' => $tag->attr('height', kirby()->option('kirbytext.video.height')),
+      'width'   => $tag->attr('width',  kirby()->option('kirbytext.video.width')),
+      'height'  => $tag->attr('height', kirby()->option('kirbytext.video.height')),
+      'options' => kirby()->option('kirbytext.video.vimeo.options')
     )) . $figcaption . '</figure>';
 
   }
