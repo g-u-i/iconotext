@@ -6999,8 +6999,17 @@ a:focus {
   color: black;
   text-decoration: none;
 }
+.img-bordered {
+  border: 2px solid black;
+  border-radius: 6px;
+}
+.txt-bordered {
+  border: 2px solid black;
+  border-radius: 6px;
+  background: white;
+}
 .landing-section {
-  padding-top: 40px;
+  padding-top: 24px;
 }
 .landing-section h3 {
   opacity: 0.7;
@@ -7012,7 +7021,13 @@ a:focus {
 }
 .landing-section .jumbotron {
   background: none;
-  margin-bottom: 24px;
+  margin-bottom: 0;
+}
+.landing-section .jumbotron .download {
+  margin-top: 24px;
+}
+.landing-section .logo-main {
+  margin: 16px;
 }
 .columns {
   margin-left: -8px;
@@ -7131,6 +7146,9 @@ a:focus {
 .navbar-default a.active {
   opacity: 1;
 }
+.navbar-default ul.nav li:first-child {
+  display: none;
+}
 .navbar-default .btn-default {
   margin-top: 8px;
 }
@@ -7146,4 +7164,60 @@ a:focus {
   color: white;
   text-shadow: #000000 4px 0px 0px, #000000 3.87565px 0.989616px 0px, #000000 3.51033px 1.9177px 0px, #000000 2.92676px 2.72656px 0px, #000000 2.16121px 3.36588px 0px, #000000 1.26129px 3.79594px 0px, #000000 0.282949px 3.98998px 0px, #000000 -0.712984px 3.93594px 0px, #000000 -1.66459px 3.63719px 0px, #000000 -2.51269px 3.11229px 0px, #000000 -3.20457px 2.39389px 0px, #000000 -3.69721px 1.52664px 0px, #000000 -3.95997px 0.56448px 0px, #000000 -3.97652px -0.432781px 0px, #000000 -3.74583px -1.40313px 0px, #000000 -3.28224px -2.28625px 0px, #000000 -2.61457px -3.02721px 0px, #000000 -1.78435px -3.57996px 0px, #000000 -0.843183px -3.91012px 0px, #000000 0.150409px -3.99717px 0px, #000000 1.13465px -3.8357px 0px, #000000 2.04834px -3.43574px 0px, #000000 2.83468px -2.82216px 0px, #000000 3.44477px -2.03312px 0px, #000000 3.84068px -1.11766px 0px, #000000 3.9978px -0.132717px 0px;
   letter-spacing: 0.11em;
+}
+#fonctionalites .video {
+  margin-bottom: 48px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: black;
+}
+#fonctionalites p {
+  font-size: 1em;
+}
+.function-details h2 {
+  min-height: 3em;
+}
+.function-details p {
+  text-align: left;
+}
+.function-details ul {
+  padding-left: 0;
+}
+.function-details li {
+  list-style: none;
+  text-align: left;
+  clear: both;
+  min-height: 40px;
+  margin-bottom: 16px;
+}
+.function-details li .list-ico {
+  display: block;
+  width: 32px;
+  height: 32px;
+  float: left;
+  text-align: right;
+}
+.function-details li .list-ico img {
+  height: 32px;
+  margin-right: 8px;
+}
+.tpl-projet .jumbotron img {
+  border: 2px solid black;
+  border-radius: 6px;
+  position: relative;
+  right: -16px;
+}
+.tpl-projet .header {
+  border: 2px solid black;
+  border-radius: 6px;
+  background: white;
+  position: relative;
+  left: -16px;
+  top: 16px;
+}
+.tpl-projet .download {
+  text-align: center;
+}
+.tpl-projet .download a {
+  margin: 16px;
 }

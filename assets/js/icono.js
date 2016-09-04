@@ -2,9 +2,9 @@ $(document).ready(function() {
 
   locationHashChanged();
 
-  $("a[href^='#']").on('click', function(e) {
+  $("a[href^='/#']").on('click', function(e) {
 
-    e.preventDefault();
+    // e.preventDefault();
 
     var newHash = this.hash;
 

@@ -1,7 +1,7 @@
 <?php if(!defined('KIRBY')) exit ?>
 
 title: Projet
-pages: true
+pages: false
 files: true
   sortable: true
   fields:
@@ -9,40 +9,63 @@ files: true
       label: Légendes des images dans le diaporama
       type: textarea
 fields:
+
   title:
    label: Titre
    type:  text
+   width: 1/2
 
   header:
    label: Chapeau
    type:  textarea
+   width: 1/2
 
   context:
    label: Contexte
    type:  textarea
+   width: 1/2
 
   conclusion:
    label: Bilan
    type:  textarea
+   width: 1/2
 
-  link:
-    label: Lien vers le projet
+  gallerylink:
+    label: Lien gallerie
+    help:  ex. flickr.com/…
+    type:  url
+    width: 1/2
+
+  orderlink:
+    label: Lien commande
+    help:  ex. lulu.com/…
     type:  url
     width: 1/2
 
   cover:
-      label: Image d'appercu
+      label: Aperçu projet
       type:  selector
       mode:  single
       autoselect: first
-      width: 1/2
+      types:
+          - image
+  preview:
+      label: Aperçu de l'objet final
+      type:  selector
+      mode:  single
       types:
           - image
 
-  attachments:
-      label: Pièces jointes
+  pdf:
+      label: Version PDF
+      type:  selector
+      mode:  single
+      autoselect: first
+      filter: /\.((pdf))/i
+
+  sourceiconotext:
+      label: Fichier source iconotexte
       type:  selector
       mode:  multiple
-      width: 1/2
-      types:
-          - all
+      autoselect: first
+      filter: /\.((iconotext))/i

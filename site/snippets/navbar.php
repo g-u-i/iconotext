@@ -8,18 +8,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#<?php echo $site->children()->visible()->first()->uri()?>"><img src="/assets/images/logo-mini.svg"></a>
+      <a class="navbar-brand" href="/#<?php echo $site->children()->visible()->first()->uri()?>"><img src="/assets/images/logo-mini.svg"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" >
       <ul class="nav navbar-nav">
           <?php foreach($site->children()->visible() as $section): ?>
-            <li><a href="#<?php echo $section->uri()?>"><?php echo $section->title()?></a></li>
+            <li><a href="/#<?php echo $section->uri()?>"><?php echo $section->title()?></a></li>
           <?php endforeach ?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <a class="btn btn-default" href="#" role="button">télécharger</a>
+        <a class="btn btn-default" href="download" role="button">Télécharger</a>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

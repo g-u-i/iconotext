@@ -6,7 +6,6 @@
           <a href="<?php echo $c->url()?>">
             <?php $cover = $c->image( basename($c->cover()->toFile()->url()) ) ?>
             <figure class="cover thumbnail">
-
                 <?php echo thumb($cover, array('width' => 1920/3, 'height' => 1080/3, 'crop' => true) ) ?>
               <figcaption class="caption">
                 <?php echo $c->header()->kirbytext() ?>

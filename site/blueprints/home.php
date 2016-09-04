@@ -2,12 +2,7 @@
 
 title: Page
 pages: true
-files: true
-  sortable: true
-  fields:
-    caption:
-      label: Légendes des images dans le diaporama
-      type: textarea
+files: false
 fields:
   title:
    label: Titre
