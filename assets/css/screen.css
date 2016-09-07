@@ -7134,7 +7134,6 @@ a:focus {
   font-size: 16px;
   border: 0;
   background-color: white;
-  text-transform: capitalize;
 }
 .navbar-default a {
   text-decoration: none;
