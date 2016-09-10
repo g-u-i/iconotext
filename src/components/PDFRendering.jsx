@@ -59,7 +59,7 @@ export default React.createClass({
               text={ text }
               options={ options }
               className={ className }
-              noPrint={ range && (i < range.from || i > range.to) }
+              noPrint={ range && (i < range.from || i >= range.to) }
             />
           ))
         }
