@@ -48,9 +48,8 @@ export default React.createClass({
   mixins: [branchMixin],
   cursors: {
     publish: ['publish'],
-    meta: ['document', 'meta'],
-    exporting: ['ui', 'exporting'],
-    sections: ['document', 'sections'],
+    pages: ['publish', 'pages'],
+    range: ['ui', 'exportingRange'],
   },
 
   /**
@@ -77,14 +76,14 @@ export default React.createClass({
    * **********
    */
   render() {
-    const { publish, meta, sections, exporting, action } = this.state;
+    const { publish, pages, range, action } = this.state;
 
     return (
       <div data-view="publish">
         <div className="preview">
           <PDFRendering
-            cover={ meta }
-            pages={ sections }
+            pages={ pages }
+            range={ range }
             options={ _.defaults({ action }, publish) }
           />
         </div>
@@ -156,7 +155,7 @@ export default React.createClass({
         }</ul>
 
         {
-          exporting ?
+          range ?
             <div className="export-message">
               <div className="wrapper">
                 <div className="message">{ t('Publish.exportMessage') }</div>

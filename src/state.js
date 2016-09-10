@@ -1,5 +1,7 @@
 import Baobab from 'baobab';
 
+import { t } from './utils/translator.js';
+
 export default new Baobab({
 
   // Interface language:
@@ -15,8 +17,8 @@ export default new Baobab({
     // The index of the section with the image import panel opened:
     sectionEditingImage: null,
 
-    // True during the PDF generation:
-    exporting: false,
+    // During the PDF generation:
+    exportingRange: null,
   },
 
   // Document state:
@@ -53,5 +55,77 @@ export default new Baobab({
 
     // 'portrait' or 'landscape'
     orientation: 'portrait',
+
+    // every pages to print:
+    pages: Baobab.monkey({
+      cursors: {
+        view: ['view'],
+        locale: ['locale'],
+        meta: ['document', 'meta'],
+        support: ['publish', 'support'],
+        sections: ['document', 'sections'],
+      },
+      get({ view, support, sections, meta }) {
+        if (view !== 'publish') return [];
+
+        const pages = [];
+
+        // Insert blank pages if needed for print:
+        if (support === 'print') {
+          // 1. Cover will be inserted in JSX (different attributes)
+          pages.push({
+            img: meta.image,
+            text: meta.title,
+            className: 'cover',
+          });
+
+          // 2. Inside the front cover (empty):
+          pages.push({});
+
+          // 3. First inside recto (empty):
+          pages.push({});
+
+          // 4. Second inside verso (empty):
+          pages.push({});
+
+          // 5. Document credits:
+          pages.push({
+            className: 'credits',
+            text: [
+              meta.imageDescription,
+              meta.textDescription,
+              meta.author,
+              meta.date,
+            ].filter(s => !!(s || '').trim()).join('<br />'),
+          });
+
+          // 6. Verso credits (empty):
+          pages.push({});
+
+          // 7. Recto / verso printing for actual page contents:
+          sections.forEach(p => pages.push(p));
+
+          // 8. Project credits:
+          //   -> Insert a page if needed, to ensure this page is on verso:
+          if (!(sections.length % 2)) pages.push({});
+          pages.push({
+            className: 'credits',
+            text: t('pages.credits'),
+          });
+
+          // 9. Back cover (recto, empty):
+          pages.push({});
+
+          // 10. Back cover (verso, empty):
+          pages.push({});
+
+        // Add nothing for screens:
+        } else {
+          sections.forEach(p => pages.push(p));
+        }
+
+        return pages;
+      },
+    }),
   },
 });

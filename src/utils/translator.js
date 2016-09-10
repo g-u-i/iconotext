@@ -1,8 +1,6 @@
 import _ from 'lodash';
 import Polyglot from 'node-polyglot';
 
-import state from '../state.js';
-
 import frFR from '../../assets/locales/fr-FR.json';
 
 const locales = {
@@ -10,7 +8,7 @@ const locales = {
 };
 
 const polyglot = new Polyglot({
-  locale: state.get('locale'),
+  locale: 'fr-FR',
 });
 
 function setLang(lang, locale) {
@@ -27,21 +25,24 @@ _.forEach(
   (translations, language) => setLang(language, translations)
 );
 
-state
-  .select('locale')
-  .on(
-    'update',
-    () => {
-      const locale = state.get('locale');
+export function bindToState(state) {
+  polyglot.locale(state.get('locale'));
+  state
+    .select('locale')
+    .on(
+      'update',
+      () => {
+        const locale = state.get('locale');
 
-      if (locales[locale]) {
-        polyglot.locale(locale);
-        state.emit('render');
-      } else {
-        state.set('locale', Object.keys(locales)[0]);
+        if (locales[locale]) {
+          polyglot.locale(locale);
+          state.emit('render');
+        } else {
+          state.set('locale', Object.keys(locales)[0]);
+        }
       }
-    }
-  );
+    );
+}
 
 /**
  * Will store some translations until they are dynamically used from the #t

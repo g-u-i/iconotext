@@ -5,7 +5,7 @@ export default React.createClass({
   displayName: 'iconotexte/Page',
 
   render() {
-    const { text, img, options, className } = this.props;
+    const { text, img, options, className, noPrint } = this.props;
 
     return (
       React.createElement(
@@ -19,6 +19,7 @@ export default React.createClass({
           {
             className,
             'data-component': 'page',
+            'data-no-print': noPrint,
           }
         ),
         <span

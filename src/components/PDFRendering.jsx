@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Page from './Page.jsx';
-import { t } from '../utils/translator.js';
 
 export default React.createClass({
   displayName: 'iconotexte/PDFRendering',
@@ -11,7 +10,7 @@ export default React.createClass({
    * **********
    */
   render() {
-    const { options, cover, pages } = this.props;
+    const { options, pages, range } = this.props;
 
     // Since the @page CSS pseudo-selector cannot depend on upper conditions,
     // there has to be only one instruction, which is why it is injection from
@@ -25,56 +24,6 @@ export default React.createClass({
       } else {
         size = '10.79cm 17.46cm';
       }
-    }
-
-    const printPages = [];
-    // Insert blank pages if needed for print:
-    if (options.support === 'print') {
-      // 1. Cover will be inserted in JSX (different attributes)
-
-      // 2. Inside the front cover (empty):
-      printPages.push({});
-
-      // 3. First inside recto (empty):
-      printPages.push({});
-
-      // 4. Second inside verso (empty):
-      printPages.push({});
-
-      // 5. Document credits:
-      printPages.push({
-        className: 'credits',
-        text: [
-          cover.imageDescription,
-          cover.textDescription,
-          cover.author,
-          cover.date,
-        ].filter(s => !!(s || '').trim()).join('<br />'),
-      });
-
-      // 6. Verso credits (empty):
-      printPages.push({});
-
-      // 7. Recto / verso printing for actual page contents:
-      pages.forEach(p => printPages.push(p));
-
-      // 8. Project credits:
-      //   -> Insert a page if needed, to ensure this page is on verso:
-      if (!(pages.length % 2)) printPages.push({});
-      printPages.push({
-        className: 'credits',
-        text: t('pages.credits'),
-      });
-
-      // 9. Back cover (recto, empty):
-      printPages.push({});
-
-      // 10. Back cover (verso, empty):
-      printPages.push({});
-
-    // Add nothing for screens:
-    } else {
-      pages.forEach(p => printPages.push(p));
     }
 
     return (
@@ -101,23 +50,16 @@ export default React.createClass({
           }
         `}</style>
 
-        { /* COVER */ }
-        <Page
-          className="cover"
-          img={ cover.image }
-          text={ cover.title }
-          options={ options }
-        />
-
         { /* PAGES */ }
         {
-          printPages.map(({ img, text, className }, i) => (
+          pages.map(({ img, text, className }, i) => (
             <Page
               key={ i }
               img={ img }
               text={ text }
               options={ options }
               className={ className }
+              noPrint={ range && (i < range.from || i > range.to) }
             />
           ))
         }
