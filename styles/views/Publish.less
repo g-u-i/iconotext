@@ -1,116 +1,92 @@
 *[data-view="publish"] {
-  .actions {
-    position: fixed;
-    top: 64px;
-    right: -8px;
-
-    background: white;
-    border-radius: 8px;
-    padding: 8px;
-    padding-right: 16px;
-    border: 2px solid black;
-
-    li {
-      position: relative;
-
-      display: inline-block;
-      height: 90px;
-      width: 120px;
-      margin-top: 16px;
-      text-align: center;
-
-      .label {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-      }
-
-      .icon {
-        width: 100%;
-        height: 32px;
-
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: contain;
-        background-color: transparent;
-
-        transition: transform .2s;
-      }
-      &[data-action="pdf"] .icon {
-        background-image: url(../../assets/icons/ico-export-1.svg);
-      }
-      &[data-action="lulu"] .icon {
-        background-image: url(../../assets/icons/ico-laptop.svg);
-      }
-      &[data-action="images"] .icon {
-        background-image: url(../../assets/icons/ico-txt-as-sub.svg);
-      }
-
-      &[disabled] {
-        color: grey;
-
-        .icon {
-          opacity: 0.6;
-        }
-      }
-      &:not([disabled]):hover .icon {
-        transform: rotate(-12deg);
-        cursor: pointer;
-      }
-    }
-  }
-
-  .options {
+  .panel {
     position: fixed;
     top: 50%;
     right: 32px;
     transform: translateY(-50%);
+  }
 
-    li.option {
-      .icon,
-      .values {
-        display: inline-block;
-        vertical-align: middle;
-      }
+  li.option {
+    .icon,
+    .values {
+      display: inline-block;
+      vertical-align: middle;
+    }
 
-      .icon {
-        width: 80px;
-        height: 100px;
-        margin-right: 16px;
+    .icon {
+      width: 80px;
+      height: 100px;
+      margin-right: 16px;
 
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: contain;
-        background-color: transparent;
-      }
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      background-color: transparent;
+    }
 
-      label,
-      input[type="radio"] {
-        cursor: pointer;
-      }
+    label,
+    input[type="radio"] {
+      cursor: pointer;
+    }
 
-      input:disabled + label {
-        color: grey;
-      }
+    input:disabled + label {
+      color: grey;
+    }
 
-      &[data-option="support"][data-value="print"] .icon {
-        background-image: url(../../assets/icons/ico-printed.svg);
+    &[data-option="support"][data-value="print"] .icon {
+      background-image: url(../../assets/icons/ico-printed.svg);
+    }
+    &[data-option="support"][data-value="screen"] .icon {
+      background-image: url(../../assets/icons/ico-slideshow.svg);
+    }
+    &[data-option="format"][data-value="a4"] .icon {
+      background-image: url(../../assets/icons/ico-a4.svg);
+    }
+    &[data-option="format"][data-value="pocket"] .icon {
+      background-image: url(../../assets/icons/ico-pocket.svg);
+    }
+    &[data-option="orientation"][data-value="landscape"] .icon {
+      background-image: url(../../assets/icons/ico-landscape.svg);
+    }
+    &[data-option="orientation"][data-value="portrait"] .icon {
+      background-image: url(../../assets/icons/ico-portrait.svg);
+    }
+    &[data-option="action"][data-value="pdf"] .icon {
+      background-image: url(../../assets/icons/ico-editor-1.svg);
+    }
+    &[data-option="action"][data-value="lulu"] .icon {
+      background-image: url(../../assets/icons/ico-laptop.svg);
+    }
+    &[data-option="action"][data-value="images"] .icon {
+      background-image: url(../../assets/icons/ico-txt-as-sub.svg);
+    }
+    &[data-option="textPosition"][data-value="title"] .icon {
+      background-image: url(../../assets/icons/ico-txt-as-title.svg);
+    }
+    &[data-option="textPosition"][data-value="caption"] .icon {
+      background-image: url(../../assets/icons/ico-txt-as-caption.svg);
+    }
+    &[data-option="textPosition"][data-value="bubble"] .icon {
+      background-image: url(../../assets/icons/ico-txt-as-bubble.svg);
+    }
+  }
+
+  .print {
+    text-align: center;
+
+    button {
+      .ic-custom-button;
+      width: 5em;
+      height: 5em;
+
+      img {
+        width: 100%;
+        height: 100%;
       }
-      &[data-option="support"][data-value="screen"] .icon {
-        background-image: url(../../assets/icons/ico-slideshow.svg);
-      }
-      &[data-option="format"][data-value="a4"] .icon {
-        background-image: url(../../assets/icons/ico-a4.svg);
-      }
-      &[data-option="format"][data-value="pocket"] .icon {
-        background-image: url(../../assets/icons/ico-pocket.svg);
-      }
-      &[data-option="orientation"][data-value="landscape"] .icon {
-        background-image: url(../../assets/icons/ico-landscape.svg);
-      }
-      &[data-option="orientation"][data-value="portrait"] .icon {
-        background-image: url(../../assets/icons/ico-portrait.svg);
-      }
+    }
+
+    label {
+      display: block;
     }
   }
 
@@ -147,9 +123,7 @@
 
   @media print {
     .export-message,
-    .description,
-    .actions,
-    .options {
+    .panel {
       display: none;
     }
   }

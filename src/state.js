@@ -48,6 +48,12 @@ export default new Baobab({
 
   // Publication settings:
   publish: {
+    // 'title', 'caption' or 'bubble'
+    textPosition: 'title',
+
+    // 'pdf' or 'lulu'
+    action: 'pdf',
+
     // 'print' or 'screen'
     support: 'print',
 

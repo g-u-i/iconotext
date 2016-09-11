@@ -15,7 +15,8 @@
 
   "buttons": {
     "deleteImage": "Effacer l'image",
-    "addImage": "Ajouter une image"
+    "addImage": "Ajouter une image",
+    "print": "Imprimer"
   },
 
   "nav": {
@@ -56,13 +57,8 @@
 
   "Publish": {
     "pdf": "Fichier .pdf",
-    "exportMessage": "Le PDF est en train d'être généré.",
+    "exportMessage": "Une fenêtre de paramétrage de l'impression devrait être ouverte.<br/>Vous pouvez exporter le document dans un fichier en cliquant sur l'option \"Imprimer dans un fichier.\"",
 
-    "actions": {
-      "pdf": "exporter en pdf",
-      "lulu": "pdf pour lulu.com",
-      "images": "exporter en images"
-    },
     "options": {
       "support:print": "impression",
       "support:screen": "écran",
@@ -71,7 +67,15 @@
       "format:pocket": "poche",
 
       "orientation:landscape": "paysage",
-      "orientation:portrait": "portrait"
+      "orientation:portrait": "portrait",
+
+      "textPosition:title": "titre",
+      "textPosition:caption": "légende",
+      "textPosition:bubble": "parole",
+
+      "action:pdf": "exporter en pdf",
+      "action:lulu": "pdf pour lulu.com",
+      "action:images": "exporter en images"
     }
   }
 }
