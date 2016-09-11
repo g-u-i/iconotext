@@ -5,10 +5,23 @@ const randInt4 = () => Math.ceil(Math.random() * 4);
 export default {
   update({ index, updates }) {
     const section = state.select('document', 'sections', index);
+    let changed = false;
+
     if (!section) throw new Error(`Section ${ index } does not exist.`);
 
-    if ('img' in updates) section.set('img', updates.img);
-    if ('text' in updates) section.set('text', updates.text);
+    if ('img' in updates) {
+      section.set('img', updates.img);
+      changed = true;
+    }
+
+    if ('text' in updates) {
+      section.set('text', updates.text);
+      changed = true;
+    }
+
+    if (changed) {
+      state.set(['ui', 'unsave'], true);
+    }
   },
 
   delete({ index }) {
@@ -16,6 +29,7 @@ export default {
     sections.splice(index, 1);
 
     state.set(['document', 'sections'], sections);
+    state.set(['ui', 'unsave'], true);
   },
 
   insert({
@@ -30,6 +44,7 @@ export default {
 
     state.set(['document', 'sections'], sections);
     state.set(['ui', 'sectionEditingImage'], null);
+    state.set(['ui', 'unsave'], true);
   },
 
   mergeAfter({ index }) {
@@ -79,6 +94,7 @@ export default {
     }
 
     state.set(['document', 'sections'], sections);
+    state.set(['ui', 'unsave'], true);
   },
 
   editImage({ index }) {

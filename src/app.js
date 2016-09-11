@@ -3,10 +3,21 @@ import { render } from 'react-dom';
 
 import state from './state.js';
 import actions from './actions.js';
+import { t } from './utils/translator.js';
 
 import App from './views/App.jsx';
 
 import '../styles/app.less';
+
+// If the user has not saved his file
+window.onbeforeunload = e => {
+  if (
+    state.get('ui', 'unsave') &&
+    !window.confirm(t('nav.unsavedAndQuitting')) // eslint-disable-line
+  ) {
+    e.returnValue = 'false';
+  }
+};
 
 // Initial rendering:
 render(

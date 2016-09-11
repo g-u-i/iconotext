@@ -23,7 +23,8 @@
     "parseFail": "Fichier non valide",
     "loadFail": "Problème pendant le chargement du fichier",
     "saveFail": "Problème pendant l'enregistrement du fichier",
-    "saveSuccess": "Le fichier a bien été enregistré."
+    "saveSuccess": "Le fichier a bien été enregistré.",
+    "unsavedAndQuitting": "Des modifications n'ont pas été enregistrées.\nÊtes-vous certains de vouloir quitter iconotexte?."
   },
 
   "pages": {

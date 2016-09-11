@@ -17,6 +17,9 @@ export default new Baobab({
 
     // True during the PDF generation:
     exporting: false,
+
+    // True if modifications have been added since last document save:
+    unsave: false,
   },
 
   // Document state:

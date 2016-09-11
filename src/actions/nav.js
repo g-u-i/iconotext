@@ -36,6 +36,8 @@ export default {
                 message: t('nav.saveSuccess'),
                 buttons: ['OK'],
               });
+
+              state.set(['ui', 'unsave'], false);
             }
           }
         );
@@ -79,6 +81,7 @@ export default {
 
               if (doc) {
                 state.set('document', doc);
+                state.set(['ui', 'unsave'], false);
               }
             }
           }
