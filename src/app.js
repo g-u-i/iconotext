@@ -14,7 +14,7 @@ render(
   document.getElementById('root')
 );
 
-const app = {
+const iconotext = {
   state,
   actions,
 };
@@ -32,11 +32,13 @@ document.addEventListener('drop', event => {
   return false;
 }, false);
 
+// The following code catched
+
 // (@jacomyal) TODO:
 // I did not manage to use the "library" key in the dev Webpack config to expose
 // the core elements of the app, so here is this little dirty hack...
 if (process.env.NODE_ENV === 'development') {
-  window.app = app;
+  window.iconotext = iconotext;
 }
 
-export default app;
+export default iconotext;
