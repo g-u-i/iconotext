@@ -1,0 +1,40 @@
+div[data-component="tooltip"] {
+  position: absolute;
+
+  margin-left: 1.4em;
+  margin-top: -1em;
+  height: 2em;
+  line-height: 2em;
+  padding: 0 .5em;
+  z-index: 10000;
+  transition: opacity .4s;
+
+  top: -5em;
+  left: -5em;
+
+  .ic-block-round;
+
+  // Left triangle:
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    display: block;
+    width: 0;
+  }
+  &::after {
+    top: 50%;
+    margin-top: -9px + 2px;
+    left: -19px;
+    border-width: 7px 19px 7px 0;
+    border-color: transparent white;
+  }
+  &::before {
+    top: 50%;
+    margin-top: -9px;
+    left: -22px;
+    border-width: 9px 22px 9px 0;
+    border-color: transparent black;
+  }
+}

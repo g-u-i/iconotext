@@ -5,6 +5,7 @@ import About from './About.jsx';
 import Editor from './Editor.jsx';
 import Publish from './Publish.jsx';
 import Welcome from './Welcome.jsx';
+import Tooltip from '../components/Tooltip.jsx';
 
 import { t } from '../utils/translator.js';
 
@@ -115,6 +116,9 @@ export default React.createClass({
             ))
           }</ul>
         </div>
+
+        { /* TOOLTIP */ }
+        <Tooltip />
       </div>
     );
   },
