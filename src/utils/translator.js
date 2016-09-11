@@ -13,7 +13,7 @@ const polyglot = new Polyglot({
   locale: state.get('locale'),
 });
 
-function setLang(lang, locale) {
+function registerLang(lang, locale) {
   _.forEach(
     locale,
     (collection, ns) => polyglot.extend({
@@ -24,24 +24,30 @@ function setLang(lang, locale) {
 
 _.forEach(
   locales,
-  (translations, language) => setLang(language, translations)
+  (translations, language) => registerLang(language, translations)
 );
+
+function setLang(lang) {
+  if (locales[lang]) {
+    polyglot.locale(lang);
+    state.emit('render');
+
+    // Syncronize app title:
+    document.querySelector('head title').innerHTML = t('commons.title'); // eslint-disable-line
+  } else {
+    state.set('locale', Object.keys(locales)[0]);
+  }
+}
 
 state
   .select('locale')
   .on(
     'update',
-    () => {
-      const locale = state.get('locale');
-
-      if (locales[locale]) {
-        polyglot.locale(locale);
-        state.emit('render');
-      } else {
-        state.set('locale', Object.keys(locales)[0]);
-      }
-    }
+    () => setLang(state.get('locale'))
   );
+
+// Boostrap locale:
+setLang(state.get('locale'));
 
 /**
  * Will store some translations until they are dynamically used from the #t
