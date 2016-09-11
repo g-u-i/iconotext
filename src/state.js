@@ -7,7 +7,7 @@ export default new Baobab({
 
   // Current view:
   // 'editor', 'about', 'preview', etc...
-  view: 'welcome',
+  view: 'editor',
 
   // The "ui" branch only contains data related to UI manipulations, and are
   // not data to save:
@@ -20,6 +20,10 @@ export default new Baobab({
 
     // True if modifications have been added since last document save:
     unsave: false,
+
+    // True as long as the user has not closed the welcome message or changed
+    // the page:
+    welcome: true,
   },
 
   // Document state:

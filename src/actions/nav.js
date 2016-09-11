@@ -8,6 +8,10 @@ const { dialog } = require('electron').remote; // eslint-disable-line
 export default {
   setView(view) {
     state.set('view', view);
+    this.closeWelcomeMessage();
+  },
+  closeWelcomeMessage() {
+    state.set(['ui', 'welcome'], false);
   },
   save() {
     dialog.showSaveDialog(

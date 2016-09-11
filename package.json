@@ -107,6 +107,7 @@
     "node-polyglot": "^2.0.0",
     "postcss": "^5.0.21",
     "react": "^15.1.0",
+    "react-addons-css-transition-group": "^15.3.1",
     "react-dom": "^15.1.0",
     "react-dropzone": "^3.5.3",
     "react-webcam": "0.0.12",

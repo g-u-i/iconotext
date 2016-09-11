@@ -4,7 +4,6 @@ import { branch as branchMixin } from 'baobab-react/mixins';
 import About from './About.jsx';
 import Editor from './Editor.jsx';
 import Publish from './Publish.jsx';
-import Welcome from './Welcome.jsx';
 import Tooltip from '../components/Tooltip.jsx';
 
 import { t } from '../utils/translator.js';
@@ -13,7 +12,6 @@ const VIEWS = {
   about: About,
   editor: Editor,
   publish: Publish,
-  welcome: Welcome,
 };
 
 const MENU = [

@@ -1,9 +1,12 @@
 import React from 'react';
 import { EditorState, SelectionState } from 'draft-js';
 import { branch as branchMixin } from 'baobab-react/mixins';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Section from '../components/Section.jsx';
 import MetaForm from '../components/MetaForm.jsx';
+
+import { t } from '../utils/translator.js';
 
 export default React.createClass({
   displayName: 'iconotexte/Editor',
@@ -99,6 +102,10 @@ export default React.createClass({
     this.props.actions.meta.update(meta);
   },
 
+  handleCloseWelcome() {
+    this.props.actions.nav.closeWelcomeMessage();
+  },
+
 
   /**
    * Rendering:
@@ -109,6 +116,27 @@ export default React.createClass({
 
     return (
       <div data-view="editor">
+        <ReactCSSTransitionGroup
+          transitionName="welcome"
+          transitionEnterTimeout={ 500 }
+          transitionLeaveTimeout={ 500 }
+        >{
+          ui.welcome ?
+            <div
+              className="welcome-message"
+              onClick={ this.handleCloseWelcome }
+            >
+              <div
+                className="content"
+                dangerouslySetInnerHTML={{
+                  __html: t('Welcome.content'),
+                }}
+              />
+              <button className="close-button" />
+            </div> :
+            undefined
+        }</ReactCSSTransitionGroup>
+
         <MetaForm
           meta={ meta }
           onChange={ this.handleEditMeta }
