@@ -13,6 +13,11 @@
     "open": "charger"
   },
 
+  "buttons": {
+    "deleteImage": "Effacer l'image",
+    "addImage": "Ajouter une image"
+  },
+
   "nav": {
     "fileExtName": "Sauvegarde Iconotexte (*.iconotext)",
     "parseFail": "Fichier non valide",

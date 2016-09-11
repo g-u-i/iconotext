@@ -323,7 +323,10 @@ export default React.createClass({
         <div className="icons">
           {
             (!editingImg && !img) ?
-              <button onClick={ this.onClickEditImg }>
+              <button
+                onClick={ this.onClickEditImg }
+                data-tooltip={ t('buttons.addImage') }
+              >
                 <img src={ `../assets/icons/ico-edit-img-${ imgIcon }.svg` } />
               </button> :
               null

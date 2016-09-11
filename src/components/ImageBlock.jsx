@@ -1,4 +1,5 @@
 import React from 'react';
+import { t } from '../utils/translator.js';
 
 export default React.createClass({
   displayName: 'iconotexte/ImageBlock',
@@ -18,7 +19,10 @@ export default React.createClass({
       <div data-component="image-block">
         <img src={ img.base64 } />
 
-        <button onClick={ this.onClickDelete } >
+        <button
+          onClick={ this.onClickDelete }
+          data-tooltip={ t('buttons.deleteImage') }
+        >
           <img src="../assets/icons/ico-remove-1.svg" />
         </button>
       </div>
