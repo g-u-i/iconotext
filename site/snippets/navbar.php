@@ -19,7 +19,7 @@
           <?php endforeach ?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <a class="btn btn-default" href="download" role="button">Télécharger</a>
+        <a class="btn btn-default" href="/download" role="button">Télécharger</a>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

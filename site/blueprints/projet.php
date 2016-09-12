@@ -50,9 +50,9 @@ fields:
       types:
           - image
   preview:
-      label: Aperçu de l'objet final
+      label: Illustrations
       type:  selector
-      mode:  single
+      mode:  multiple
       types:
           - image
 
