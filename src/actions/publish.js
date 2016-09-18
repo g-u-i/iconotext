@@ -12,12 +12,26 @@ export default {
 
     state.set(['ui', 'exporting'], true);
 
+    // Determine size
+    const options = { printBackground: true };
+    const publish = state.get('publish');
+
+    if (publish.format === 'a4') {
+      options.landscape = publish.orientation === 'landscape';
+      options.pageSize = 'A4';
+    } else if (publish.format === 'pocket') {
+      if (publish.orientation === 'landscape') {
+        options.landscape = true;
+        options.pageSize = { width: 174600, height: 107900 };
+      } else {
+        options.pageSize = { width: 107900, height: 174600 };
+      }
+    }
+
     // Wait for the export view to be rendered:
     setTimeout(
       () => {
-        webContents.print(
-          { printBackground: true }
-        );
+        webContents.print(options);
 
         state.set(['ui', 'exporting'], false);
       },
