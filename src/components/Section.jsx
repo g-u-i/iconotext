@@ -101,7 +101,7 @@ export default React.createClass({
 
     if (
       this.props.focusNextSection &&
-      (Math.abs(diff) < 10 || this.props.section.text === PARAGRAPH_EMPTY)
+      (Math.abs(diff) < 10 || range.startContainer.innerText === '\n')
     ) {
       this.props.focusNextSection({ index: this.props.index });
     }
