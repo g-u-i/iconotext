@@ -3,11 +3,14 @@ import { render } from 'react-dom';
 
 import state from './state.js';
 import actions from './actions.js';
-import { t } from './utils/translator.js';
+import { t, bindToState } from './utils/translator.js';
 
 import App from './views/App.jsx';
 
 import '../styles/app.less';
+
+// Plug translator to state:
+bindToState(state);
 
 // If the user has not saved his file
 window.onbeforeunload = e => {

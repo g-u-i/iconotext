@@ -94,6 +94,7 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
+    "async": "^2.0.1",
     "baobab": "^2.3.3",
     "baobab-react": "^2.1.1",
     "css-modules-require-hook": "^4.0.0",

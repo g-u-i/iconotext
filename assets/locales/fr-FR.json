@@ -16,7 +16,8 @@
   "buttons": {
     "deleteImage": "Effacer l'image",
     "addImage": "Ajouter une image",
-    "print": "Imprimer"
+    "print": "Imprimer",
+    "export": "Enregistrer en PDFs"
   },
 
   "nav": {
@@ -56,8 +57,9 @@
   },
 
   "Publish": {
-    "pdf": "Fichier .pdf",
-    "exportMessage": "Une fenêtre de paramétrage de l'impression devrait être ouverte.<br/>Vous pouvez exporter le document dans un fichier en cliquant sur l'option \"Imprimer dans un fichier.\"",
+    "directory": "Dossier vide",
+    "printMessage": "Une fenêtre de paramétrage de l'impression devrait être ouverte.<br/>Vous pouvez exporter le document dans un fichier en cliquant sur l'option \"Imprimer dans un fichier.\"",
+    "pdfMessage": "<strong>Exportation en cours (%{progress}%)</strong><br/><br/>Une fois l'exportation terminée vous pourrez publier votre iconotexte sous forme de libre en utilisant lulu.com et ainsi le partager en ligne et permettre à tous d'obtenir un tirage.<br/><br/>Pensez à proposer votre projet en remplissant ce formulaire pour qu'ils apparaissent sur le site iconotexte.com.",
 
     "options": {
       "support:print": "impression",

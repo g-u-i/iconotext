@@ -71,7 +71,7 @@
     }
   }
 
-  .print {
+  .action {
     text-align: center;
 
     button {
@@ -103,13 +103,14 @@
       margin: auto;
       text-align: center;
       height: 2em;
-      line-height: 2em;
+      line-height: 1.2em;
       margin-top: 50%;
 
       .message {
+        max-width: 800px;
         transform: translateY(-50%);
         display: inline-block;
-        padding: 0 1em;
+        padding: 1em;
         .ic-block;
       }
     }
@@ -123,7 +124,8 @@
 
   @media print {
     .export-message,
-    .panel {
+    .panel,
+    *[data-no-print="true"] {
       display: none;
     }
   }

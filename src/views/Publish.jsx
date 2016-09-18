@@ -45,18 +45,20 @@ export default React.createClass({
   mixins: [branchMixin],
   cursors: {
     publish: ['publish'],
-    meta: ['document', 'meta'],
-    exporting: ['ui', 'exporting'],
-    sections: ['document', 'sections'],
+    pages: ['publish', 'pages'],
+    range: ['ui', 'exportingRange'],
+    method: ['ui', 'exportingMethod'],
   },
 
   /**
    * Handlers:
    * *********
    */
-  onPrint() {
-    const action = this.state.publish.action;
-    this.props.actions.publish[action]();
+  handlePrint() {
+    this.props.actions.publish.print();
+  },
+  handleExportPDF() {
+    this.props.actions.publish.pdf();
   },
   onSelectOption(e) {
     const target = e.currentTarget;
@@ -71,14 +73,51 @@ export default React.createClass({
    * **********
    */
   render() {
-    const { publish, meta, sections, exporting } = this.state;
+    const { publish, pages, range, method } = this.state;
+
+    // Export message:
+    let message;
+    if (range) {
+      // Case 1: Full range:
+      if (method === 'print') {
+        message = (
+          <div className="export-message">
+            <div className="wrapper">
+              <div
+                className="message"
+                dangerouslySetInnerHTML={{
+                  __html: t('Publish.printMessage'),
+                }}
+              />
+            </div>
+          </div>
+        );
+
+      // Case 2: Partial range:
+      } else {
+        const progress = Math.round(range.from / pages.length * 100);
+
+        message = (
+          <div className="export-message">
+            <div className="wrapper">
+              <div
+                className="message"
+                dangerouslySetInnerHTML={{
+                  __html: t('Publish.pdfMessage', { progress }),
+                }}
+              />
+            </div>
+          </div>
+        );
+      }
+    }
 
     return (
       <div data-view="publish">
         <div className="preview">
           <PDFRendering
-            cover={ meta }
-            pages={ sections }
+            range={ range }
+            pages={ pages }
             options={ publish }
           />
         </div>
@@ -124,30 +163,27 @@ export default React.createClass({
           }</ul>
 
           <div
-            className="print"
-            onClick={ this.onPrint }
+            className="action"
+            onClick={ this.handlePrint }
           >
             <button>
               <img src="../assets/icons/ico-export-1.svg" />
             </button>
             <label>{ t('buttons.print') }</label>
           </div>
+
+          <div
+            className="action"
+            onClick={ this.handleExportPDF }
+          >
+            <button>
+              <img src="../assets/icons/ico-save-1.svg" />
+            </button>
+            <label>{ t('buttons.export') }</label>
+          </div>
         </div>
 
-        {
-          exporting ?
-            <div className="export-message">
-              <div className="wrapper">
-                <div
-                  className="message"
-                  dangerouslySetInnerHTML={{
-                    __html: t('Publish.exportMessage'),
-                  }}
-                />
-              </div>
-            </div> :
-            undefined
-        }
+        { message }
       </div>
     );
   },

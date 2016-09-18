@@ -1,8 +1,6 @@
 import _ from 'lodash';
 import Polyglot from 'node-polyglot';
 
-import state from '../state.js';
-
 import frFR from '../../assets/locales/fr-FR.json';
 
 const locales = {
@@ -10,7 +8,7 @@ const locales = {
 };
 
 const polyglot = new Polyglot({
-  locale: state.get('locale'),
+  locale: 'fr-FR',
 });
 
 function registerLang(lang, locale) {
@@ -27,7 +25,7 @@ _.forEach(
   (translations, language) => registerLang(language, translations)
 );
 
-function setLang(lang) {
+function setLang(lang, state) {
   if (locales[lang]) {
     polyglot.locale(lang);
     state.emit('render');
@@ -38,16 +36,6 @@ function setLang(lang) {
     state.set('locale', Object.keys(locales)[0]);
   }
 }
-
-state
-  .select('locale')
-  .on(
-    'update',
-    () => setLang(state.get('locale'))
-  );
-
-// Boostrap locale:
-setLang(state.get('locale'));
 
 /**
  * Will store some translations until they are dynamically used from the #t
@@ -65,6 +53,16 @@ export function extend(ns, obj) {
       [lang]: { [ns]: collection },
     });
   });
+}
+
+export function bindToState(state) {
+  setLang(state.get('locale'), state);
+  state
+    .select('locale')
+    .on(
+      'update',
+      () => setLang(state.get('locale'), state)
+    );
 }
 
 export function t(path, ...args) {
