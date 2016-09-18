@@ -27,6 +27,7 @@ export default React.createClass({
   mixins: [branchMixin],
   cursors: {
     view: ['view'],
+    loading: ['ui', 'loading'],
   },
 
   /**
@@ -66,7 +67,7 @@ export default React.createClass({
    * *******
    */
   render() {
-    const { view } = this.state;
+    const { view, loading } = this.state;
     const { actions } = this.props;
     const ReactView = VIEWS[view || 'editor'];
 
@@ -117,6 +118,22 @@ export default React.createClass({
 
         { /* TOOLTIP */ }
         <Tooltip />
+
+        { /* LOADING MESSAGE */ }
+        {
+          loading ?
+            <div className="loading-message">
+              <div className="wrapper">
+                <div
+                  className="message"
+                  dangerouslySetInnerHTML={{
+                    __html: t('nav.loadingMessage', { fileName: loading }),
+                  }}
+                />
+              </div>
+            </div> :
+            undefined
+        }
       </div>
     );
   },

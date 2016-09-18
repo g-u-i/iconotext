@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 
 import state from '../state.js';
 import { t } from '../utils/translator.js';
@@ -62,11 +63,15 @@ export default {
         if (fileNames === undefined) return;
         const fileName = fileNames[0];
 
+        state.set(['ui', 'loading'], path.basename(fileName));
+        state.commit();
+
         fs.readFile(
           fileName,
           'utf-8',
           (err, data) => {
             if (err) {
+              state.set(['ui', 'loading'], null);
               dialog.showErrorBox(
                 t('nav.loadFail'),
                 err.message
@@ -82,6 +87,8 @@ export default {
                   e.message
                 );
               }
+
+              state.set(['ui', 'loading'], null);
 
               if (doc) {
                 state.set('document', doc);

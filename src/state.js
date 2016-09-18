@@ -24,6 +24,9 @@ export default new Baobab({
     // True if modifications have been added since last document save:
     unsave: false,
 
+    // While loading a document, specifies the name of the file:
+    loading: null,
+
     // True as long as the user has not closed the welcome message or changed
     // the page:
     welcome: true,
