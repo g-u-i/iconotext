@@ -27,6 +27,9 @@ export default new Baobab({
     // While loading a document, specifies the name of the file:
     loading: null,
 
+    // The basename of the latest saved or loaded file:
+    basename: null,
+
     // True as long as the user has not closed the welcome message or changed
     // the page:
     welcome: true,

@@ -17,6 +17,7 @@ export default {
   save() {
     dialog.showSaveDialog(
       {
+        defaultPath: state.get('ui', 'basename') || undefined,
         filters: [
           {
             name: t('nav.fileExtName'),
@@ -26,6 +27,8 @@ export default {
       },
       fileName => {
         if (fileName === undefined) return;
+
+        state.set(['ui', 'basename'], path.basename(fileName));
 
         fs.writeFile(
           fileName,
@@ -62,8 +65,10 @@ export default {
       fileNames => {
         if (fileNames === undefined) return;
         const fileName = fileNames[0];
+        const basename = path.basename(fileName);
 
-        state.set(['ui', 'loading'], path.basename(fileName));
+        state.set(['ui', 'basename'], basename);
+        state.set(['ui', 'loading'], basename);
         state.commit();
 
         fs.readFile(
