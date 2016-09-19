@@ -48,6 +48,7 @@ export default React.createClass({
         onChange={ this.onChange }
         value={ this.props.meta[field] || '' }
         placeholder={ t(`MetaForm.${ field }`) }
+        data-tooltip={ t(`buttons.${ field }`) }
       />
     );
   },

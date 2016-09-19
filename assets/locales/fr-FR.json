@@ -10,10 +10,19 @@
     "editor": "éditeur",
     "publish": "publier",
     "save": "enregistrer",
-    "open": "charger"
+    "open": "ouvrir"
   },
 
   "buttons": {
+    "about":"aide et informations",
+    "editor":"modifier la séquence",
+    "publish":"apercu avant publication",
+    "save":"Sauver un fichier .iconotexte",
+    "open":"Charger un fichier .iconotexte",
+    "imageDescription":"le ou les auteurs des images ?",
+    "textDescription":"le ou les auteurs du texte ?",
+    "author":"nom de l'éditeur",
+    "date":"date de la publication",
     "deleteImage": "Effacer l'image",
     "addImage": "Ajouter une image",
     "print": "Imprimer",
@@ -51,9 +60,9 @@
 
   "MetaForm": {
     "title": "titre\u00A0?",
-    "imageDescription": "quelles images\u00A0?",
-    "textDescription": "quels textes\u00A0?",
-    "author": "par qui\u00A0?",
+    "imageDescription": "source images\u00A0?",
+    "textDescription": "source texte\u00A0?",
+    "author": "auteur(s)\u00A0?",
     "date": "quand\u00A0?"
   },
 

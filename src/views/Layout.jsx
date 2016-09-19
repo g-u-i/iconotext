@@ -107,8 +107,8 @@ export default React.createClass({
                 className={ position }
                 onClick={ this.onClickMenu }
               >
-                <div className="icon" />
-                <div className="label">{
+                <div className="icon" data-tooltip={ t(`buttons.${ id }`) }/>
+                <div className="label" >{
                   t(`menu.${ id }`)
                 }</div>
               </li>
