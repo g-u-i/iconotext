@@ -1,4 +1,5 @@
 import Baobab from 'baobab';
+import { merge } from 'lodash';
 
 import { t } from './utils/translator.js';
 
@@ -123,7 +124,11 @@ export default new Baobab({
           pages.push({});
 
           // 7. Recto / verso printing for actual page contents:
-          sections.forEach(p => pages.push(p));
+          sections.forEach(p => pages.push(
+            _.merge({
+              className:'default'
+            },p)
+          ));
 
           // 8. Project credits:
           //   -> Insert a page if needed, to ensure this page is on verso:
