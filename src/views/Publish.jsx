@@ -5,6 +5,8 @@ import { branch as branchMixin } from 'baobab-react/mixins';
 import PDFRendering from '../components/PDFRendering.jsx';
 import { t } from '../utils/translator.js';
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 const OPTIONS = [
   {
     id: 'textPosition',
@@ -115,6 +117,14 @@ export default React.createClass({
     return (
       <div data-view="publish">
         <div className="preview">
+          <div className="welcome-message" >
+            <div
+              className="content"
+              dangerouslySetInnerHTML={{
+                __html: t('Publish.welcomeMessage'),
+              }}
+            />
+          </div>
           <PDFRendering
             range={ range }
             pages={ pages }

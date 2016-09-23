@@ -6,7 +6,7 @@
   },
 
   "menu": {
-    "about": "à propos",
+    "about": "infos",
     "editor": "éditeur",
     "publish": "publier",
     "save": "enregistrer",
@@ -19,10 +19,10 @@
     "publish":"apercu avant publication",
     "save":"Sauver un fichier .iconotexte",
     "open":"Charger un fichier .iconotexte",
-    "imageDescription":"le ou les auteurs des images ?",
-    "textDescription":"le ou les auteurs du texte ?",
-    "author":"nom de l'éditeur",
-    "date":"date de la publication",
+    "imageDescription":"photo, dessin, fond …",
+    "textDescription":"oeuvre, manifeste  …",
+    "author":"Lycée, institution, collecif, artiste …",
+    "date":"Date, numéro de série, volume… ",
     "deleteImage": "Effacer l'image",
     "addImage": "Ajouter une image",
     "print": "Imprimer",
@@ -60,20 +60,21 @@
 
   "MetaForm": {
     "title": "titre\u00A0?",
-    "imageDescription": "source images\u00A0?",
+    "imageDescription": "Source image\u00A0?",
     "textDescription": "source texte\u00A0?",
-    "author": "auteur(s)\u00A0?",
-    "date": "quand\u00A0?"
+    "author": "Editeur \u00A0?",
+    "date": "Date \u00A0?"
   },
 
   "Publish": {
     "directory": "Dossier vide",
     "printMessage": "Une fenêtre de paramétrage de l'impression devrait être ouverte.<br/>Vous pouvez exporter le document dans un fichier en cliquant sur l'option \"Imprimer dans un fichier.\"",
-    "pdfMessage": "<strong>Exportation en cours (%{progress}%)</strong><br/><br/>Une fois l'exportation terminée vous pourrez publier votre iconotexte sous forme de libre en utilisant lulu.com et ainsi le partager en ligne et permettre à tous d'obtenir un tirage.<br/><br/>Pensez à proposer votre projet en remplissant ce formulaire pour qu'ils apparaissent sur le site iconotexte.com.",
+    "pdfMessage": "<strong>Exportation en cours (%{progress}%)</strong><br/><br/>",
+    "welcomeMessage": "Une fois l'exportation terminée vous pourrez publier votre iconotexte sous forme de libre en utilisant lulu.com et ainsi le partager en ligne et permettre à tous d'obtenir un tirage.<br/><br/>Pensez à proposer votre projet en remplissant ce formulaire pour qu'ils apparaissent sur le site iconotexte.com.",
 
     "options": {
       "support:print": "impression",
-      "support:screen": "écran",
+      "support:screen": "livre numerique",
 
       "format:a4": "a4",
       "format:pocket": "poche",
@@ -83,7 +84,7 @@
 
       "textPosition:title": "titre",
       "textPosition:caption": "légende",
-      "textPosition:bubble": "parole",
+      "textPosition:bubble": "sous-titre",
 
       "action:pdf": "exporter en pdf",
       "action:lulu": "pdf pour lulu.com",
