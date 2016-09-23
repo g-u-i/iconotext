@@ -131,8 +131,8 @@ export default new Baobab({
           ));
 
           // 8. Project credits:
-          //   -> Insert a page if needed, to ensure this page is on verso:
-          if (!(sections.length % 2)) pages.push({className:'page page--empty'});
+          //   -> Insert a page if needed, to ensure this page is on recto:
+          if ((sections.length % 2)) pages.push({className:'page page--empty'});
           pages.push({
             className: 'page page--credits',
             text: t('pages.credits'),

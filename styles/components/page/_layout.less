@@ -1,6 +1,6 @@
 // Variables
 @interface-spacer: 16px;
-@preview-ratio: .25;
+@preview-ratio: 0.25;
 
 /* =Pages preview and printing
   -----------------------------------------------------------------------------*/
@@ -9,6 +9,7 @@
   position: relative;
   overflow: hidden;
   background-color: Gainsboro;
+  line-height: 1.5;
 
   *, *::after, *::before {
     box-sizing: border-box;
@@ -18,7 +19,7 @@
   &__content {
     position: static !important;
     overflow: hidden;
-    background-color: Gainsboro;
+    display: flex;
     @media not print {
       & when not (@preview-ratio = 1) {
         transform: scale(@preview-ratio);
@@ -27,10 +28,11 @@
     }
   }
 
+  // M O D I F I E R S
   [data-format="a4"]&
   {
     .set-page-base(@a4-width, @a4-height, @preview-ratio);
-    font-size: 16pt;
+    font-size: @a4-font-size;
 
     // M O D I F I E R S
     &--cover {
@@ -51,7 +53,7 @@
   [data-format="pocket"]&
   {
     .set-page-base(@pocket-width, @pocket-height, @preview-ratio);
-    font-size: 12pt;
+    font-size: @pocket-font-size;
 
     // M O D I F I E R S
     &--cover {
@@ -69,6 +71,74 @@
     }
   } //--- A4
 
+  &--cover,
+  &--credits {
+    .page__content {
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+  }
+
+  [data-textposition="title"]& {
+    &--default {
+      .page__content {
+        flex-direction: column;
+      }
+    }
+  }
+  [data-textposition="caption"]& {
+    &--default {
+      .page__content {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+  [data-textposition="bubble"]& {
+    &--default {
+      .page__content {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+
+}
+
+
+// Page Counter
+[data-component="pdf-rendering"] {
+  counter-reset: pager;
+
+  .page--default {
+
+    .page__content {
+      &::after {
+        content: counter(pager);
+        counter-increment: pager;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+  }
+
+  [data-textposition="title"].page--default .page__content{
+    &::after {
+      bottom: 0;
+    }
+  }
+
+  [data-textposition="caption"].page--default .page__content{
+    &::after {
+      top: 0;
+    }
+  }
+
+  [data-textposition="bubble"].page--default .page__content{
+    &::after {
+      top: 0;
+    }
+  }
 }
 
 
@@ -194,6 +264,7 @@
   *, *::after, *::before {
     box-sizing: border-box!important;
   }
+
 
   @page
   {
