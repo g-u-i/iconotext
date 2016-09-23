@@ -97,21 +97,21 @@ export default new Baobab({
           pages.push({
             img: meta.image,
             text: meta.title,
-            className: 'cover',
+            className: 'page page--cover',
           });
 
           // 2. Inside the front cover (empty):
-          pages.push({});
+          pages.push({className:'page page--empty'});
 
           // 3. First inside recto (empty):
-          pages.push({});
+          pages.push({className:'page page--empty'});
 
           // 4. Second inside verso (empty):
-          pages.push({});
+          pages.push({className:'page page--empty'});
 
           // 5. Document credits:
           pages.push({
-            className: 'credits',
+            className: 'page page--credits',
             text: [
               meta.imageDescription,
               meta.textDescription,
@@ -121,28 +121,28 @@ export default new Baobab({
           });
 
           // 6. Verso credits (empty):
-          pages.push({});
+          pages.push({className:'page page--empty'});
 
           // 7. Recto / verso printing for actual page contents:
           sections.forEach(p => pages.push(
             _.merge({
-              className:'default'
+              className:'page page--default'
             },p)
           ));
 
           // 8. Project credits:
           //   -> Insert a page if needed, to ensure this page is on verso:
-          if (!(sections.length % 2)) pages.push({});
+          if (!(sections.length % 2)) pages.push({className:'page page--empty'});
           pages.push({
-            className: 'credits',
+            className: 'page page--credits',
             text: t('pages.credits'),
           });
 
           // 9. Back cover (recto, empty):
-          pages.push({});
+          pages.push({className:'page page--empty'});
 
           // 10. Back cover (verso, empty):
-          pages.push({});
+          pages.push({className:'page page--empty'});
 
         // Add nothing for screens:
         } else {

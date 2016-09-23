@@ -1,0 +1,29 @@
+.text:not(:empty) {
+  background-color: white;
+  border: 3pt solid black;
+  border-radius: 1em;
+  width: 60%;
+  margin-left: 40%;
+  padding: .5em 1em;
+  position: relative;
+  z-index: 1;
+}
+
+.media {
+
+  width: 60%;
+  margin-top: 0;
+  margin-right: 40%;
+  margin-bottom: 0;
+  margin-left: 0;
+  position: relative;
+  z-index: 0;
+
+  &__img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-2em);
+  }
+
+}
