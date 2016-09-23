@@ -1,0 +1,87 @@
+.clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Make a page.
+.set-page-base(@w, @h, @ratio: 1) {
+
+  // M O D I F I E R S
+  &[data-orientation="portrait"] {
+    @media print {
+      width: 100vw;
+      height: 100vh;
+    }
+    @media not print {
+      width: @w * @ratio;
+      height: @h * @ratio;
+    }
+  }
+  &[data-orientation="landscape"] {
+    @media print {
+      width: 100vw;
+      height: 100vh;
+    }
+    @media not print {
+      width: @h * @ratio;
+      height: @w * @ratio;
+    }
+  }
+
+}
+
+// Set page margin.
+.set-page-margin(@margin-top, @margin-ext, @margin-bottom, @margin-int, @ratio: 1) {
+
+  @media print {
+    padding-top: @margin-top;
+    padding-bottom: @margin-bottom;
+  }
+  @media not print {
+    padding-top: @margin-top * @ratio;
+    padding-bottom: @margin-bottom * @ratio;
+  }
+
+  &:nth-child(odd) {
+    @media print {
+      padding-right: @margin-int;
+      padding-left: @margin-ext;
+    }
+    @media not print {
+      padding-right: @margin-int * @ratio;
+      padding-left: @margin-ext * @ratio;
+    }
+  }
+  &:nth-child(even) {
+    @media print {
+      padding-right: @margin-ext;
+      padding-left: @margin-int;
+    }
+    @media not print {
+      padding-right: @margin-ext * @ratio;
+      padding-left: @margin-int * @ratio;
+    }
+  }
+
+}
+
+// Set page__content width.
+.set-page__content-width(@w, @h, @margin-top, @margin-ext, @margin-bottom, @margin-int) {
+
+  &[data-orientation="portrait"] > .page__content {
+    width: @w - @margin-ext - @margin-int;
+    height: @h - @margin-top - @margin-bottom;
+  }
+
+  &[data-orientation="landscape"] > .page__content {
+    width: @h - @margin-ext - @margin-int;
+    height: @w - @margin-top - @margin-bottom;
+  }
+
+}

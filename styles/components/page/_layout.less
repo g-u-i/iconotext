@@ -1,0 +1,204 @@
+// Variables
+@interface-spacer: 16px;
+@preview-ratio: .25;
+
+/* =Pages preview and printing
+  -----------------------------------------------------------------------------*/
+.page {
+
+  position: relative;
+  overflow: hidden;
+  background-color: Gainsboro;
+
+  *, *::after, *::before {
+    box-sizing: border-box;
+  }
+
+  // E L E M E N T S
+  &__content {
+    position: static !important;
+    overflow: hidden;
+    background-color: Gainsboro;
+    @media not print {
+      & when not (@preview-ratio = 1) {
+        transform: scale(@preview-ratio);
+        transform-origin: left top;
+      }
+    }
+  }
+
+  [data-format="a4"]&
+  {
+    .set-page-base(@a4-width, @a4-height, @preview-ratio);
+    font-size: 16pt;
+
+    // M O D I F I E R S
+    &--cover {
+      .set-page-margin(@a4-cover-margin-top, @a4-cover-margin-ext, @a4-cover-margin-bottom, @a4-cover-margin-int, @preview-ratio);
+      // Elements
+      .set-page__content-width(@a4-width, @a4-height, @a4-cover-margin-top, @a4-cover-margin-ext, @a4-cover-margin-bottom, @a4-cover-margin-int);
+    }
+
+    &--default,
+    &--credits,
+    &--empty {
+      .set-page-margin(@a4-page-margin-top, @a4-page-margin-ext, @a4-page-margin-bottom, @a4-page-margin-int, @preview-ratio);
+      // Elements
+      .set-page__content-width(@a4-width, @a4-height, @a4-page-margin-top, @a4-page-margin-ext, @a4-page-margin-bottom, @a4-page-margin-int);
+    }
+  } //--- A4
+
+  [data-format="pocket"]&
+  {
+    .set-page-base(@pocket-width, @pocket-height, @preview-ratio);
+    font-size: 12pt;
+
+    // M O D I F I E R S
+    &--cover {
+      .set-page-margin(@pocket-cover-margin-top, @pocket-cover-margin-ext, @pocket-cover-margin-bottom, @pocket-cover-margin-int, @preview-ratio);
+      // Elements
+      .set-page__content-width(@pocket-width, @pocket-height, @pocket-cover-margin-top, @pocket-cover-margin-ext, @pocket-cover-margin-bottom, @pocket-cover-margin-int);
+    }
+
+    &--default,
+    &--credits,
+    &--empty {
+      .set-page-margin(@pocket-page-margin-top, @pocket-page-margin-ext, @pocket-page-margin-bottom, @pocket-page-margin-int, @preview-ratio);
+      // Elements
+      .set-page__content-width(@pocket-width, @pocket-height, @pocket-page-margin-top, @pocket-page-margin-ext, @pocket-page-margin-bottom, @pocket-page-margin-int);
+    }
+  } //--- A4
+
+}
+
+
+
+/* =Screen
+ * it’s only U.I. Helper
+  -----------------------------------------------------------------------------*/
+@media screen {
+
+  *[data-component="pdf-rendering"] {
+    .clearfix();
+  }
+
+  .page {
+
+    // M O D I F I E R S
+    &--cover,
+    &--default,
+    &--credits,
+    &--empty {
+      margin: @interface-spacer * 0.5;
+
+      & {
+        float: left;
+        box-shadow: 2px 2px 0px 1px #000, 0px 0px 0px 1px #000;
+      }
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 2;
+        border: 1px solid;
+        border-color: rgb(255,79,255) rgb(153,51,255);
+        pointer-events: none;
+      }
+
+      &:nth-child(odd) {
+        clear: left;
+      }
+
+    }
+
+    &--cover {
+      transform: translate( calc(100% ~"+" @interface-spacer); );
+    }
+
+    [data-format="a4"]& {
+      &--cover {
+        &:before {
+          top: @a4-cover-margin-top * @preview-ratio;
+          bottom: @a4-cover-margin-bottom * @preview-ratio;
+          left: @a4-cover-margin-int * @preview-ratio;
+          right: @a4-cover-margin-ext * @preview-ratio;
+        }
+      }
+
+      &--default,
+      &--credits,
+      &--empty {
+        &:before {
+          top: @a4-page-margin-top * @preview-ratio;
+          bottom: @a4-page-margin-bottom * @preview-ratio;
+        }
+        &:nth-child(odd) {
+          &:before {
+            left: @a4-page-margin-ext * @preview-ratio;
+            right: @a4-page-margin-int * @preview-ratio;
+          }
+        }
+        &:nth-child(even) {
+          &:before {
+            left: @a4-page-margin-int * @preview-ratio;
+            right: @a4-page-margin-ext * @preview-ratio;
+          }
+        }
+      }
+    }
+    [data-format="pocket"]& {
+      &--cover {
+        &:before {
+          top: @pocket-cover-margin-top * @preview-ratio;
+          bottom: @pocket-cover-margin-bottom * @preview-ratio;
+          left: @pocket-cover-margin-int * @preview-ratio;
+          right: @pocket-cover-margin-ext * @preview-ratio;
+        }
+      }
+
+      &--default,
+      &--credits,
+      &--empty {
+        &:before {
+          top: @pocket-page-margin-top * @preview-ratio;
+          bottom: @pocket-page-margin-bottom * @preview-ratio;
+        }
+        &:nth-child(odd) {
+          &:before {
+            left: @pocket-page-margin-ext * @preview-ratio;
+            right: @pocket-page-margin-int * @preview-ratio;
+          }
+        }
+        &:nth-child(even) {
+          &:before {
+            left: @pocket-page-margin-int * @preview-ratio;
+            right: @pocket-page-margin-ext * @preview-ratio;
+          }
+        }
+      }
+    }
+
+
+  }
+
+} // @media screen
+
+
+
+/* =Print
+  * Some Print reset, just to be sure.
+  -----------------------------------------------------------------------------*/
+@media print {
+
+  *, *::after, *::before {
+    box-sizing: border-box!important;
+  }
+
+  @page
+  {
+    // size: a4 portrait;
+    margin: 0;
+  }
+
+} // @media print

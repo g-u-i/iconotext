@@ -17,7 +17,7 @@ export default React.createClass({
     // the JS sources:
     let size;
     if (options.format === 'a4') {
-      size = 'a4' + (options.orientation === 'landscape' ? ' landscape' : '');
+      size = 'a4' + (options.orientation === 'landscape' ? ' landscape' : ' portrait');
     } else if (options.format === 'pocket') {
       if (options.orientation === 'landscape') {
         size = '17.46cm 10.79cm';
@@ -29,7 +29,7 @@ export default React.createClass({
     return (
       <div data-component="pdf-rendering">
         { /* PRINT SPECIFIC CSS CONDITIONAL RULES */ }
-        <style>{`
+        {/* <style>{`
           @media print {
             @page {
               size: ${ size };
@@ -46,6 +46,13 @@ export default React.createClass({
                 }
                 ` :
                 ''
+            }
+          }
+        `}</style> */}
+        <style>{`
+          @media print {
+            @page {
+              size: ${ size };
             }
           }
         `}</style>

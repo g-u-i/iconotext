@@ -22,17 +22,23 @@ export default React.createClass({
             'data-no-print': noPrint,
           }
         ),
-        <span
-          className="content"
-          dangerouslySetInnerHTML={{
-            __html: text,
-          }}
-        />,
-        img ?
-          <div className="background">
-            <img src={ img.base64 } />
-          </div> :
-          undefined
+        React.createElement(
+          'div',
+          {
+            'className': 'page__content'
+          },
+          <article
+            className="text"
+            dangerouslySetInnerHTML={{
+              __html: text,
+            }}
+          />,
+          img ?
+            <figure className="media">
+              <img className="media__img" src={ img.base64 } />
+            </figure> :
+            undefined
+        )
       )
     );
   },
