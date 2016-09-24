@@ -97,7 +97,9 @@ export default new Baobab({
           // 1. Cover will be inserted in JSX (different attributes)
           pages.push({
             img: meta.image,
-            text: meta.title,
+            text: ['title','date','editor'].map(f => {
+              return meta[f] ? '<p className="'+f+'">'+meta[f].replace(/<(?:.|\n)*?>/gm, '')+'</p>' : '';
+            }).join(''),
             className: 'page page--cover',
           });
 
@@ -111,15 +113,14 @@ export default new Baobab({
           pages.push({className:'page page--empty'});
 
           // 5. Document credits:
-          pages.push({
+          const creditsPage = {
             className: 'page page--credits',
-            text: [
-              meta.imageDescription,
-              meta.textDescription,
-              meta.author,
-              meta.date,
-            ].filter(s => !!(s || '').trim()).join('<br />'),
-          });
+            text: ['imageDescription','textDescription','editor'].map(f => {
+              return meta[f] ? '<p className="'+f+'">'+meta[f].replace(/<(?:.|\n)*?>/gm, '')+'</p>' : '';
+            }).join(''),
+          };
+
+          pages.push(creditsPage);
 
           // 6. Verso credits (empty):
           pages.push({className:'page page--empty'});
@@ -134,13 +135,21 @@ export default new Baobab({
           // 8. Project credits:
           //   -> Insert a page if needed, to ensure this page is on recto:
           if ((sections.length % 2)) pages.push({className:'page page--empty'});
+
+          pages.push({
+            className: 'page page--credits',
+            text: t('pages.pitch'),
+          });
+
+          pages.push({className:'page page--empty'});
+
           pages.push({
             className: 'page page--credits',
             text: t('pages.credits'),
           });
 
           // 9. Back cover (recto, empty):
-          pages.push({className:'page page--empty'});
+          pages.push(creditsPage);
 
           // 10. Back cover (verso, empty):
           pages.push({className:'page page--empty'});

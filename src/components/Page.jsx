@@ -5,8 +5,9 @@ export default React.createClass({
   displayName: 'iconotexte/Page',
 
   render() {
-    const { text, img, options, className, noPrint } = this.props;
+    const { text, img, info, options, className, noPrint } = this.props;
 
+    console.log(info)
     return (
       React.createElement(
         'div',
@@ -37,6 +38,11 @@ export default React.createClass({
             <figure className="media">
               <img className="media__img" src={ img.base64 } />
             </figure> :
+            undefined,
+          info ?
+            <p className="media">
+              {info} fqsdfqs
+            </p> :
             undefined
         )
       )
