@@ -55,6 +55,7 @@ export default new Baobab({
     //   - image
     //   - imageDescription
     //   - textDescription
+    //   - editor
     //   - author
     //   - date
     meta: [],

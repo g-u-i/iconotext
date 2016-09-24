@@ -7,7 +7,7 @@
     text-align: center;
   }
 
-  input {
+  input, textarea {
     font-family: iconofont;
     font-size: 16px;
     color: black;
@@ -34,5 +34,10 @@
     &:focus {
       outline: none;
     }
+  }
+  *[data-field="author"] {
+    width: 8*42px;
+    height: 8*24px;
+    line-height: 24px;
   }
 }

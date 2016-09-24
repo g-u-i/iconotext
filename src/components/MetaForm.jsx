@@ -52,6 +52,19 @@ export default React.createClass({
       />
     );
   },
+  renderTextarea(field) {
+    return (
+      <textarea
+        type="text"
+        key={ field }
+        data-field={ field }
+        onChange={ this.onChange }
+        value={ this.props.meta[field] || '' }
+        placeholder={ t(`MetaForm.${ field }`) }
+        data-tooltip={ t(`buttons.${ field }`) }
+      />
+    );
+  },
   render() {
     const { editingImg, meta = {} } = this.props;
 
@@ -79,12 +92,16 @@ export default React.createClass({
         }</fieldset>
 
         <fieldset className="author">{
-          this.renderInput('author')
+            this.renderTextarea('author')
         }</fieldset>
 
-        <fieldset className="date">{
-          this.renderInput('date')
+        <fieldset className="editor">{
+          [
+            this.renderInput('date'),
+            this.renderInput('editor')
+          ]
         }</fieldset>
+
       </div>
     );
   },

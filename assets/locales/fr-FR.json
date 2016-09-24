@@ -19,12 +19,16 @@
     "publish":"apercu avant publication",
     "save":"Sauver un fichier .iconotexte",
     "open":"Charger un fichier .iconotexte",
+
     "imageDescription":"photo, dessin, fond …",
     "textDescription":"oeuvre, manifeste  …",
-    "author":"Lycée, institution, collecif, artiste …",
+    "author":"participants …",
+    "editor":"lycée, institution, collecif, artiste …",
     "date":"Date, numéro de série, volume… ",
+
     "deleteImage": "Effacer l'image",
     "addImage": "Ajouter une image",
+
     "print": "Imprimer",
     "export": "Enregistrer en PDFs"
   },
@@ -62,8 +66,9 @@
     "title": "titre\u00A0?",
     "imageDescription": "Source image\u00A0?",
     "textDescription": "source texte\u00A0?",
-    "author": "Editeur \u00A0?",
-    "date": "Date \u00A0?"
+    "author": "Auteur(s)\u00A0?",
+    "editor": "Editeur\u00A0?",
+    "date": "Date\u00A0?"
   },
 
   "Publish": {
