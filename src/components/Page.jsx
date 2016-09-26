@@ -34,10 +34,8 @@ export default React.createClass({
             }}
           />,
           img ?
-            <figure className="media">
-              <img className="media__img" src={ img.base64 } />
-            </figure> :
-            undefined
+            <img className="media" src={ img.base64 } />
+            : undefined
         )
       )
     );

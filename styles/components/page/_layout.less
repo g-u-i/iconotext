@@ -1,6 +1,6 @@
 // Variables
 @interface-spacer: 16px;
-@preview-ratio: 0.25;
+@preview-ratio: 0.45;
 
 /* =Pages preview and printing
   -----------------------------------------------------------------------------*/
@@ -43,6 +43,7 @@
 
     &--default,
     &--credits,
+    &--sleeve,
     &--empty {
       .set-page-margin(@a4-page-margin-top, @a4-page-margin-ext, @a4-page-margin-bottom, @a4-page-margin-int, @preview-ratio);
       // Elements
@@ -64,6 +65,7 @@
 
     &--default,
     &--credits,
+    &--sleeve,
     &--empty {
       .set-page-margin(@pocket-page-margin-top, @pocket-page-margin-ext, @pocket-page-margin-bottom, @pocket-page-margin-int, @preview-ratio);
       // Elements
@@ -72,7 +74,8 @@
   } //--- A4
 
   &--cover,
-  &--credits {
+  &--credits,
+  &--sleeve {
     .page__content {
       flex-direction: column;
       justify-content: flex-end;
@@ -158,6 +161,7 @@
     &--cover,
     &--default,
     &--credits,
+    &--sleeve,
     &--empty {
       margin: @interface-spacer * 0.5;
 
@@ -198,6 +202,7 @@
 
       &--default,
       &--credits,
+      &--sleeve,
       &--empty {
         &:before {
           top: @a4-page-margin-top * @preview-ratio;
@@ -229,6 +234,7 @@
 
       &--default,
       &--credits,
+      &--sleeve,
       &--empty {
         &:before {
           top: @pocket-page-margin-top * @preview-ratio;

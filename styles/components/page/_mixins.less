@@ -88,19 +88,26 @@
 }
 
 
-.col-media(@w) {
+.col-left(@w) {
   overflow: hidden;
   width: @w;
   margin-right: 100 - @w;
 }
-.col-text(@w) {
+.col-right(@w) {
   overflow: hidden;
   width: @w;
-  margin-left: 100 - @w;
+  margin-left: 100 - @w !important;
 }
 .col-text-static(@w, @gutter) {
   overflow: hidden;
   width: calc(@w ~"-" @gutter);
   margin-left: calc( (100%-@w) ~"+" @gutter);
   max-height: 100%;
+}
+
+.bordered-box() {
+  background-color: white;
+  padding: @gutter * 0.5 @gutter;
+  border: @border-size solid black;
+  border-radius: @border-radius;
 }
