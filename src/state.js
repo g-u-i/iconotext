@@ -148,6 +148,8 @@ export default new Baobab({
             text: t('pages.credits'),
           });
 
+          pages.push({className:'page page--empty'});
+
           // 9. Back cover (recto, empty):
           pages.push(creditsPage);
 

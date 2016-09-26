@@ -187,7 +187,8 @@
     }
 
     &--cover {
-      transform: translate( calc(100% ~"+" @interface-spacer); );
+      // transform: translate( calc(100% ~"+" @interface-spacer ) );
+      transform: translate( calc(100% ~"+" @interface-spacer * 0.5 ) );
     }
 
     [data-format="a4"]& {
