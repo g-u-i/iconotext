@@ -30,7 +30,7 @@ export default React.createClass({
           <article
             className="text"
             dangerouslySetInnerHTML={{
-              __html: text,
+              __html: text == "<p><br></p>" ? '' : text,
             }}
           />,
           img ?
