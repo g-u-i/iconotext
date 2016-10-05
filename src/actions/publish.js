@@ -51,7 +51,7 @@ export default {
   },
 
   pdf() {
-    const BATCH_SIZE = 10;
+    const BATCH_SIZE = 25;
     const files = [];
     let basePath = '';
 

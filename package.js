@@ -126,7 +126,8 @@ if (version) {
       DEFAULT_OPTS.version =
         stdout
           .split('electron-prebuilt@')[1]
-          .replace(/\s/g, '');
+          .replace(/\s/g, '')
+          .match(/^\d+\.\d+\.\d+/)[0];
     }
 
     startPack();
