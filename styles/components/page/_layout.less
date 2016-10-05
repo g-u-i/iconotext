@@ -1,6 +1,6 @@
 // Variables
 @interface-spacer: 16px;
-@preview-ratio: 0.25;
+@preview-ratio: 0.45;
 
 /* =Pages preview and printing
   -----------------------------------------------------------------------------*/
@@ -9,7 +9,7 @@
   position: relative;
   overflow: hidden;
   background-color: Gainsboro;
-  line-height: 1.5;
+  line-height: 1.2;
 
   *, *::after, *::before {
     box-sizing: border-box;
@@ -17,7 +17,7 @@
 
   // E L E M E N T S
   &__content {
-    position: static !important;
+    position: relative !important;
     overflow: hidden;
     display: flex;
     @media not print {
@@ -43,6 +43,7 @@
 
     &--default,
     &--credits,
+    &--sleeve,
     &--empty {
       .set-page-margin(@a4-page-margin-top, @a4-page-margin-ext, @a4-page-margin-bottom, @a4-page-margin-int, @preview-ratio);
       // Elements
@@ -64,6 +65,7 @@
 
     &--default,
     &--credits,
+    &--sleeve,
     &--empty {
       .set-page-margin(@pocket-page-margin-top, @pocket-page-margin-ext, @pocket-page-margin-bottom, @pocket-page-margin-int, @preview-ratio);
       // Elements
@@ -72,7 +74,8 @@
   } //--- A4
 
   &--cover,
-  &--credits {
+  &--credits,
+  &--sleeve {
     .page__content {
       flex-direction: column;
       justify-content: flex-end;
@@ -158,6 +161,7 @@
     &--cover,
     &--default,
     &--credits,
+    &--sleeve,
     &--empty {
       margin: @interface-spacer * 0.5;
 
@@ -183,7 +187,8 @@
     }
 
     &--cover {
-      transform: translate( calc(100% ~"+" @interface-spacer); );
+      // transform: translate( calc(100% ~"+" @interface-spacer ) );
+      transform: translate( calc(100% ~"+" @interface-spacer * 0.5 ) );
     }
 
     [data-format="a4"]& {
@@ -198,6 +203,7 @@
 
       &--default,
       &--credits,
+      &--sleeve,
       &--empty {
         &:before {
           top: @a4-page-margin-top * @preview-ratio;
@@ -229,6 +235,7 @@
 
       &--default,
       &--credits,
+      &--sleeve,
       &--empty {
         &:before {
           top: @pocket-page-margin-top * @preview-ratio;
@@ -249,7 +256,12 @@
       }
     }
 
-
+    &:nth-child(odd) {
+      margin-right: 0;
+    }
+    &:nth-child(even) {
+      margin-left: 0;
+    }
   }
 
 } // @media screen

@@ -97,10 +97,10 @@ export default new Baobab({
           // 1. Cover will be inserted in JSX (different attributes)
           pages.push({
             img: meta.image,
-            text: ['title','date','editor'].map(f => {
-              return meta[f] ? '<p className="'+f+'">'+meta[f].replace(/<(?:.|\n)*?>/gm, '')+'</p>' : '';
-            }).join(''),
             className: 'page page--cover',
+            text: ['title','date','editor'].map(f => {
+              return meta[f] ? '<p class="text__'+f+'">'+meta[f].replace(/<(?:.|\n)*?>/gm, '')+'</p>' : '';
+            }).join(''),
           });
 
           // 2. Inside the front cover (empty):
@@ -112,11 +112,11 @@ export default new Baobab({
           // 4. Second inside verso (empty):
           pages.push({className:'page page--empty'});
 
-          // 5. Document credits:
+          // 5. Document Sleeve:
           const creditsPage = {
-            className: 'page page--credits',
-            text: ['imageDescription','textDescription','editor'].map(f => {
-              return meta[f] ? '<p className="'+f+'">'+meta[f].replace(/<(?:.|\n)*?>/gm, '')+'</p>' : '';
+            className: 'page page--sleeve',
+            text: ['title','imageDescription','textDescription'].map(f => {
+              return meta[f] ? '<p class="text__'+f+'">'+meta[f].replace(/<(?:.|\n)*?>/gm, '')+'</p>' : '';
             }).join(''),
           };
 
@@ -147,6 +147,8 @@ export default new Baobab({
             className: 'page page--credits',
             text: t('pages.credits'),
           });
+
+          pages.push({className:'page page--empty'});
 
           // 9. Back cover (recto, empty):
           pages.push(creditsPage);

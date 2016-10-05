@@ -30,14 +30,12 @@ export default React.createClass({
           <article
             className="text"
             dangerouslySetInnerHTML={{
-              __html: text,
+              __html: text == "<p><br></p>" ? '' : text,
             }}
           />,
           img ?
-            <figure className="media">
-              <img className="media__img" src={ img.base64 } />
-            </figure> :
-            undefined
+            <img className="media" src={ img.base64 } />
+            : undefined
         )
       )
     );
