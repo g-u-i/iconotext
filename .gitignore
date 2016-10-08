@@ -3,6 +3,8 @@ config.json
 content/
 app/data/
 bower_components/
+serverConfig.json
+
 
 .DS_Store
 /site/accounts

@@ -4,7 +4,9 @@ var gulp        = require('gulp'),
     connect     = require('gulp-connect-php'),
     less        = require('gulp-less'),
     plumber     = require('gulp-plumber'),
-    uglify      = require('gulp-uglify');
+    uglify      = require('gulp-uglify'),
+    ftp = require( 'vinyl-ftp' ),
+    serverConfig = require('./serverConfig.json')
 
 gulp.task('serve', function() {
   connect.server({}, function (){
@@ -44,5 +46,24 @@ gulp.task('js', function() {
     // .pipe(uglify())
     .pipe(gulp.dest('./assets/js/'));
 });
+
+gulp.task( 'deploy', function () {
+
+    var conn = ftp.create(serverConfig);
+    var globs = [
+      './assets/**',
+      './*.php',
+      './content/**',
+      './kirby/**',
+      './panel/**',
+      './site/**',
+      './.htaccess'
+    ];
+
+    return gulp.src( globs, { base: '.', buffer: false } )
+        .pipe( conn.newer( '/www/' ) ) // only upload newer files
+        .pipe( conn.dest( '/www/' ) );
+});
+
 
 gulp.task('default', [ 'js', 'less', 'serve']);
