@@ -28,14 +28,14 @@
           <h4>commander</h4>
 
           <a class="btn btn-default" target="_blank" href="<?php echo $page->orderlink() ?>" role="button">
-            <span class="glyphicon glyphicon glyphicon-book" aria-hidden="true"></span> exemplaire papier
+            <span class="glyphicon glyphicon glyphicon-book" aria-hidden="true"></span> livre
           </a>
         <?php endif ?>
 
         <?php if(!$page->gallerylink()->isEmpty() ): ?>
           <h4>consulter</h4>
           <a class="btn btn-default" target="_blank" href="<?php echo $page->gallerylink() ?>" role="button">
-            <span class="glyphicon glyphicon-tent" aria-hidden="true"></span> page du projet
+            <span class="glyphicon glyphicon-tent" aria-hidden="true"></span> projet en ligne
           </a>
         <?php endif ?>
 
@@ -46,7 +46,7 @@
 
         <?php if(!$page->sourceiconotext()->isEmpty() ): ?>
           <a class="btn btn-default" target="_blank" href="<?php echo $page->sourceiconotext()->toFile()->url() ?>" role="button">
-           <span class="glyphicon glyphicon-film" aria-hidden="true"></span> source .iconotexte
+           <span class="glyphicon glyphicon-film" aria-hidden="true"></span> fichier source
           </a>
         <?php endif ?>
 

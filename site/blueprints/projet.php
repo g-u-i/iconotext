@@ -31,7 +31,7 @@ fields:
    width: 1/2
 
   gallerylink:
-    label: Lien gallerie
+    label: Projet en ligne
     help:  ex. flickr.com/…
     type:  url
     width: 1/2
