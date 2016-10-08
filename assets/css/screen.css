@@ -254,8 +254,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../fonts/glyphicons/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -7022,6 +7022,25 @@ a:focus {
 .landing-section .jumbotron {
   background: none;
   margin-bottom: 0;
+}
+.landing-section .jumbotron h2 {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+@media (min-width: 768px) {
+  .landing-section .jumbotron h2 {
+    margin-left: 8.33333333%;
+  }
+}
+@media (min-width: 768px) {
+  .landing-section .jumbotron h2 {
+    float: left;
+    width: 83.33333333%;
+  }
 }
 .landing-section .jumbotron .download {
   margin-top: 24px;

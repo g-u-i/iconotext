@@ -6,6 +6,7 @@
 @font-size-base: 14px;
 @grid-gutter-width: @g*2;
 @fondA :  #E1F5F7;
+@icon-font-path: '../fonts/glyphicons/';
 
 body {
   font-family: 'iconofont';
@@ -41,11 +42,13 @@ a, a:hover, a:active, a:focus {
   padding-top: @g*3;
 
   h3 {opacity: 0.7;margin-top: @g;}
-  h2 {margin: 0; padding: 0;}
+  h2 {margin: 0; padding: 0; }
 
   .jumbotron {
     background: none;
     // border: 1px solid red;
+      h2 {margin: 0; padding: 0; .make-sm-column-offset(1); .make-sm-column(10) }
+
     margin-bottom: 0;
     .download {
       margin-top: 24px;
