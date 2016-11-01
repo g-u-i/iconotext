@@ -7,6 +7,14 @@
       if(count($filenames) < 2) $filenames = array_pad($filenames, 2, '');
       $previewFiles = call_user_func_array(array($page->files(), 'find'), $filenames);
 
+      $filenames = $page->sourceiconotext()->split(',');
+      if(count($filenames) < 2) $filenames = array_pad($filenames, 2, '');
+      $sourceiconotexts = call_user_func_array(array($page->files(), 'find'), $filenames);
+
+      $filenames = $page->pdf()->split(',');
+      if(count($filenames) < 2) $filenames = array_pad($filenames, 2, '');
+      $pdfs = call_user_func_array(array($page->files(), 'find'), $filenames);
+
     ?>
 
   <div class="container jumbotron">
@@ -45,15 +53,25 @@
         <?php endif ?>
 
         <?php if(!$page->sourceiconotext()->isEmpty() ): ?>
-          <a class="btn btn-default" target="_blank" href="<?php echo $page->sourceiconotext()->toFile()->url() ?>" role="button">
-           <span class="glyphicon glyphicon-film" aria-hidden="true"></span> fichier source
-          </a>
+
+          <?php foreach($sourceiconotexts as $file): ?>
+
+            <a class="btn btn-default" target="_blank" href="<?php echo $file?>" role="button">
+             <span class="glyphicon glyphicon-film" aria-hidden="true"></span> <?php echo $file->filename(); ?>
+            </a>
+          <?php endforeach?>
+
         <?php endif ?>
 
         <?php if(!$page->pdf()->isEmpty() ): ?>
-          <a class="btn btn-default" target="_blank" href="<?php echo $page->pdf()->toFile()->url() ?>" role="button">
-            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>  PDF
-          </a>
+          <?php foreach($pdfs as $file): ?>
+
+            <a class="btn btn-default" target="_blank" href="<?php echo $file->url() ?>" role="button">
+              <span class="glyphicon glyphicon-file" aria-hidden="true"></span> <?php echo html($file->filename()) ?>
+            </a>
+
+          <?php endforeach?>
+
         <?php endif ?>
 
     </div>

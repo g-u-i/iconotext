@@ -7239,3 +7239,13 @@ a:focus {
 .tpl-projet .download a {
   margin: 16px;
 }
+.tpl-projet .btn {
+  margin-bottom: 10px;
+}
+.logos figure {
+  padding-right: 3%;
+  float: left;
+}
+.logos figure img {
+  margin: 0;
+}

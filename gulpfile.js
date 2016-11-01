@@ -53,7 +53,7 @@ gulp.task( 'deploy', function () {
     var globs = [
       './assets/**',
       './*.php',
-      './content/**',
+      // './content/**',
       './kirby/**',
       './panel/**',
       './site/**',
