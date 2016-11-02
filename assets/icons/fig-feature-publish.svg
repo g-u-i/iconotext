@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="215px" height="128px" viewBox="0 0 215 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.2 (33826) - http://www.bohemiancoding.com/sketch -->
+    <title>fig-feature-publish</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="39.7544616 0.523550725 39.7544616 50.7795425 0.826220715 58.8219799 0.826220715 8.56598813"></polygon>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="38.9282409" height="58.2984292" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <polygon id="path-3" points="41.4039634 53.9954947 2.47572245 58.9004382 2.47572245 8.64444643 41.4039634 3.73950293"></polygon>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="38.9282409" height="55.1609353" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <polygon id="path-5" points="3 58.7153864 3 8.45939456 39.7544616 8.92821321 39.7544616 59.184205"></polygon>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="36.7544616" height="50.7248105" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+        <polygon id="path-7" points="38.344843 12.7875823 38.344843 63 2.23663033 59.4649816 2.23663033 9.25256386"></polygon>
+        <mask id="mask-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="36.1082126" height="53.7474361" fill="white">
+            <use xlink:href="#path-7"></use>
+        </mask>
+        <polygon id="path-9" points="39.7544616 0.523550725 39.7544616 50.7795425 0.826220715 58.8219799 0.826220715 8.56598813"></polygon>
+        <mask id="mask-10" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="38.9282409" height="58.2984292" fill="white">
+            <use xlink:href="#path-9"></use>
+        </mask>
+        <polygon id="path-11" points="41.4039634 53.9954947 2.47572245 58.9004382 2.47572245 8.64444643 41.4039634 3.73950293"></polygon>
+        <mask id="mask-12" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="38.9282409" height="55.1609353" fill="white">
+            <use xlink:href="#path-11"></use>
+        </mask>
+        <polygon id="path-13" points="3 58.7153864 3 8.45939456 39.7544616 8.92821321 39.7544616 59.184205"></polygon>
+        <mask id="mask-14" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="36.7544616" height="50.7248105" fill="white">
+            <use xlink:href="#path-13"></use>
+        </mask>
+        <polygon id="path-15" points="38.344843 12.7875823 38.344843 63 2.23663033 59.4649816 2.23663033 9.25256386"></polygon>
+        <mask id="mask-16" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="36.1082126" height="53.7474361" fill="white">
+            <use xlink:href="#path-15"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="fig-feature-publish" stroke="#000000" fill="#FFFFFF">
+            <g id="ico-book" transform="translate(57.000000, 44.000000)">
+                <use id="Rectangle-5" mask="url(#mask-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-1"></use>
+                <use id="Rectangle-5" mask="url(#mask-4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-3"></use>
+                <use id="Rectangle-5" mask="url(#mask-6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-5"></use>
+                <use id="Rectangle-5" mask="url(#mask-8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-7"></use>
+                <polygon id="Rectangle-6" stroke-width="1" points="3 10.5780676 3 58.9004382 1 57.8417347 1 9.51936406"></polygon>
+            </g>
+            <g id="ico-book" transform="translate(138.462813, 41.619546) rotate(-215.000000) translate(-138.462813, -41.619546) translate(116.962813, 9.619546)">
+                <use id="Rectangle-5" mask="url(#mask-10)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-9"></use>
+                <use id="Rectangle-5" mask="url(#mask-12)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-11"></use>
+                <use id="Rectangle-5" mask="url(#mask-14)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-13"></use>
+                <use id="Rectangle-5" mask="url(#mask-16)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-15"></use>
+                <polygon id="Rectangle-6" stroke-width="1" points="3 10.5780676 3 58.9004382 1 57.8417347 1 9.51936406"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

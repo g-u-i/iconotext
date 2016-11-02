@@ -76,7 +76,7 @@
     "directory": "Dossier vide",
     "printMessage": "Une fenêtre de paramétrage de l'impression devrait être ouverte.<br/>Vous pouvez exporter le document dans un fichier en cliquant sur l'option \"Imprimer dans un fichier.\"",
     "pdfMessage": "<strong>Exportation en cours (%{progress}%)</strong><br/><br/>",
-    "welcomeMessage": "<p>Vous pouvez imprimer vous même votre séquence iconotexte ou la publier sous forme de livre avec <a href=\"https://www.lulu.com/\">lulu.com</a> et ainsi la partager en ligne et permettre à tous d’obtenir un tirage.</p>\n\n<p>Pensez à proposer votre projet en remplissant le <a href=\"https://goo.gl/forms/x0UYMGvjIlL6r2Jy2\">formulaire</a> pour qu’ils apparaissent sur le site <a href=\"http://iconotexte.com\">iconotexte.com</a>.</p>\n",
+    "welcomeMessage": "<p>Vous pouvez imprimer vous même votre séquence iconotexte ou la publier sous forme de livre avec <a href=\"https://www.lulu.com/\">lulu.com</a> et ainsi la partager en ligne et permettre à tous d’obtenir un tirage.</p>\n\n<p>Pensez à proposer votre projet en remplissant le <a href=\"https://goo.gl/forms/x0UYMGvjIlL6r2Jy2\">formulaire</a> pour qu’il apparaisse sur le site <a href=\"http://iconotexte.com\">iconotexte.com</a>.</p>\n",
 
     "options": {
       "support:print": "impression",
