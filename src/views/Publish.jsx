@@ -49,6 +49,7 @@ export default React.createClass({
     publish: ['publish'],
     pages: ['publish', 'pages'],
     range: ['ui', 'exportingRange'],
+    cover: ['ui', 'exportingCover'],
     method: ['ui', 'exportingMethod'],
   },
 
@@ -75,7 +76,7 @@ export default React.createClass({
    * **********
    */
   render() {
-    const { publish, pages, range, method } = this.state;
+    const { publish, pages, range, method, cover } = this.state;
 
     // Export message:
     let message;
@@ -127,8 +128,19 @@ export default React.createClass({
           </div>
           <PDFRendering
             range={ range }
-            pages={ pages }
             options={ publish }
+            // We remove for Lulu the first and last pages (cover), only when
+            // printing (so when we have an effective range and an actual cover)
+            pages={
+              (publish.action === 'lulu' && range) ?
+                pages.slice(1, -1) :
+                pages
+            }
+            covers={
+              cover ?
+                [pages[0], pages[pages.length - 1]] :
+                null
+            }
           />
         </div>
 

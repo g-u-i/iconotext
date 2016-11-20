@@ -82,16 +82,61 @@ export default {
         err => cb(err)
       ),
 
+      // Export cover (only for lulu):
+      cb => {
+        if (state.get('publish', 'action') === 'lulu') {
+          const path = basePath + '/covers.pdf';
+          files.push(path);
+
+          state.set(
+            ['ui', 'exportingCover'],
+            true
+          );
+          state.set(['ui', 'exportingMethod'], 'pdf');
+          state.commit();
+
+          setTimeout(
+            () => webContents.printToPDF(
+              {
+                printBackground: true,
+              },
+              (err, data) => {
+                if (err) {
+                  cb(err);
+                } else {
+                  fs.writeFile(
+                    path,
+                    data,
+                    cb
+                  );
+                }
+              }
+            ),
+            0
+          );
+        } else {
+          cb();
+        }
+      },
+
       // Export splitted PDF files:
       cb => async.whilst(
-        () => (
-          (state.get('ui', 'exportingRange', 'to') || 0)
-          < state.get('publish', 'pages').length
-        ),
+        () => {
+          const pagesCount = state.get('publish', 'action') === 'lulu' ?
+            state.get('publish', 'pages').length - 2 :
+            state.get('publish', 'pages').length;
+
+          return (
+            (state.get('ui', 'exportingRange', 'to') || 0) < pagesCount
+          );
+        },
         wcb => {
+          const pagesCount = state.get('publish', 'action') === 'lulu' ?
+            state.get('publish', 'pages').length - 2 :
+            state.get('publish', 'pages').length;
           const start = state.get('ui', 'exportingRange', 'to') || 0;
           const end =
-            Math.min(start + BATCH_SIZE, state.get('publish', 'pages').length);
+            Math.min(start + BATCH_SIZE, pagesCount);
           const path = basePath + '/pages-' + (start + 1) + '-' + end + '.pdf';
           files.push(path);
 
@@ -99,6 +144,7 @@ export default {
             ['ui', 'exportingRange'],
             { from: start, to: end }
           );
+          state.set(['ui', 'exportingCover'], false);
           state.set(['ui', 'exportingMethod'], 'pdf');
           state.commit();
 
