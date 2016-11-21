@@ -29,7 +29,9 @@
 @pocket-page-margin-ext:     12.7mm;
 @pocket-page-margin-bottom:  12.7mm;
 @pocket-page-margin-int:     18mm;
-
+// Inner page width (auto)
+@pocket-inner-width: @pocket-width - @pocket-page-margin-ext - @pocket-page-margin-int;
+@pocket-inner-height: @pocket-height - @pocket-page-margin-top - @pocket-page-margin-bottom;
 
 // Column widths
 @col-text-width: 66%;
@@ -37,7 +39,7 @@
 
 // Text settings
 @border-size: 1.5pt;
-@border-radius: 5pt;
+@border-radius: 1em;
 @gutter: 0.95em;
 @overlap: 1.26em;
 @subtitle-thickness: 0.5pt;

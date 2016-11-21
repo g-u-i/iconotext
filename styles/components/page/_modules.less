@@ -55,10 +55,22 @@
     -webkit-text-stroke: @subtitle-thickness black;
     color: white;
     max-height: 50%;
-    width: 100%;
     text-align: center;
     line-height: 1.66;
     padding: @gutter * 0.5 @gutter;
+  }
+  [data-textposition="bubble"][data-orientation="portrait"].page--default & {
+    width: 100%;
+  }
+  [data-textposition="bubble"][data-orientation="landscape"].page--default & {
+    .center(x);
+    width: @col-text-width;
+  }
+
+  .page--cover &:last-child {
+    .text__title {
+      margin-bottom: calc(@height-cover-info ~'+' @pocket-page-margin-bottom);
+    }
   }
 
   .page--credits & {
@@ -85,47 +97,37 @@
 
 .media {
 
-  position: relative;
-  z-index: 0;
-  margin: 0;
-  display: block;
+  align-self: baseline;
   border-radius: @border-radius;
-  object-fit: contain;
-  object-position: center top;
 
   .page--default & {
-    height: 100%;
-    display: flex;
-  }
-
-  .page--cover & {
-    .col-left(@col-media-width);
-    margin-bottom: calc(@height-cover-info ~'+' @pocket-page-margin-bottom);
-  }
-
-  [data-textposition="title"].page--default &,
-  [data-textposition="caption"].page--default & {
-    .col-left(@col-media-width);
+    max-width: @col-media-width;
     max-height: 50%;
   }
 
-  [data-textposition="title"].page--default & {
+  .page--cover & {
+    max-width: @col-media-width;
+    max-height: 50%;
+    margin-bottom: calc(@height-cover-info ~'+' @pocket-page-margin-bottom);
+  }
+
+  // *Display type (text-position)
+  // Title
+  [data-textposition="title"].page--default .text:not(:empty) + & {
     transform: translateY(@overlap * -1);
   }
-
-  [data-textposition="caption"].page--default & {
+  // Caption
+  [data-textposition="caption"].page--default .text:not(:empty) + & {
     transform: translateY(@overlap);
-    object-position: center bottom;
   }
-
+  // Bubble
   [data-textposition="bubble"].page--default & {
-    object-position: center bottom;
-    // justify-content: center;
-    // object-position: center;
-    // align-self: flex-end;
+    max-width: 100%;
+    max-height: 100%;
+    align-self: center;
   }
-}
 
+}
 
 // DEV
 // .page {
@@ -133,9 +135,9 @@
 //   background-position: center;
 //   background-size: contain;
 //
-//   // &:nth-child(odd) {
-//   //   background-image: url(../../../assets/images/poche_portrait.odd.png);
-//   // }
+//   &:nth-child(odd) {
+//     background-image: url(../../../assets/images/poche_portrait.odd.png);
+//   }
 //   &:nth-child(even) {
 //     background-image: url(../../../assets/images/poche_portrait.even.png);
 //   }
