@@ -7,8 +7,8 @@ import { t } from '../utils/translator.js';
 import resizable from '../utils/mixin.resizable.js';
 
 const MAX_SIZE = {
-  width: 3000,
-  height: 3000,
+  width: 1500,
+  height: 1500,
 };
 
 export default React.createClass({

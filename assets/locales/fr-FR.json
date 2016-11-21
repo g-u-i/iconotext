@@ -44,12 +44,12 @@
   },
 
   "pages": {
-    "credits": "<p>CENTRE NATIONAL ÉDITION ART IMAGE<br>ÎLE DES IMPRESSIONNISTES 78400 CHATOU FRANCE<br>+33(0)139524535 <a href=\"http://www.cneai.com\">WWW.CNEAI.COM</a><br></p><p>Direction&nbsp;: Sylvie Boulanger<br>Production&nbsp;: Juliette Giovannoni, Thomas Mercier-Bellevue et Alice Lingerat<br>Administration&nbsp;: Anaïs Déléage</p><p>Contact&nbsp;: <a href=\"mailto:public@cneai.com\">public@cneai.com</a></p><p>La conception et les workshops 2015-2016 ont été réalisés par Benoît Verjat et Nicolas Couturier<br>L'édition du site a été réalisée avec Tanguy Wermelinger<br>g.u.i et Alexis Jacomy ont développés l'application<br>Licence Creative Commons, libre de diffusion – Attribution – Pas d’utilisation commerciale – partage des conditions initiales à l’identique<br>CC BY-NC-SA 4.0, && - Cneai, 2016, France</p>",
+    "credits":"<p>CENTRE NATIONAL<br/>\nEDITION ART IMAGE<br/>\nÎLE DES IMPRESSIONNISTES<br/>\n78400 CHATOU FRANCE<br/>\n+33(0)139524535</p>\n\n<p><a href=\"http://www.cneai.com\">WWW.CNEAI.COM</a></p>\n\n<p>Production et édition : Cneai=<br/>\nSylvie Boulanger, directrice du projet<br/>\nAnaïs Déléage, administratrice du projet<br/>\nJuliette Giovannoni, Thomas Mercier-Bellevue et Alice Lingerat, coordinateurs du projet</p>\n\n<p>Contact : <a href=\"mailto:info@iconotexte.com\">info@iconotexte.com</a></p>\n\n<p>Conception et réalisation : <br/>Benoît Verjat et Nicolas Couturier</p>\n\n<p>Workshops 2015–2016 : Benoît Verjat, Nicolas Couturier, Lionel Catelan et Mireille Diestchy</p>\n\n<p>Design de l’application : Benoît Verjat et Tanguy Wermelinger\n<br/>Développement : Alexis Jacomy, Benoît Verjat et Julien Gargot</p>\n\n<p>Iconotexte est une application libre créée en partenariat avec la Fondation Daniel et Nina Carasso.</p>\n\n<p>L’application est distribuée sous license gpl v3.\n<br/>CC BY-NC-SA 4.0, &amp;&amp; - Cneai, 2016, France</p>",
     "pitch": "A l’heure où l’essor de la technologie et des réseaux sociaux fait de nous les auteurs, photographes et éditeurs permanents de nos propres vies, la vocation des ateliers Iconotexte est de transmettre des compétences créatives, mais aussi une pensée critique sur la relation entre texte et image. Iconotexte s’adresse aux amateurs des pratiques éditoriales quotidiennes; c’est un projet d’éducation à l’image facile à mettre en œuvre dans le cadre d’ateliers scolaires ou associatifs, dans les bibliothèques, dans les quartiers prioritaires ou au sein de l’Education nationale. L’application permet une production éditoriale pensée sur la base de textes existants ou de projets autobiographiques. Iconotexte renouvelle les pratiques du texte associé à l’image dans le cadre de la vie étudiante et professionnelle  : mémoires de stages, comptes-rendus, portfolios, etc."
   },
 
   "Welcome": {
-    "content": "<img src=\"./../assets/icons/logo-text-alone.svg\"><br/> Pour commencer coller ou saisir du texte, <br/> ajouter des images depuis votre ordinateur ou la webcam <br/> enfin mettez en forme vos séquences pour les partager.<br><br>Pour en savoir plus ou obtenir de l'aide, <br/> visitez <a href=\"http://iconotexte.et-et.xyz\">http://iconotexte.et-et.xyz</a>"
+    "content": "<img src=\"./../assets/icons/logo-text-alone.svg\"><br/> Pour commencer coller ou saisir du texte, <br/> ajouter des images depuis votre ordinateur ou la webcam <br/> enfin mettez en forme vos séquences pour les partager.<br><br>Pour en savoir plus ou obtenir de l'aide, <br/> visitez <a href=\"http://iconotexte.com\">iconotexte.com</a>"
   },
 
   "Editor": {
@@ -76,7 +76,7 @@
     "directory": "Dossier vide",
     "printMessage": "Une fenêtre de paramétrage de l'impression devrait être ouverte.<br/>Vous pouvez exporter le document dans un fichier en cliquant sur l'option \"Imprimer dans un fichier.\"",
     "pdfMessage": "<strong>Exportation en cours (%{progress}%)</strong><br/><br/>",
-    "welcomeMessage": "Une fois l'exportation terminée vous pourrez publier votre iconotexte sous forme de libre en utilisant lulu.com et ainsi le partager en ligne et permettre à tous d'obtenir un tirage.<br/><br/>Pensez à proposer votre projet en remplissant ce formulaire pour qu'ils apparaissent sur le site iconotexte.com.",
+    "welcomeMessage": "<p>Vous pouvez imprimer vous même votre séquence iconotexte ou la publier sous forme de livre avec <a href=\"https://www.lulu.com/\">lulu.com</a> et ainsi la partager en ligne et permettre à tous d’obtenir un tirage.</p>\n\n<p>Pensez à proposer votre projet en remplissant le <a href=\"https://goo.gl/forms/x0UYMGvjIlL6r2Jy2\">formulaire</a> pour qu’il apparaisse sur le site <a href=\"http://iconotexte.com\">iconotexte.com</a>.</p>\n",
 
     "options": {
       "support:print": "impression",

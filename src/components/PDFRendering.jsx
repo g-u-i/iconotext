@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Page from './Page.jsx';
+import Cover from './Cover.jsx';
 
 export default React.createClass({
   displayName: 'iconotexte/PDFRendering',
@@ -9,7 +10,70 @@ export default React.createClass({
    * Rendering:
    * **********
    */
-  render() {
+  renderCover() {
+    const { options, pages, covers } = this.props;
+
+    // To compute the spine's size, we use Nicolas' formula:
+    //   [inside pages count] / 2  x  [inside paper's weight] / 1000
+    // + [cover pages count] / 2  x  [cover paper's weight] / 1000
+    const insideWeight = 115;
+    const coverWeight = 350;
+    const spine =
+      (pages.length / 2 * insideWeight / 1000)
+      + (4 / 2 * coverWeight / 1000);
+
+    // Since the @page CSS pseudo-selector cannot depend on upper conditions,
+    // there has to be only one instruction, which is why it is injection from
+    // the JS sources:
+    let pageWidth;
+    let pageHeight;
+    if (options.format === 'a4') {
+      if (options.orientation === 'landscape') {
+        pageWidth = 297;
+        pageHeight = 210;
+      } else {
+        pageWidth = 210;
+        pageHeight = 297;
+      }
+    } else if (options.format === 'pocket') {
+      if (options.orientation === 'landscape') {
+        pageWidth = 174.6;
+        pageHeight = 107.9;
+      } else {
+        pageWidth = 107.9;
+        pageHeight = 174.6;
+      }
+    }
+    const size = [2 * pageWidth + spine, pageHeight]
+      .map(val => Math.ceil(val) + 'mm')
+      .join(' ');
+
+    return (
+      <div data-component="pdf-rendering">
+        { /* PRINT SPECIFIC CSS CONDITIONAL RULES */ }
+        <style>{`
+          @media print {
+            @page {
+              size: ${ size };
+            }
+          }
+        `}</style>
+
+        { /* COVER */ }
+        {
+          <Cover
+            spine={ spine }
+            back={ covers[1] }
+            front={ covers[0] }
+            options={ options }
+            pageWidth={ pageWidth }
+            pageHeight={ pageHeight }
+          />
+        }
+      </div>
+    );
+  },
+  renderPages() {
     const { options, pages, range } = this.props;
 
     // Since the @page CSS pseudo-selector cannot depend on upper conditions,
@@ -72,5 +136,8 @@ export default React.createClass({
         }
       </div>
     );
+  },
+  render() {
+    return this.props.covers ? this.renderCover() : this.renderPages();
   },
 });

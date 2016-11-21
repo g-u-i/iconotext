@@ -8,7 +8,7 @@
 
   position: relative;
   overflow: hidden;
-  background-color: Gainsboro;
+  background-color: white;
   line-height: 1.2;
 
   *, *::after, *::before {
@@ -106,7 +106,6 @@
 
 }
 
-
 // Page Counter
 [data-component="pdf-rendering"] {
   counter-reset: pager;
@@ -175,8 +174,11 @@
         display: block;
         position: absolute;
         z-index: 2;
-        border: 1px solid;
-        border-color: rgb(255,79,255) rgb(153,51,255);
+        /*
+          dev only
+          border: 1px solid;
+          border-color: rgb(255,79,255) rgb(153,51,255);
+        */
         pointer-events: none;
       }
 

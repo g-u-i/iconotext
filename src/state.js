@@ -20,6 +20,7 @@ export default new Baobab({
 
     // During the PDF generation:
     exportingRange: null,
+    exportingCover: null, // 'true' to export covers for lulu
     exportingMethod: null, // 'print' or 'pdf'
 
     // True if modifications have been added since last document save:
