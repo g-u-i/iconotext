@@ -7,6 +7,13 @@
     margin: @gutter 0;
   }
 
+  > *:first-child {
+    margin-top: 0;
+  }
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
   &__title {
     .bordered-box();
     .col-right(@col-text-width);
@@ -92,6 +99,12 @@
       margin-top: @pocket-page-margin-bottom;
     }
   }
+
+  [data-format="pocket"][data-orientation="landscape"].page--credits & {
+    column-count: 2;
+    column-gap: .5em;
+  }
+
 
 }
 
