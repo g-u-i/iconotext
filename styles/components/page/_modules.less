@@ -59,12 +59,14 @@
   [data-textposition="bubble"].page--default & {
     position: absolute;
     bottom: 0;
-    -webkit-text-stroke: @subtitle-thickness black;
     color: white;
     max-height: 50%;
     text-align: center;
-    line-height: 1.66;
     padding: @gutter * 0.5 @gutter;
+    > * {
+      background-color: black;
+      display: inline;
+    }
   }
   [data-textposition="bubble"][data-orientation="portrait"].page--default & {
     width: 100%;
