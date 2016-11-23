@@ -114,26 +114,39 @@ export default new Baobab({
           pages.push({className:'page page--empty'});
 
           // 5. Document Sleeve:
-          const creditsPage = {
+          const coverPageA = {
             className: 'page page--sleeve',
             text: ['title','imageDescription','textDescription'].map(f => {
               return meta[f] ? '<p class="text__'+f+'">'+meta[f].replace(/<(?:.|\n)*?>/gm, '')+'</p>' : '';
             }).join(''),
           };
 
-          pages.push(creditsPage);
+          pages.push(coverPageA);
 
           // 6. Verso credits (empty):
           pages.push({className:'page page--empty'});
 
-          // 7. Recto / verso printing for actual page contents:
+          // 7. Document Sleeve:
+          const coverPageB = {
+            className: 'page page--sleeve page--sleeve-bis',
+            text: ['author','editor'].map(f => {
+              return meta[f] ? '<p class="text__'+f+'">'+meta[f].replace(/<(?:.|\n)*?>/gm, '')+'</p>' : '';
+            }).join(''),
+          };
+
+          pages.push(coverPageB);
+
+          // 8. Verso credits (empty):
+          pages.push({className:'page page--empty'});
+
+          // 9. Recto / verso printing for actual page contents:
           sections.forEach(p => pages.push(
             _.merge({
               className:'page page--default'
             },p)
           ));
 
-          // 8. Project credits:
+          // 10. Project credits:
           //   -> Insert a page if needed, to ensure this page is on recto:
           if ((sections.length % 2)) pages.push({className:'page page--empty'});
 
@@ -151,10 +164,17 @@ export default new Baobab({
 
           pages.push({className:'page page--empty'});
 
-          // 9. Back cover (recto, empty):
+          // 11. Back cover (recto, empty):
+          const creditsPage = {
+            className: 'page page--sleeve',
+            text: ['title','imageDescription','textDescription'].map(f => {
+              return meta[f] ? '<p class="text__'+f+'">'+meta[f].replace(/<(?:.|\n)*?>/gm, '')+'</p>' : '';
+            }).join(''),
+          };
+
           pages.push(creditsPage);
 
-          // 10. Back cover (verso, empty):
+          // 12. Back cover (verso, empty):
           pages.push({className:'page page--empty'});
 
         // Add nothing for screens:

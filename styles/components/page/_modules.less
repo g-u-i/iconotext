@@ -34,6 +34,9 @@
     .bordered-box();
     .col-left(@col-media-width);
   }
+  &__author {
+    .col-right(@col-text-width);
+  }
   &__textDescription {
     .bordered-box();
     .col-right(@col-text-width);
@@ -64,7 +67,7 @@
     text-align: center;
     padding: @gutter * 0.5 @gutter;
     > * {
-      background-color: black;
+      background-color: @subtitle-bg;
       display: inline;
     }
   }
@@ -90,6 +93,15 @@
   .page--sleeve & {
     p:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  .page--sleeve-bis & {
+    .text__editor {
+      .col-right(@col-text-width);
+      position: static;
+      transform: none;
+      margin-top: @gutter * 3 !important;
     }
   }
 
