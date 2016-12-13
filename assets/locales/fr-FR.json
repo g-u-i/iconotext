@@ -20,13 +20,13 @@
     "save":"Sauver un fichier .iconotexte",
     "open":"Charger un fichier .iconotexte",
 
-    "imageDescription":"photo, dessin, fond …",
-    "textDescription":"oeuvre, manifeste  …",
-    "author":"participants …",
-    "editor":"lycée, institution, collecif, artiste …",
+    "imageDescription":"photo, dessin, fond…",
+    "textDescription":"oeuvre, manifeste…",
+    "author":"participants…",
+    "editor":"lycée, institution, collecif, artiste…",
     "date":"Date, numéro de série, volume… ",
 
-    "deleteImage": "Effacer l'image",
+    "deleteImage": "Effacer l’image",
     "addImage": "Ajouter une image",
 
     "print": "Imprimer",
@@ -37,24 +37,24 @@
     "fileExtName": "Sauvegarde Iconotexte (*.iconotext)",
     "parseFail": "Fichier non valide",
     "loadFail": "Problème pendant le chargement du fichier",
-    "saveFail": "Problème pendant l'enregistrement du fichier",
+    "saveFail": "Problème pendant l’enregistrement du fichier",
     "saveSuccess": "Le fichier a bien été enregistré.",
-    "unsavedAndQuitting": "Des modifications n'ont pas été enregistrées.\nÊtes-vous certains de vouloir quitter iconotexte?.",
-    "loadingMessage": "Chargement du fichier \"%{fileName}\"..."
+    "unsavedAndQuitting": "Des modifications n’ont pas été enregistrées.\nÊtes-vous certains de vouloir quitter iconotexte\u00A0?.",
+    "loadingMessage": "Chargement du fichier «\u00A0%{fileName}\u00A0»…"
   },
 
   "pages": {
-    "credits":"<p>WWW.CNEAI.COM<br/>CHATOU&nbsp;78400 PANTIN&nbsp;93500<br/>INFO@ICONOTEXTE.COM<br/>+33(0)139524535</p><p>production et édition&nbsp;: cneai =<br/>direction&nbsp;: Sylvie&nbsp;Boulanger<br/>administration&nbsp;: Anaïs&nbsp;Déléage<br/>coordination&nbsp;: Juliette&nbsp;Giovannoni, Alice&nbsp;Lingerat, Thomas&nbsp;Mercier-Bellevue</p><p>réalisation et conception&nbsp;: Nicolas&nbsp;Couturier, Benoît&nbsp;Verjat</p><p>conception graphique&nbsp;: Benoît&nbsp;Verjat,Tanguy&nbsp;Wermelinger<br/>développement&nbsp;: Julien&nbsp;Gargot, Alexis&nbsp;Jacomy, Benoît&nbsp;Verjat</p><p>iconotexte est une application libre créée en partenariat avec la Fondation Daniel et Nina Carasso distribuée sous licence gpl v3 CC BY-NC-SA 4.0, &amp;&amp;, cneai = 2016, France</p>",
-    "pitch": "<p>A l’heure où l’essor de la technologie et des réseaux sociaux fait de nous les auteurs, photographes et éditeurs permanents de nos propres vies, la vocation des ateliers Iconotexte est de transmettre des compétences créatives, mais aussi une pensée critique sur la relation entre texte et image. </p><p>Iconotexte s’adresse aux amateurs des pratiques éditoriales quotidiennes; c’est un projet d’éducation à l’image facile à mettre en œuvre dans le cadre d’ateliers scolaires et associatifs, dans les bibliothèques, dans les quartiers prioritaires et au sein de l’Education nationale. L’application permet une production éditoriale pensée sur la base de textes existants et de projets autobiographiques. Iconotexte renouvelle les pratiques du texte associé à l’image dans le cadre de la vie étudiante et professionnelle&nbsp;: mémoire de stages, comptes-rendus, portfolios, etc.</p>"
+    "credits":"<p>WWW.CNEAI.COM<br/>CHATOU\u00A078400 PANTIN\u00A093500<br/>INFO@ICONOTEXTE.COM<br/>+33(0)139524535</p><p>production et édition\u00A0: cneai =<br/>direction\u00A0: Sylvie\u00A0Boulanger<br/>administration\u00A0: Anaïs\u00A0Déléage<br/>coordination\u00A0: Juliette\u00A0Giovannoni, Alice\u00A0Lingerat, Thomas\u00A0Mercier-Bellevue</p><p>réalisation et conception\u00A0: Nicolas\u00A0Couturier, Benoît\u00A0Verjat</p><p>conception graphique\u00A0: Benoît\u00A0Verjat,Tanguy\u00A0Wermelinger<br/>développement\u00A0: Julien\u00A0Gargot, Alexis\u00A0Jacomy, Benoît\u00A0Verjat</p><p>iconotexte est une application libre créée en partenariat avec la Fondation Daniel et Nina Carasso distribuée sous licence gpl v3 CC BY-NC-SA 4.0, &amp;&amp;, cneai = 2016, France</p>",
+    "pitch": "<p>A l’heure où l’essor de la technologie et des réseaux sociaux fait de nous les auteurs, photographes et éditeurs permanents de nos propres vies, la vocation des ateliers Iconotexte est de transmettre des compétences créatives, mais aussi une pensée critique sur la relation entre texte et image. </p><p>Iconotexte s’adresse aux amateurs des pratiques éditoriales quotidiennes; c’est un projet d’éducation à l’image facile à mettre en œuvre dans le cadre d’ateliers scolaires et associatifs, dans les bibliothèques, dans les quartiers prioritaires et au sein de l’Education nationale. L’application permet une production éditoriale pensée sur la base de textes existants et de projets autobiographiques. Iconotexte renouvelle les pratiques du texte associé à l’image dans le cadre de la vie étudiante et professionnelle\u00A0: mémoire de stages, comptes-rendus, portfolios, etc.</p>"
   },
 
   "Welcome": {
-    "content": "<img src=\"./../assets/icons/logo-text-alone.svg\"><br/> Pour commencer coller ou saisir du texte, <br/> ajouter des images depuis votre ordinateur ou la webcam <br/> enfin mettez en forme vos séquences pour les partager.<br><br>Pour en savoir plus ou obtenir de l'aide, <br/> visitez <a href=\"http://iconotexte.com\">iconotexte.com</a>"
+    "content": "<img src=\"./../assets/icons/logo-text-alone.svg\"><br/> Pour commencer coller ou saisir du texte, <br/> ajouter des images depuis votre ordinateur ou la webcam <br/> enfin mettez en forme vos séquences pour les partager.<br><br>Pour en savoir plus ou obtenir de l’aide, <br/> visitez <a href=\"http://iconotexte.com\">iconotexte.com</a>"
   },
 
   "Editor": {
     "Section": {
-      "placeholder": "texte …"
+      "placeholder": "texte…"
     }
   },
 
@@ -74,7 +74,7 @@
 
   "Publish": {
     "directory": "Dossier vide",
-    "printMessage": "Une fenêtre de paramétrage de l'impression devrait être ouverte.<br/>Vous pouvez exporter le document dans un fichier en cliquant sur l'option \"Imprimer dans un fichier.\"",
+    "printMessage": "Une fenêtre de paramétrage de l’impression devrait être ouverte.<br/>Vous pouvez exporter le document dans un fichier en cliquant sur l’option «\u00A0Imprimer dans un fichier\u00A0».",
     "pdfMessage": "<strong>Exportation en cours (%{progress}%)</strong><br/><br/>",
     "welcomeMessage": "<p>Vous pouvez imprimer vous même votre séquence iconotexte ou la publier sous forme de livre avec <a href=\"https://www.lulu.com/\">lulu.com</a> et ainsi la partager en ligne et permettre à tous d’obtenir un tirage.</p>\n\n<p>Pensez à proposer votre projet en remplissant le <a href=\"https://goo.gl/forms/x0UYMGvjIlL6r2Jy2\">formulaire</a> pour qu’il apparaisse sur le site <a href=\"http://iconotexte.com\">iconotexte.com</a>.</p>\n",
 
