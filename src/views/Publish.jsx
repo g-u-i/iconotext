@@ -14,7 +14,7 @@ const OPTIONS = [
   },
   {
     id: 'support',
-    values: ['print', 'screen'],
+    values: ['print'], // remove 'screen' option as not implemented yet
   },
   {
     id: 'action',
