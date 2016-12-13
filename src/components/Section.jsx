@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { stateToHTML } from 'draft-js-export-html';
-import { stateFromHTML } from 'draft-js-import-html';
+import {convertFromHTML, convertToHTML} from 'draft-convert';
+
 import {
   Editor,
   RichUtils,
   EditorState,
   ContentState,
-  SelectionState,
+  SelectionState
 } from 'draft-js';
 
 import ImageBlock from './ImageBlock.jsx';
@@ -17,8 +17,8 @@ import InlineToolbar from './InlineToolbar.jsx';
 import { t } from '../utils/translator.js';
 import selectionUtils from '../utils/selection.js';
 
-const PARAGRAPH_REGEXP = /\n<p><br><\/p>\n/;
-const PARAGRAPH_EMPTY = '<p><br></p>';
+const PARAGRAPH_REGEXP = /<p><\/p><p><\/p>/;
+const PARAGRAPH_EMPTY = '<p></p>';
 
 export default React.createClass({
   displayName: 'iconotexte/Section',
@@ -62,11 +62,11 @@ export default React.createClass({
    * ********
    */
   setHTMLText(html) {
-    const contentState = stateFromHTML(html);
+    const contentState = convertFromHTML(html);
     return contentState;
   },
   getHTMLText(contentState) {
-    const html = stateToHTML(contentState);
+    const html = convertToHTML(contentState);
     return html;
   },
 
@@ -213,13 +213,17 @@ export default React.createClass({
     // Check if text has been updated:
     if (hasFocus && newText !== this.props.section.text) {
       // Split the section if new paragraph:
-      if (
-        newText.match(PARAGRAPH_REGEXP) &&
-        // The following test is about that:
-        // https://github.com/sstur/draft-js-export-html/issues/25
-        newText !== PARAGRAPH_EMPTY
-      ) {
+      console.log(newText);
+
+      // if (
+      //   newText.match(PARAGRAPH_REGEXP) &&
+      //   // The following test is about that:
+      //   // https://github.com/sstur/draft-js-export-html/issues/25
+      //   newText !== PARAGRAPH_EMPTY
+      // ) {
         const splitted = newText.split(PARAGRAPH_REGEXP);
+                console.log(splitted)
+
         newText = splitted.shift();
 
         // Insert new section:
@@ -229,7 +233,7 @@ export default React.createClass({
             text: splitted.pop(),
           });
         }
-      }
+      // }
 
       // Update current section else:
       this.props.onChangeText({
