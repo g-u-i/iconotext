@@ -7033,13 +7033,8 @@ a:focus {
 }
 @media (min-width: 768px) {
   .landing-section .jumbotron h2 {
-    margin-left: 8.33333333%;
-  }
-}
-@media (min-width: 768px) {
-  .landing-section .jumbotron h2 {
     float: left;
-    width: 83.33333333%;
+    width: 100%;
   }
 }
 .landing-section .jumbotron .download {
