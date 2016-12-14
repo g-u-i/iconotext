@@ -90,7 +90,8 @@
   }
 
   .page--credits &,
-  .page--sleeve & {
+  .page--sleeve &,
+  .page--backcover & {
     p:last-child {
       margin-bottom: 0;
     }
@@ -105,7 +106,8 @@
     }
   }
 
-  .page--sleeve:nth-last-child(2) & {
+  .page--backcover:nth-child(1) &,
+  .page--backcover:nth-last-child(1) & {
     &:after {
       display: block;
       content: 'iconotexte.com';
@@ -155,18 +157,3 @@
   }
 
 }
-
-// DEV
-// .page {
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   background-size: contain;
-//
-//   &:nth-child(odd) {
-//     background-image: url(../../../assets/images/poche_portrait.odd.png);
-//   }
-//   &:nth-child(even) {
-//     background-image: url(../../../assets/images/poche_portrait.even.png);
-//   }
-//
-// }

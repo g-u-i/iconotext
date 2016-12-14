@@ -104,8 +104,8 @@ export default new Baobab({
             }).join(''),
           });
 
-          // 2. Inside the front cover (empty):
-          pages.push({className:'page page--empty'});
+          // 2. Front cover’s verso (empty):
+          pages.push({className:'page page--empty page--cover-verso'});
 
           // 3. First inside recto (empty):
           pages.push({className:'page page--empty'});
@@ -164,18 +164,18 @@ export default new Baobab({
 
           pages.push({className:'page page--empty'});
 
-          // 11. Back cover (recto, empty):
-          const creditsPage = {
-            className: 'page page--sleeve',
+          // 11. Back cover’s verso (empty):
+          pages.push({className:'page page--empty page--cover-verso'});
+
+          // 12. Back cover:
+          const backCover = {
+            className: 'page page--backcover',
             text: ['title','imageDescription','textDescription'].map(f => {
               return meta[f] ? '<p class="text__'+f+'">'+meta[f].replace(/<(?:.|\n)*?>/gm, '')+'</p>' : '';
             }).join(''),
           };
 
-          pages.push(creditsPage);
-
-          // 12. Back cover (verso, empty):
-          pages.push({className:'page page--empty'});
+          pages.push(backCover);
 
         // Add nothing for screens:
         } else {

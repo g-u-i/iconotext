@@ -1,6 +1,6 @@
 // Variables
 @interface-spacer: 16px;
-@preview-ratio: 0.45;
+@preview-ratio: 0.45; // ratio preview is hard-coded in `src/components/Cover.jsx`, line 60. Please report any update there.
 
 /* =Pages preview and printing
   -----------------------------------------------------------------------------*/
@@ -36,7 +36,7 @@
 
     // M O D I F I E R S
     &--cover {
-      .set-page-margin(@a4-cover-margin-top, @a4-cover-margin-ext, @a4-cover-margin-bottom, @a4-cover-margin-int, @preview-ratio);
+      .set-page-margin-fixed(@a4-cover-margin-top, @a4-cover-margin-ext, @a4-cover-margin-bottom, @a4-cover-margin-int, @preview-ratio);
       // Elements
       .set-page__content-width(@a4-width, @a4-height, @a4-cover-margin-top, @a4-cover-margin-ext, @a4-cover-margin-bottom, @a4-cover-margin-int);
     }
@@ -49,6 +49,19 @@
       // Elements
       .set-page__content-width(@a4-width, @a4-height, @a4-page-margin-top, @a4-page-margin-ext, @a4-page-margin-bottom, @a4-page-margin-int);
     }
+
+    &--backcover {
+      .set-page-margin-fixed(@a4-cover-margin-top, @a4-cover-margin-int, @a4-cover-margin-bottom, @a4-cover-margin-ext, @preview-ratio);
+      // Elements
+      .set-page__content-width(@a4-width, @a4-height, @a4-cover-margin-top, @a4-cover-margin-int, @a4-cover-margin-bottom, @a4-cover-margin-ext);
+    }
+
+    &--spine {
+      .set-page-margin(@a4-page-margin-top, 0, @a4-page-margin-bottom, 0, @preview-ratio);
+      // Elements
+      .set-page__content-width(@a4-width, @a4-height, @a4-page-margin-top, 0, @a4-page-margin-bottom, 0);
+    }
+
   } //--- A4
 
   [data-format="pocket"]&
@@ -58,7 +71,7 @@
 
     // M O D I F I E R S
     &--cover {
-      .set-page-margin(@pocket-cover-margin-top, @pocket-cover-margin-ext, @pocket-cover-margin-bottom, @pocket-cover-margin-int, @preview-ratio);
+      .set-page-margin-fixed(@pocket-cover-margin-top, @pocket-cover-margin-ext, @pocket-cover-margin-bottom, @pocket-cover-margin-int, @preview-ratio);
       // Elements
       .set-page__content-width(@pocket-width, @pocket-height, @pocket-cover-margin-top, @pocket-cover-margin-ext, @pocket-cover-margin-bottom, @pocket-cover-margin-int);
     }
@@ -71,9 +84,23 @@
       // Elements
       .set-page__content-width(@pocket-width, @pocket-height, @pocket-page-margin-top, @pocket-page-margin-ext, @pocket-page-margin-bottom, @pocket-page-margin-int);
     }
+
+    &--backcover {
+      .set-page-margin-fixed(@pocket-cover-margin-top, @pocket-cover-margin-int, @pocket-cover-margin-bottom, @pocket-cover-margin-ext, @preview-ratio);
+      // Elements
+      .set-page__content-width(@pocket-width, @pocket-height, @pocket-cover-margin-top, @pocket-cover-margin-int, @pocket-cover-margin-bottom, @pocket-cover-margin-ext);
+    }
+
+    &--spine {
+      .set-page-margin(@pocket-page-margin-top, 0, @pocket-page-margin-bottom, 0, @preview-ratio);
+      // Elements
+      .set-page__content-width(@pocket-width, @pocket-height, @pocket-page-margin-top, 0, @pocket-page-margin-bottom, 0);
+    }
+
   } //--- A4
 
   &--cover,
+  &--backcover,
   &--credits,
   &--sleeve {
     .page__content {
@@ -158,10 +185,12 @@
 
     // M O D I F I E R S
     &--cover,
+    &--backcover,
     &--default,
     &--credits,
     &--sleeve,
-    &--empty {
+    &--empty,
+    &--spine {
       margin: @interface-spacer * 0.5;
 
       & {
@@ -174,11 +203,6 @@
         display: block;
         position: absolute;
         z-index: 2;
-        /*
-          dev only
-          border: 1px solid;
-          border-color: rgb(255,79,255) rgb(153,51,255);
-        */
         pointer-events: none;
       }
 
@@ -189,7 +213,6 @@
     }
 
     &--cover {
-      // transform: translate( calc(100% ~"+" @interface-spacer ) );
       transform: translate( calc(100% ~"+" @interface-spacer * 0.5 ) );
     }
 
@@ -200,6 +223,15 @@
           bottom: @a4-cover-margin-bottom * @preview-ratio;
           left: @a4-cover-margin-int * @preview-ratio;
           right: @a4-cover-margin-ext * @preview-ratio;
+        }
+      }
+
+      &--backcover {
+        &:before {
+          top: @a4-cover-margin-top * @preview-ratio;
+          bottom: @a4-cover-margin-bottom * @preview-ratio;
+          left: @a4-cover-margin-ext * @preview-ratio;
+          right: @a4-cover-margin-int * @preview-ratio;
         }
       }
 
@@ -235,6 +267,15 @@
         }
       }
 
+      &--backcover {
+        &:before {
+          top: @pocket-cover-margin-top * @preview-ratio;
+          bottom: @pocket-cover-margin-bottom * @preview-ratio;
+          left: @pocket-cover-margin-ext * @preview-ratio;
+          right: @pocket-cover-margin-int * @preview-ratio;
+        }
+      }
+
       &--default,
       &--credits,
       &--sleeve,
@@ -258,11 +299,22 @@
       }
     }
 
+    &--spine,
     &:nth-child(odd) {
       margin-right: 0;
     }
     &:nth-child(even) {
       margin-left: 0;
+    }
+
+    [data-component="cover"] & {
+      clear: none!important;
+      float: left!important;
+      transform: none;
+
+      &--cover {
+        margin-left: 0;
+      }
     }
   }
 
@@ -286,4 +338,78 @@
     margin: 0;
   }
 
+  [data-component="cover"] {
+    display: flex;
+    flex-direction: row;
+  }
+
 } // @media print
+
+
+
+/* =D E V   O N L Y
+* Visual helper for development. Uncomment what you need.
+-----------------------------------------------------------------------------*/
+@media screen {
+  .page {
+
+    // /* 1. Draw borders arround pages content */
+    // &--cover,
+    // &--backcover,
+    // &--default,
+    // &--credits,
+    // &--sleeve,
+    // &--empty {
+    //
+    //   & {
+    //     float: left;
+    //     box-shadow: 2px 2px 0px 1px #000, 0px 0px 0px 1px #000;
+    //   }
+    //
+    //   &:before {
+    //     border: 1px solid;
+    //     border-color: rgb(255,79,255) rgb(153,51,255);
+    //   }
+    // }
+
+    // /* 2. Draw crosses on cover’s verso */
+    // &.page--empty:nth-of-type(2),
+    // &.page--empty:nth-last-child(2) {
+    //   background-image: none;
+    //   .text {
+    //     height:100%;
+    //     width: 100%;
+    //     display: block;
+    //     background:
+    //       linear-gradient(to top left,
+    //       rgba(0,0,0,0) 0%,
+    //       rgba(0,0,0,0) calc(50% - 0.2px),
+    //       rgba(200,200,200,1) 50%,
+    //       rgba(0,0,0,0) calc(50% + 0.2px),
+    //       rgba(0,0,0,0) 100%),
+    //       linear-gradient(to top right,
+    //       rgba(0,0,0,0) 0%,
+    //       rgba(0,0,0,0) calc(50% - 0.2px),
+    //       rgba(200,200,200,1) 50%,
+    //       rgba(0,0,0,0) calc(50% + 0.2px),
+    //       rgba(0,0,0,0) 100%);
+    //   }
+    // }
+
+    // /* 3. Display the design layout in background */
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: contain;
+
+    // &:nth-child(odd) {
+    //   background-image: url(../../../assets/images/poche_portrait.odd.png);
+    // }
+    // &:nth-child(even) {
+    //   background-image: url(../../../assets/images/poche_portrait.even.png);
+    // }
+
+    // &:nth-child(odd) { background-color: red; }
+    // &:nth-child(even) { background-color: blue; }
+
+  }
+}

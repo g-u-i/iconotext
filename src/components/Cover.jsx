@@ -5,7 +5,7 @@ export default React.createClass({
   displayName: 'iconotexte/Cover',
 
   render() {
-    const { back, front, spine, pageWidth, options } = this.props;
+    const { back, front, spine, previewRatio, pageWidth, options } = this.props;
 
     return (
       <div data-component="cover">
@@ -23,12 +23,6 @@ export default React.createClass({
               {
                 className: back.className,
                 'data-component': 'page',
-                style: {
-                  background: 'red', // TODO: Remove this line
-                  display: 'inline-block',
-                  width: `${ pageWidth }mm`,
-                  height: '100%',
-                },
               }
             ),
             <div className="page__content">
@@ -47,15 +41,29 @@ export default React.createClass({
           )
         }
 
-        <div
-          className="cover__spine"
-          style={{
-            background: 'blue', // TODO: Remove this line
-            display: 'inline-block',
-            width: `${ spine }mm`,
-            height: '100%',
-          }}
-        />
+        {
+          // We cannot use common JSX notation here, due to dynamic
+          // attributes:
+          React.createElement(
+            'div',
+            reduce(
+              options,
+              (iter, val, key) => {
+                iter[`data-${ key }`] = val;
+                return iter;
+              },
+              {
+                className: 'page page--spine',
+                style:{
+                  // About previewRatio:
+                  // cf. `styles/components/page/_layout.less`, line 2
+                  width: `${ spine * previewRatio }mm`,
+                },
+                'data-component': 'page',
+              }
+            )
+          )
+        }
 
         {
           // We cannot use common JSX notation here, due to dynamic
@@ -71,30 +79,35 @@ export default React.createClass({
               {
                 className: front.className,
                 'data-component': 'page',
-                style: {
-                  background: 'green', // TODO: Remove this line
-                  display: 'inline-block',
-                  width: `${ pageWidth }mm`,
-                  height: '100%',
-                },
               }
             ),
-            <div className="page__content">
+            React.createElement(
+              'div',
+              {
+                'className': 'page__content'
+              },
               <article
                 className="text"
                 dangerouslySetInnerHTML={{
-                  __html: front.text === '<p><br></p>' ? '' : front.text,
+                  __html: front.text == "<p><br></p>" ? '' : front.text,
                 }}
-              />
-              {
-                front.img ?
-                  <img className="media" src={ front.img.base64 } /> :
-                  undefined
-              }
-            </div>
+              />,
+              front.img ?
+                <img className="media" src={ front.img.base64 } />
+                : undefined
+            )
           )
         }
       </div>
     );
   },
 });
+
+
+
+
+/* NOTE
+// forcer affichage mode impression couv.
+iconotext.state.set(['ui', 'exportingCover'], true);
+
+*/

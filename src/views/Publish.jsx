@@ -129,11 +129,11 @@ export default React.createClass({
           <PDFRendering
             range={ range }
             options={ publish }
-            // We remove for Lulu the first and last pages (cover), only when
+            // We remove for Lulu the 2 firsts and 2 lasts pages (cover recto/verso), only when
             // printing (so when we have an effective range and an actual cover)
             pages={
               (publish.action === 'lulu' && range) ?
-                pages.slice(1, -1) :
+                pages.slice(2, -2) :
                 pages
             }
             covers={

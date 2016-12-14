@@ -35,6 +35,19 @@
     }
   }
 
+  [data-component="cover"] & {
+    &[data-orientation="portrait"] {
+      @media print {
+        width: @w;
+      }
+    }
+    &[data-orientation="landscape"] {
+      @media print {
+        width: @h;
+      }
+    }
+  }
+
 }
 
 // Set page margin.
@@ -68,6 +81,23 @@
       padding-right: @margin-ext * @ratio;
       padding-left: @margin-int * @ratio;
     }
+  }
+
+}
+
+.set-page-margin-fixed(@margin-top, @margin-ext, @margin-bottom, @margin-int, @ratio: 1) {
+
+  @media print {
+    padding-top: @margin-top;
+    padding-bottom: @margin-bottom;
+    padding-right: @margin-ext;
+    padding-left: @margin-int;
+  }
+  @media not print {
+    padding-top: @margin-top * @ratio;
+    padding-bottom: @margin-bottom * @ratio;
+    padding-right: @margin-ext * @ratio;
+    padding-left: @margin-int * @ratio;
   }
 
 }

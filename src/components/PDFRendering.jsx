@@ -16,10 +16,12 @@ export default React.createClass({
     // To compute the spine's size, we use Nicolas' formula:
     //   [inside pages count] / 2  x  [inside paper's weight] / 1000
     // + [cover pages count] / 2  x  [cover paper's weight] / 1000
+    // On Lulu, print is at least 40 pages.
+    const minPages = 40;
     const insideWeight = 115;
     const coverWeight = 350;
     const spine =
-      (pages.length / 2 * insideWeight / 1000)
+      ((pages.length < minPages ? minPages : pages.length) / 2 * insideWeight / 1000)
       + (4 / 2 * coverWeight / 1000);
 
     // Since the @page CSS pseudo-selector cannot depend on upper conditions,
@@ -56,6 +58,9 @@ export default React.createClass({
             @page {
               size: ${ size };
             }
+            .page--spine {
+              width: ${ spine }mm!important;
+            }
           }
         `}</style>
 
@@ -68,6 +73,7 @@ export default React.createClass({
             options={ options }
             pageWidth={ pageWidth }
             pageHeight={ pageHeight }
+            previewRatio={ 0.45 }
           />
         }
       </div>
@@ -84,36 +90,17 @@ export default React.createClass({
       size = 'a4' + (options.orientation === 'landscape' ? ' landscape' : ' portrait');
     } else if (options.format === 'pocket') {
       if (options.orientation === 'landscape') {
-        size = '17.46cm 10.79cm';
+        size = '174.6mm 107.9mm';
       } else {
-        size = '10.79cm 17.46cm';
+        size = '107.9mm 174.6mm';
       }
     }
 
     return (
       <div data-component="pdf-rendering">
         { /* PRINT SPECIFIC CSS CONDITIONAL RULES */ }
-        {/* <style>{`
-          @media print {
-            @page {
-              size: ${ size };
-              margin: 18mm;
-            }
-            ${
-              options.action === 'pdf' ?
-                `
-                @page :left {
-                  margin-right: 39mm;
-                }
-                @page :right {
-                  margin-left: 39mm;
-                }
-                ` :
-                ''
-            }
-          }
-        `}</style> */}
         <style>{`
+          /*Pages render*/
           @media print {
             @page {
               size: ${ size };
